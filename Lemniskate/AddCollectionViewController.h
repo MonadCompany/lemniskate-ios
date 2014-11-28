@@ -8,6 +8,6 @@
 
 @import UIKit;
 
-@interface AddCollectionViewController : UIViewController
-
+@interface AddCollectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) UITableView *tableView;
 @end

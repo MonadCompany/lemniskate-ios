@@ -14,6 +14,7 @@
 		3A8C8B2F1A1E5F1800473967 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C8B2D1A1E5F1800473967 /* LaunchScreen.xib */; };
 		3A8C8B3B1A1E5F1800473967 /* LemniskateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B3A1A1E5F1800473967 /* LemniskateTests.m */; };
 		3A8C8B4A1A1E6D3200473967 /* AddCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B491A1E6D3200473967 /* AddCollectionViewController.m */; };
+		3ACE58251A2920BC00AD1ECB /* LabeledFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58241A2920BC00AD1ECB /* LabeledFieldTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,8 @@
 		3A8C8B3A1A1E5F1800473967 /* LemniskateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LemniskateTests.m; sourceTree = "<group>"; };
 		3A8C8B481A1E6D3200473967 /* AddCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCollectionViewController.h; path = Lemniskate/AddCollectionViewController.h; sourceTree = "<group>"; };
 		3A8C8B491A1E6D3200473967 /* AddCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCollectionViewController.m; path = Lemniskate/AddCollectionViewController.m; sourceTree = "<group>"; };
+		3ACE58231A2920BC00AD1ECB /* LabeledFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabeledFieldTableViewCell.h; path = Lemniskate/LabeledFieldTableViewCell.h; sourceTree = "<group>"; };
+		3ACE58241A2920BC00AD1ECB /* LabeledFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabeledFieldTableViewCell.m; path = Lemniskate/LabeledFieldTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				3A8C8B261A1E5F1800473967 /* WordCollectionsViewController.m */,
 				3A8C8B481A1E6D3200473967 /* AddCollectionViewController.h */,
 				3A8C8B491A1E6D3200473967 /* AddCollectionViewController.m */,
+				3ACE58231A2920BC00AD1ECB /* LabeledFieldTableViewCell.h */,
+				3ACE58241A2920BC00AD1ECB /* LabeledFieldTableViewCell.m */,
 				3A8C8B471A1E638D00473967 /* Resources */,
 				3A8C8B1E1A1E5F1800473967 /* Supporting Files */,
 				3A8C8B371A1E5F1800473967 /* LemniskateTests */,
@@ -223,6 +228,7 @@
 			files = (
 				3A8C8B4A1A1E6D3200473967 /* AddCollectionViewController.m in Sources */,
 				3A8C8B271A1E5F1800473967 /* WordCollectionsViewController.m in Sources */,
+				3ACE58251A2920BC00AD1ECB /* LabeledFieldTableViewCell.m in Sources */,
 				3A8C8B241A1E5F1800473967 /* AppDelegate.m in Sources */,
 				3A8C8B211A1E5F1800473967 /* main.m in Sources */,
 			);

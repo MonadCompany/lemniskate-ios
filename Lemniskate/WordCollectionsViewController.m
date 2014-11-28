@@ -40,7 +40,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (NSString *)title
 {
-    return @"∞";
+    return @"Lemniskate"; // ∞
 }
 
 #pragma mark - UIViewController lifecycle
@@ -83,11 +83,11 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (void)addBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    AddCollectionViewController *addCollectionVC = [AddCollectionViewController new];
-//    addCollectionVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-//    [self presentViewController:addCollectionVC animated:YES completion:nil];
-
-    [self.navigationController pushViewController:addCollectionVC animated:YES];
+    AddCollectionViewController *viewController = [AddCollectionViewController new];
+    viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+//    [self presentViewController:viewController animated:YES completion:nil];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 @end
