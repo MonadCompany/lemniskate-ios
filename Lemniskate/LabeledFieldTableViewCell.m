@@ -14,23 +14,42 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        // Helpers
-        CGSize size = self.contentView.frame.size;
-        
-        // Initialize Main Label
-        self.label = [[UILabel alloc] initWithFrame:CGRectMake(8.0, 8.0, size.width - 16.0, size.height - 16.0)];
-        
-        // Configure Main Label
-        [self.label setFont:[UIFont boldSystemFontOfSize:24.0]];
-        [self.label setTextAlignment:NSTextAlignmentCenter];
-        [self.label setTextColor:[UIColor orangeColor]];
+        // Initialize & Configure Main Label
+        self.label = [[UILabel alloc] initWithFrame:CGRectZero];
+        [self.label setTextAlignment:NSTextAlignmentRight];
+        [self.label setTextColor:[UIColor lightGrayColor]];
         [self.label setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-        
-        // Add Main Label to Content View
         [self.contentView addSubview:self.label];
+        
+        // Initialize & Configure text field
+        self.field = [[UITextField alloc] initWithFrame:CGRectZero];
+//        self.field.clearsOnBeginEditing = NO;
+        self.field.returnKeyType = UIReturnKeyDone;
+        [self.contentView addSubview:self.field];
     }
     
     return self;
 }
 
+#pragma mark Laying out subviews
+
+- (void)layoutSubviews {
+    CGSize size = self.contentView.frame.size;
+    CGFloat cappedWidth = size.width - (MarginBetweenControls * 3);
+    
+    CGRect labelRect = CGRectMake(MarginBetweenControls,
+                                  12.0,
+                                  cappedWidth * (1 - CellTextFieldWidthPercent),
+                                  25.0);
+    [self.label setFrame:labelRect];
+    
+    CGRect fieldRect = CGRectMake((MarginBetweenControls * 2) + labelRect.size.width,
+                                  12.0,
+                                  cappedWidth * CellTextFieldWidthPercent,
+                                  25.0);
+    [self.field setFrame:fieldRect];
+    
+}
+
 @end
+

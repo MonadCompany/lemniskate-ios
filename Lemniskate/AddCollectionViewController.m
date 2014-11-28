@@ -55,14 +55,19 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     LabeledFieldTableViewCell *cell = (LabeledFieldTableViewCell *)[tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
     
-    cell.label.text = @"Sample";
+    if (indexPath.row == 1) {
+        cell.label.text = @"Name";
+    } else {
+        cell.label.text = @"Description";
+    }
+
     
     return cell;
 }

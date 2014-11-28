@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#define CellTextFieldWidthPercent 0.6
+#define MarginBetweenControls 20.0
+
 @interface LabeledFieldTableViewCell : UITableViewCell
-@property (nonatomic, strong) UILabel *label;
-@property (nonatomic, strong) NSString *value;
+@property (nonatomic, strong) UILabel     *label;
+@property (nonatomic, strong) UITextField *field;
 @end
