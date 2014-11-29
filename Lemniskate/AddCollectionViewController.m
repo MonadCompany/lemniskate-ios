@@ -29,6 +29,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:[self.view bounds] style:UITableViewStylePlain];
         _tableView.dataSource = self;
+        _tableView.allowsSelection = NO;
         [_tableView registerClass:[LabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
     return _tableView;

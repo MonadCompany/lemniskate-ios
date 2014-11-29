@@ -56,6 +56,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:[self.view bounds] style:UITableViewStylePlain];
         _tableView.dataSource = self;
+        _tableView.allowsSelection = NO;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
     return _tableView;
@@ -72,10 +73,14 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 {
     [super loadView];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                          target:self
+                                                                                          action:@selector(addBarButtonItemTap:)];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                            target:self
-                                                                                           action:@selector(addBarButtonItemTap:)];
-    
+                                                                                           action:nil];
+
     [self.view addSubview:self.tableView];
 }
 
@@ -111,6 +116,33 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     
     return cell;
 }
+
+#pragma mark - NSFetchedResultsControllerDelegate lifecycle
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    NSLog(@"controllerWillChangeContent");
+};
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    NSLog(@"controllerDidChangeContent");
+};
+
+- (void)controller:(NSFetchedResultsController *)controller
+  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
+           atIndex:(NSUInteger)sectionIndex
+     forChangeType:(NSFetchedResultsChangeType)type
+{
+    NSLog(@"controller didChangeSection");
+};
+- (void)controller:(NSFetchedResultsController *)controller
+   didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath
+     forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    NSLog(@"controller didChangeObject");
+};
 
 #pragma mark - Action handlers
 
