@@ -8,6 +8,15 @@
 
 #import "AddCollectionViewController.h"
 #import "LabeledFieldTableViewCell.h"
+#import "WordCollection.h"
+#import "AppDelegate.h"
+
+@interface AddCollectionViewController ()
+
+@property (nonatomic, strong) LabeledFieldTableViewCell *nameCell;
+@property (nonatomic, strong) LabeledFieldTableViewCell *commentCell;
+
+@end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
@@ -30,19 +39,36 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     return @"New collection";
 }
 
+- (LabeledFieldTableViewCell *)nameCell {
+    if (!_nameCell) {
+        _nameCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _nameCell.label.text = @"Name";
+    }
+    return _nameCell;
+}
+
+- (LabeledFieldTableViewCell *)commentCell {
+    if (!_commentCell) {
+        _commentCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _commentCell.label.text = @"Comment";
+    }
+    return _commentCell;
+}
+
 #pragma mark - UIViewController lifecycle
 
 - (void)loadView
 {
     [super loadView];
     
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                                                                          target:self
+                                                                                          action:@selector(cancelBarButtonItemTap:)];
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                            target:self
                                                                                            action:@selector(doneBarButtonItemTap:)];
 
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                          target:self
-                                                                                          action:@selector(cancelBarButtonItemTap:)];
     [self.view addSubview:self.tableView];
 }
 
@@ -60,16 +86,12 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LabeledFieldTableViewCell *cell = (LabeledFieldTableViewCell *)[tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-    
-    if (indexPath.row == 1) {
-        cell.label.text = @"Name";
+    // this is probably not okay =/
+    if (indexPath.row == 0) {
+        return self.nameCell;
     } else {
-        cell.label.text = @"Description";
+        return self.commentCell;
     }
-
-    
-    return cell;
 }
 
 #pragma mark - Action handlers
@@ -81,7 +103,19 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (void)doneBarButtonItemTap:(UIBarButtonItem *)sender
 {
+    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
+    // add new collection
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"WordCollection" inManagedObjectContext:delegate.managedObjectContext];
+    WordCollection *wc = (WordCollection *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:delegate.managedObjectContext];
+    wc.name = self.nameCell.field.text;
+    wc.comment = self.commentCell.field.text;
+    
+    NSError *error = nil;
+    [wc.managedObjectContext save:&error];
+    
+    // and pop out
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

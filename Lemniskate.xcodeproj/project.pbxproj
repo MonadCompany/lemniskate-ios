@@ -15,6 +15,8 @@
 		3A8C8B3B1A1E5F1800473967 /* LemniskateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B3A1A1E5F1800473967 /* LemniskateTests.m */; };
 		3A8C8B4A1A1E6D3200473967 /* AddCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B491A1E6D3200473967 /* AddCollectionViewController.m */; };
 		3ACE58251A2920BC00AD1ECB /* LabeledFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58241A2920BC00AD1ECB /* LabeledFieldTableViewCell.m */; };
+		3ACE582C1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE582A1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld */; };
+		3ACE582F1A29334900AD1ECB /* WordCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE582E1A29334900AD1ECB /* WordCollection.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,9 @@
 		3A8C8B491A1E6D3200473967 /* AddCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCollectionViewController.m; path = Lemniskate/AddCollectionViewController.m; sourceTree = "<group>"; };
 		3ACE58231A2920BC00AD1ECB /* LabeledFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabeledFieldTableViewCell.h; path = Lemniskate/LabeledFieldTableViewCell.h; sourceTree = "<group>"; };
 		3ACE58241A2920BC00AD1ECB /* LabeledFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabeledFieldTableViewCell.m; path = Lemniskate/LabeledFieldTableViewCell.m; sourceTree = "<group>"; };
+		3ACE582B1A2931BD00AD1ECB /* LemniskateModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LemniskateModel.xcdatamodel; sourceTree = "<group>"; };
+		3ACE582D1A29334900AD1ECB /* WordCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WordCollection.h; path = Lemniskate/WordCollection.h; sourceTree = "<group>"; };
+		3ACE582E1A29334900AD1ECB /* WordCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WordCollection.m; path = Lemniskate/WordCollection.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +72,9 @@
 		3A8C8B121A1E5F1800473967 = {
 			isa = PBXGroup;
 			children = (
+				3ACE582A1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld */,
+				3ACE582D1A29334900AD1ECB /* WordCollection.h */,
+				3ACE582E1A29334900AD1ECB /* WordCollection.m */,
 				3A8C8B221A1E5F1800473967 /* AppDelegate.h */,
 				3A8C8B231A1E5F1800473967 /* AppDelegate.m */,
 				3A8C8B251A1E5F1800473967 /* WordCollectionsViewController.h */,
@@ -226,10 +234,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ACE582F1A29334900AD1ECB /* WordCollection.m in Sources */,
 				3A8C8B4A1A1E6D3200473967 /* AddCollectionViewController.m in Sources */,
 				3A8C8B271A1E5F1800473967 /* WordCollectionsViewController.m in Sources */,
 				3ACE58251A2920BC00AD1ECB /* LabeledFieldTableViewCell.m in Sources */,
 				3A8C8B241A1E5F1800473967 /* AppDelegate.m in Sources */,
+				3ACE582C1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld in Sources */,
 				3A8C8B211A1E5F1800473967 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,6 +436,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3ACE582A1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3ACE582B1A2931BD00AD1ECB /* LemniskateModel.xcdatamodel */,
+			);
+			currentVersion = 3ACE582B1A2931BD00AD1ECB /* LemniskateModel.xcdatamodel */;
+			path = LemniskateModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3A8C8B131A1E5F1800473967 /* Project object */;
 }

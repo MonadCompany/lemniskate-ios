@@ -6,11 +6,14 @@
 //  Copyright (c) 2014 MenadCompany. All rights reserved.
 //
 
+#import <CoreData/CoreData.h>
 #import "WordCollectionsViewController.h"
 #import "AddCollectionViewController.h"
+#import "AppDelegate.h"
+#import "WordCollection.h"
 
 @interface WordCollectionsViewController ()
-@property (nonatomic, strong) NSArray *dummyData;
+@property (nonatomic, strong) NSFetchedResultsController *dataController;
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
@@ -19,13 +22,33 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 #pragma mark - Getters
 
-- (NSArray *)dummyData
+- (NSFetchedResultsController *)dataController
 {
-    if (!_dummyData) {
-        _dummyData = [NSArray arrayWithObjects:@"1", @"2", @"3", nil];
+    if (!_dataController) {
+        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"WordCollection"];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        [fetchRequest setSortDescriptors:@[sortDescriptor]];
+        
+        _dataController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                              managedObjectContext:delegate.managedObjectContext
+                                                                sectionNameKeyPath:nil
+                                                                         cacheName:nil];
+        
+        [_dataController setDelegate:self];
+        
+        // Perform Fetch
+        NSError *error = nil;
+        [_dataController performFetch:&error];
+        
+        if (error) {
+            NSLog(@"Unable to perform fetch.");
+            NSLog(@"%@, %@", error, error.localizedDescription);
+        }
     }
     
-    return _dummyData;
+    return _dataController;
 }
 
 - (UITableView *)tableView
@@ -40,7 +63,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (NSString *)title
 {
-    return @"Lemniskate"; // ∞
+    return @"Lemniskate";
 }
 
 #pragma mark - UIViewController lifecycle
@@ -65,16 +88,26 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return [[self.dataController sections] count];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.dummyData count];
+    if ([[self.dataController sections] count] > 0) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.dataController sections] objectAtIndex:section];
+        return [sectionInfo numberOfObjects];
+    } else {
+        return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+    WordCollection *wc = (WordCollection *)[self.dataController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = self.dummyData[indexPath.row];
+    cell.textLabel.text = wc.name;
     
     return cell;
 }
