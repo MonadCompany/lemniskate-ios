@@ -1,24 +1,22 @@
 //
-//  ViewController.m
+//  OneLemniCollectionViewController.m
 //  Lemniskate
 //
-//  Created by Chebotaev Anton on 20/11/14.
-//  Copyright (c) 2014 MenadCompany. All rights reserved.
+//  Created by Chebotaev Anton on 30/11/14.
+//  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import <CoreData/CoreData.h>
-#import "WordCollectionsViewController.h"
-#import "AddCollectionViewController.h"
+#import "OneLemniCollectionViewController.h"
 #import "AppDelegate.h"
-#import "WordCollection.h"
+#import "LemniWord.h"
 
-@interface WordCollectionsViewController ()
+@interface OneLemniCollectionViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
-@implementation WordCollectionsViewController
+@implementation OneLemniCollectionViewController
 
 #pragma mark - Getters
 
@@ -27,9 +25,12 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     if (!_dataController) {
         AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         
-        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"WordCollection"];
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"LemniWord"];
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"spelling" ascending:YES];
         [fetchRequest setSortDescriptors:@[sortDescriptor]];
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"collection == '%@'", self.collection];
+        [fetchRequest setPredicate: predicate];
         
         _dataController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                               managedObjectContext:delegate.managedObjectContext
@@ -64,31 +65,30 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (NSString *)title
 {
-    return @"Lemniskate";
+    return self.collection.name;
 }
 
-#pragma mark - UIViewController lifecycle
 
-- (void)loadView
-{
+#pragma mark - ViewController Lifecycle
+
+- (void)loadView {
     [super loadView];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                          target:self
-                                                                                          action:@selector(addBarButtonItemTap:)];
-
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
                                                                                            action:nil];
-
+    
     [self.view addSubview:self.tableView];
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.tableView reloadData];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDataSource
@@ -110,49 +110,14 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-    WordCollection *wc = (WordCollection *)[self.dataController objectAtIndexPath:indexPath];
+    LemniWord *word = (LemniWord *)[self.dataController objectAtIndexPath:indexPath];
     
-    cell.textLabel.text = wc.name;
+    cell.textLabel.text = word.spelling;
     
     return cell;
 }
 
-#pragma mark - NSFetchedResultsControllerDelegate lifecycle
+#pragma mark - Navigation
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    NSLog(@"controllerWillChangeContent");
-};
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    NSLog(@"controllerDidChangeContent");
-};
-
-- (void)controller:(NSFetchedResultsController *)controller
-  didChangeSection:(id<NSFetchedResultsSectionInfo>)sectionInfo
-           atIndex:(NSUInteger)sectionIndex
-     forChangeType:(NSFetchedResultsChangeType)type
-{
-    NSLog(@"controller didChangeSection");
-};
-- (void)controller:(NSFetchedResultsController *)controller
-   didChangeObject:(id)anObject
-       atIndexPath:(NSIndexPath *)indexPath
-     forChangeType:(NSFetchedResultsChangeType)type
-      newIndexPath:(NSIndexPath *)newIndexPath
-{
-    NSLog(@"controller didChangeObject");
-};
-
-#pragma mark - Action handlers
-
-- (void)addBarButtonItemTap:(UIBarButtonItem *)sender
-{
-    AddCollectionViewController *viewController = [AddCollectionViewController new];
-    viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-//    [self presentViewController:viewController animated:YES completion:nil];
-    [self.navigationController pushViewController:viewController animated:YES];
-}
 
 @end

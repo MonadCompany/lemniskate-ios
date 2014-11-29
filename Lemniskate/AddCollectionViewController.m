@@ -8,7 +8,7 @@
 
 #import "AddCollectionViewController.h"
 #import "LabeledFieldTableViewCell.h"
-#import "WordCollection.h"
+#import "LemniCollection.h"
 #import "AppDelegate.h"
 
 @interface AddCollectionViewController ()
@@ -104,16 +104,25 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (void)doneBarButtonItemTap:(UIBarButtonItem *)sender
 {
+    NSString *name = self.nameCell.field.text;
+    if ([name length] == 0) {
+        return;
+    }
+
     AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
     // add new collection
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"WordCollection" inManagedObjectContext:delegate.managedObjectContext];
-    WordCollection *wc = (WordCollection *)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:delegate.managedObjectContext];
-    wc.name = self.nameCell.field.text;
-    wc.comment = self.commentCell.field.text;
-    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniCollection"
+                                              inManagedObjectContext:delegate.managedObjectContext];
+    LemniCollection *collection = (LemniCollection *)[[NSManagedObject alloc] initWithEntity:entity
+                                                              insertIntoManagedObjectContext:delegate.managedObjectContext];
+    collection.name = self.nameCell.field.text;
+    collection.comment = self.commentCell.field.text;
+    collection.created = [NSDate new];
+   
+    // save it
     NSError *error = nil;
-    [wc.managedObjectContext save:&error];
+    [collection.managedObjectContext save:&error];
     
     // and pop out
     [self.navigationController popViewControllerAnimated:YES];

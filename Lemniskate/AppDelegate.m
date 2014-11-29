@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "WordCollectionsViewController.h"
+#import "AllLemniCollectionsViewController.h"
 
 @implementation AppDelegate
 
@@ -17,7 +17,7 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[WordCollectionsViewController new]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[AllLemniCollectionsViewController new]];
     
     [self.window makeKeyAndVisible];
     

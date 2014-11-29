@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WordCollectionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface AllLemniCollectionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
