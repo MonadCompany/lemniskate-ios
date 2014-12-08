@@ -19,6 +19,7 @@
 		3ACE58421A2A6C1D00AD1ECB /* OneLemniCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58411A2A6C1D00AD1ECB /* OneLemniCollectionViewController.m */; };
 		3ACE584E1A2A772500AD1ECB /* LemniWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE584D1A2A772500AD1ECB /* LemniWord.m */; };
 		3ACE58511A2A772500AD1ECB /* LemniCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58501A2A772500AD1ECB /* LemniCollection.m */; };
+		652650405E242B681D5482B7 /* NewLemniCollectionForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526568B8F26FC87AA1AEC1C /* NewLemniCollectionForm.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		3ACE584D1A2A772500AD1ECB /* LemniWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniWord.m; sourceTree = "<group>"; };
 		3ACE584F1A2A772500AD1ECB /* LemniCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniCollection.h; sourceTree = "<group>"; };
 		3ACE58501A2A772500AD1ECB /* LemniCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniCollection.m; sourceTree = "<group>"; };
+		652651FB66F6F7AD216AEC2C /* NewLemniCollectionForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewLemniCollectionForm.h; sourceTree = "<group>"; };
+		6526568B8F26FC87AA1AEC1C /* NewLemniCollectionForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewLemniCollectionForm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,8 @@
 			children = (
 				3ACE58231A2920BC00AD1ECB /* LabeledFieldTableViewCell.h */,
 				3ACE58241A2920BC00AD1ECB /* LabeledFieldTableViewCell.m */,
+				6526568B8F26FC87AA1AEC1C /* NewLemniCollectionForm.m */,
+				652651FB66F6F7AD216AEC2C /* NewLemniCollectionForm.h */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -277,6 +282,7 @@
 				3ACE58421A2A6C1D00AD1ECB /* OneLemniCollectionViewController.m in Sources */,
 				3ACE584E1A2A772500AD1ECB /* LemniWord.m in Sources */,
 				3ACE58511A2A772500AD1ECB /* LemniCollection.m in Sources */,
+				652650405E242B681D5482B7 /* NewLemniCollectionForm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
