@@ -1,0 +1,13 @@
+# General
+*.swp
+*.swo
+*.rbo
+*.gem
+.DS_Store
+xcuserdata
+*.xcworkspace
+DerivedData
+/concatenated.*
+Podfile.lock
+Pods
+.idea
