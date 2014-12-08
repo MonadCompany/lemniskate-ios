@@ -13,7 +13,7 @@
 		3A8C8B2C1A1E5F1800473967 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C8B2B1A1E5F1800473967 /* Images.xcassets */; };
 		3A8C8B2F1A1E5F1800473967 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C8B2D1A1E5F1800473967 /* LaunchScreen.xib */; };
 		3A8C8B3B1A1E5F1800473967 /* LemniskateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B3A1A1E5F1800473967 /* LemniskateTests.m */; };
-		3A8C8B4A1A1E6D3200473967 /* AddCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B491A1E6D3200473967 /* AddCollectionViewController.m */; };
+		3A8C8B4A1A1E6D3200473967 /* AddLemniCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B491A1E6D3200473967 /* AddLemniCollectionViewController.m */; };
 		3ACE58251A2920BC00AD1ECB /* LabeledFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58241A2920BC00AD1ECB /* LabeledFieldTableViewCell.m */; };
 		3ACE582C1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE582A1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld */; };
 		3ACE58421A2A6C1D00AD1ECB /* OneLemniCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58411A2A6C1D00AD1ECB /* OneLemniCollectionViewController.m */; };
@@ -45,8 +45,8 @@
 		3A8C8B341A1E5F1800473967 /* LemniskateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LemniskateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C8B391A1E5F1800473967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8C8B3A1A1E5F1800473967 /* LemniskateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LemniskateTests.m; sourceTree = "<group>"; };
-		3A8C8B481A1E6D3200473967 /* AddCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddCollectionViewController.h; path = Lemniskate/AddCollectionViewController.h; sourceTree = "<group>"; };
-		3A8C8B491A1E6D3200473967 /* AddCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddCollectionViewController.m; path = Lemniskate/AddCollectionViewController.m; sourceTree = "<group>"; };
+		3A8C8B481A1E6D3200473967 /* AddLemniCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddLemniCollectionViewController.h; path = Lemniskate/AddLemniCollectionViewController.h; sourceTree = "<group>"; };
+		3A8C8B491A1E6D3200473967 /* AddLemniCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddLemniCollectionViewController.m; path = Lemniskate/AddLemniCollectionViewController.m; sourceTree = "<group>"; };
 		3ACE58231A2920BC00AD1ECB /* LabeledFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LabeledFieldTableViewCell.h; path = Lemniskate/LabeledFieldTableViewCell.h; sourceTree = "<group>"; };
 		3ACE58241A2920BC00AD1ECB /* LabeledFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LabeledFieldTableViewCell.m; path = Lemniskate/LabeledFieldTableViewCell.m; sourceTree = "<group>"; };
 		3ACE582B1A2931BD00AD1ECB /* LemniskateModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LemniskateModel.xcdatamodel; sourceTree = "<group>"; };
@@ -168,8 +168,8 @@
 				3ACE58411A2A6C1D00AD1ECB /* OneLemniCollectionViewController.m */,
 				3A8C8B251A1E5F1800473967 /* AllLemniCollectionsViewController.h */,
 				3A8C8B261A1E5F1800473967 /* AllLemniCollectionsViewController.m */,
-				3A8C8B481A1E6D3200473967 /* AddCollectionViewController.h */,
-				3A8C8B491A1E6D3200473967 /* AddCollectionViewController.m */,
+				3A8C8B481A1E6D3200473967 /* AddLemniCollectionViewController.h */,
+				3A8C8B491A1E6D3200473967 /* AddLemniCollectionViewController.m */,
 			);
 			name = viewcontrollers;
 			sourceTree = "<group>";
@@ -273,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A8C8B4A1A1E6D3200473967 /* AddCollectionViewController.m in Sources */,
+				3A8C8B4A1A1E6D3200473967 /* AddLemniCollectionViewController.m in Sources */,
 				3A8C8B271A1E5F1800473967 /* AllLemniCollectionsViewController.m in Sources */,
 				3ACE58251A2920BC00AD1ECB /* LabeledFieldTableViewCell.m in Sources */,
 				3A8C8B241A1E5F1800473967 /* AppDelegate.m in Sources */,

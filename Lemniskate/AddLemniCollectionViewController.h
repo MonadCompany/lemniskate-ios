@@ -1,5 +1,5 @@
 //
-//  AddCollectionViewController.h
+//  AddLemniCollectionViewController.h
 //  Lemniskate
 //
 //  Created by Chebotaev Anton on 20/11/14.
@@ -8,5 +8,5 @@
 
 @import UIKit;
 
-@interface AddCollectionViewController : UIViewController
+@interface AddLemniCollectionViewController : UIViewController
 @end

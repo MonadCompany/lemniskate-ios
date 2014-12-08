@@ -1,21 +1,21 @@
 //
-//  AddCollectionViewController.m
+//  AddLemniCollectionViewController.m
 //  Lemniskate
 //
 //  Created by Chebotaev Anton on 20/11/14.
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "AddCollectionViewController.h"
+#import "AddLemniCollectionViewController.h"
 #import "LemniCollection.h"
 #import "AppDelegate.h"
 #import "NewLemniCollectionForm.h"
 
-@interface AddCollectionViewController ()
+@interface AddLemniCollectionViewController ()
 @property (nonatomic, strong) NewLemniCollectionForm *form;
 @end
 
-@implementation AddCollectionViewController
+@implementation AddLemniCollectionViewController
 
 #pragma mark - Getters
 
