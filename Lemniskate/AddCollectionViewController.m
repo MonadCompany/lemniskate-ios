@@ -27,7 +27,7 @@
 - (NewLemniCollectionForm *)form
 {
     if (!_form) {
-        _form = [[NewLemniCollectionForm alloc] init];
+        _form = [[NewLemniCollectionForm new] initWithFrame:[self.view bounds]];
     }
     return _form;
 }
@@ -47,7 +47,7 @@
                                                                                            target:self
                                                                                            action:@selector(doneBarButtonItemTap:)];
 
-    [self.view addSubview:self.form.view];
+    [self.view addSubview:self.form];
 }
 
 - (void)viewDidLoad
@@ -74,6 +74,7 @@
     // add new collection
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniCollection"
                                               inManagedObjectContext:delegate.managedObjectContext];
+
     LemniCollection *collection = (LemniCollection *)[[NSManagedObject alloc] initWithEntity:entity
                                                               insertIntoManagedObjectContext:delegate.managedObjectContext];
     collection.name = name;

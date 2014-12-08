@@ -24,9 +24,8 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:[self.superview bounds] style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.dataSource = self;
-        _tableView.delegate = self;
         _tableView.allowsSelection = NO;
         [_tableView registerClass:[LabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
@@ -57,8 +56,15 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     return _commentCell.field.text;
 }
 
-- (UITableView *)view {
-    return self.tableView;
+#pragma mark - UIView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self.tableView setFrame:frame];
+        [self addSubview:self.tableView];
+    }
+    return self;
 }
 
 #pragma mark - UITableViewDataSource

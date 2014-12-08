@@ -8,5 +8,4 @@
 @interface NewLemniCollectionForm : UIView <UITableViewDataSource, UITableViewDelegate>
 @property (readonly, nonatomic, strong) NSString *name;
 @property (readonly, nonatomic, strong) NSString *comment;
-@property (readonly, nonatomic, strong) UITableView *view;
 @end
