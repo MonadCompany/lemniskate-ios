@@ -99,7 +99,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([[self.dataController sections] count] > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.dataController sections] objectAtIndex:section];
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.dataController sections][section];
         return [sectionInfo numberOfObjects];
     } else {
         return 0;
@@ -117,6 +117,13 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     return cell;
 }
 
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadData];
+}
+
+
 #pragma mark - TableView Delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath
@@ -124,7 +131,6 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     LemniCollection *collection = (LemniCollection *)[self.dataController objectAtIndexPath:indexPath];
     [self navigateToCollection:collection];
 }
-
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
