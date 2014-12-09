@@ -5,7 +5,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewLemniCollectionForm : UIView <UITableViewDataSource, UITableViewDelegate>
+@interface NewLemniCollectionForm : UIView
 @property (readonly, nonatomic, strong) NSString *name;
 @property (readonly, nonatomic, strong) NSString *comment;
 @end

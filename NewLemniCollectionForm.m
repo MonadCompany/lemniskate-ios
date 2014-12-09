@@ -6,7 +6,7 @@
 #import "NewLemniCollectionForm.h"
 #import "LabeledFieldTableViewCell.h"
 
-@interface NewLemniCollectionForm ()
+@interface NewLemniCollectionForm () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
