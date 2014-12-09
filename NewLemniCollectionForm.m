@@ -61,10 +61,15 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self.tableView setFrame:frame];
         [self addSubview:self.tableView];
     }
     return self;
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    self.tableView.frame = self.bounds;
 }
 
 #pragma mark - UITableViewDataSource

@@ -45,7 +45,7 @@
 
 - (NewLemniWordForm *)form {
     if (!_form) {
-        _form = [[NewLemniWordForm new] initWithFrame:[self.view bounds]];
+        _form = [[NewLemniWordForm alloc] initWithFrame:[self.view bounds]];
     }
     return _form;
 }

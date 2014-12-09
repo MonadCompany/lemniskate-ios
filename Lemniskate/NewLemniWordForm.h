@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewLemniWordForm : UIView <UITableViewDataSource, UITableViewDelegate>
+@interface NewLemniWordForm : UIView
 @property (readonly, nonatomic, strong) NSString *spelling;
 @property (readonly, nonatomic, strong) NSString *pronunciation;
 @property (readonly, nonatomic, strong) NSString *meaning;
