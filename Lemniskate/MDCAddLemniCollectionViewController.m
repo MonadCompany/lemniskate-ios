@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "AddLemniCollectionViewController.h"
+#import "MDCAddLemniCollectionViewController.h"
 #import "LemniCollection.h"
-#import "AppDelegate.h"
-#import "NewLemniCollectionForm.h"
+#import "MDCAppDelegate.h"
+#import "MDCNewLemniCollectionForm.h"
 
-@interface AddLemniCollectionViewController ()
-@property (nonatomic, strong) NewLemniCollectionForm *form;
+@interface MDCAddLemniCollectionViewController ()
+@property (nonatomic, strong) MDCNewLemniCollectionForm *form;
 @end
 
-@implementation AddLemniCollectionViewController
+@implementation MDCAddLemniCollectionViewController
 
 #pragma mark - Getters
 
@@ -24,10 +24,10 @@
     return @"New collection";
 }
 
-- (NewLemniCollectionForm *)form
+- (MDCNewLemniCollectionForm *)form
 {
     if (!_form) {
-        _form = [[NewLemniCollectionForm alloc] initWithFrame:[self.view bounds]];
+        _form = [[MDCNewLemniCollectionForm alloc] initWithFrame:[self.view bounds]];
     }
     return _form;
 }
@@ -64,7 +64,7 @@
         return;
     }
 
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
     
     // add new collection
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniCollection"

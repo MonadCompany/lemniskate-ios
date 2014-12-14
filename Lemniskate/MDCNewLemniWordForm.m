@@ -6,22 +6,22 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "NewLemniWordForm.h"
-#import "LabeledFieldTableViewCell.h"
+#import "MDCNewLemniWordForm.h"
+#import "MDCLabeledFieldTableViewCell.h"
 
-@interface NewLemniWordForm () <UITableViewDataSource, UITableViewDelegate>
+@interface MDCNewLemniWordForm () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) LabeledFieldTableViewCell *spellingCell;
-@property (nonatomic, strong) LabeledFieldTableViewCell *pronunciationCell;
-@property (nonatomic, strong) LabeledFieldTableViewCell *meaningCell;
+@property (nonatomic, strong) MDCLabeledFieldTableViewCell *spellingCell;
+@property (nonatomic, strong) MDCLabeledFieldTableViewCell *pronunciationCell;
+@property (nonatomic, strong) MDCLabeledFieldTableViewCell *meaningCell;
 
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
-@implementation NewLemniWordForm
+@implementation MDCNewLemniWordForm
 
 #pragma mark - Getters
 
@@ -31,30 +31,30 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.allowsSelection = NO;
-        [_tableView registerClass:[LabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
+        [_tableView registerClass:[MDCLabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
     return _tableView;
 }
 
-- (LabeledFieldTableViewCell *)spellingCell {
+- (MDCLabeledFieldTableViewCell *)spellingCell {
     if (!_spellingCell) {
-        _spellingCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _spellingCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
         _spellingCell.label.text = @"Spelling";
     }
     return _spellingCell;
 }
 
-- (LabeledFieldTableViewCell *)pronunciationCell {
+- (MDCLabeledFieldTableViewCell *)pronunciationCell {
     if (!_pronunciationCell) {
-        _pronunciationCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _pronunciationCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
         _pronunciationCell.label.text = @"Pronunce";
     }
     return _pronunciationCell;
 }
 
-- (LabeledFieldTableViewCell *)meaningCell {
+- (MDCLabeledFieldTableViewCell *)meaningCell {
     if (!_meaningCell) {
-        _meaningCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _meaningCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
         _meaningCell.label.text = @"Meaning";
     }
     return _meaningCell;

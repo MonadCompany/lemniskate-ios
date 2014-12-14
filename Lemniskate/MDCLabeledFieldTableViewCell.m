@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "LabeledFieldTableViewCell.h"
+#import "MDCLabeledFieldTableViewCell.h"
 
-@implementation LabeledFieldTableViewCell
+@implementation MDCLabeledFieldTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

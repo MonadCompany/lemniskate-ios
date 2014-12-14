@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "AddLemniWordViewController.h"
-#import "NewLemniWordForm.h"
-#import "AppDelegate.h"
+#import "MDCAddLemniWordViewController.h"
+#import "MDCNewLemniWordForm.h"
+#import "MDCAppDelegate.h"
 #import "LemniWord.h"
 #import "LemniCollection.h"
 
-@interface AddLemniWordViewController ()
+@interface MDCAddLemniWordViewController ()
 @property (nonatomic, strong) LemniCollection *collection;
-@property (nonatomic, strong) NewLemniWordForm *form;
+@property (nonatomic, strong) MDCNewLemniWordForm *form;
 @end
 
-@implementation AddLemniWordViewController
+@implementation MDCAddLemniWordViewController
 
 #pragma mark - Initialization
 
@@ -43,9 +43,9 @@
     return self.form.spelling; // how this will be dynamic? should this be observable?
 }
 
-- (NewLemniWordForm *)form {
+- (MDCNewLemniWordForm *)form {
     if (!_form) {
-        _form = [[NewLemniWordForm alloc] initWithFrame:[self.view bounds]];
+        _form = [[MDCNewLemniWordForm alloc] initWithFrame:[self.view bounds]];
     }
     return _form;
 }
@@ -83,7 +83,7 @@
         return;
     }
 
-    AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+    MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
 
     //todo: how this should be in case of editing?
     // add new collection

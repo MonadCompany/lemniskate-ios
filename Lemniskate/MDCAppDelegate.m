@@ -3,13 +3,13 @@
 //  Lemniskate
 //
 //  Created by Chebotaev Anton on 20/11/14.
-//  Copyright (c) 2014 MenadCompany. All rights reserved.
+//  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "AppDelegate.h"
-#import "AllLemniCollectionsViewController.h"
+#import "MDCAppDelegate.h"
+#import "MDCAllLemniCollectionsViewController.h"
 
-@implementation AppDelegate
+@implementation MDCAppDelegate
 
 #pragma mark - Being AppDelegate
 
@@ -17,7 +17,7 @@
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[AllLemniCollectionsViewController new]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[MDCAllLemniCollectionsViewController new]];
     
     [self.window makeKeyAndVisible];
     

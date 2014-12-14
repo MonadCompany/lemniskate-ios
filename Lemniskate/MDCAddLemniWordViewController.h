@@ -10,7 +10,7 @@
 
 @class LemniCollection;
 
-@interface AddLemniWordViewController : UIViewController
+@interface MDCAddLemniWordViewController : UIViewController
 - (instancetype)initWithCollection:(LemniCollection *)collection;
 + (instancetype)controllerWithCollection:(LemniCollection *)collection;
 @end

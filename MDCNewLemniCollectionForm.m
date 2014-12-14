@@ -3,21 +3,21 @@
 // Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "NewLemniCollectionForm.h"
-#import "LabeledFieldTableViewCell.h"
+#import "MDCNewLemniCollectionForm.h"
+#import "MDCLabeledFieldTableViewCell.h"
 
-@interface NewLemniCollectionForm ()
+@interface MDCNewLemniCollectionForm ()
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) LabeledFieldTableViewCell *nameCell;
-@property (nonatomic, strong) LabeledFieldTableViewCell *commentCell;
+@property (nonatomic, strong) MDCLabeledFieldTableViewCell *nameCell;
+@property (nonatomic, strong) MDCLabeledFieldTableViewCell *commentCell;
 
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
-@implementation NewLemniCollectionForm
+@implementation MDCNewLemniCollectionForm
 
 #pragma mark - Getters
 
@@ -27,22 +27,22 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.allowsSelection = NO;
-        [_tableView registerClass:[LabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
+        [_tableView registerClass:[MDCLabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
     return _tableView;
 }
 
-- (LabeledFieldTableViewCell *)nameCell {
+- (MDCLabeledFieldTableViewCell *)nameCell {
     if (!_nameCell) {
-        _nameCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _nameCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
         _nameCell.label.text = @"Name";
     }
     return _nameCell;
 }
 
-- (LabeledFieldTableViewCell *)commentCell {
+- (MDCLabeledFieldTableViewCell *)commentCell {
     if (!_commentCell) {
-        _commentCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _commentCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
         _commentCell.label.text = @"Comment";
     }
     return _commentCell;

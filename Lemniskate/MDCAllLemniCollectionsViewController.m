@@ -7,26 +7,26 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "AllLemniCollectionsViewController.h"
-#import "AddLemniCollectionViewController.h"
-#import "OneLemniCollectionViewController.h"
-#import "AppDelegate.h"
+#import "MDCAllLemniCollectionsViewController.h"
+#import "MDCAddLemniCollectionViewController.h"
+#import "MDCOneLemniCollectionViewController.h"
+#import "MDCAppDelegate.h"
 #import "LemniCollection.h"
 
-@interface AllLemniCollectionsViewController ()
+@interface MDCAllLemniCollectionsViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
-@implementation AllLemniCollectionsViewController
+@implementation MDCAllLemniCollectionsViewController
 
 #pragma mark - Getters
 
 - (NSFetchedResultsController *)dataController
 {
     if (!_dataController) {
-        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"LemniCollection"];
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
@@ -155,7 +155,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (void)addBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    AddLemniCollectionViewController *viewController = [AddLemniCollectionViewController new];
+    MDCAddLemniCollectionViewController *viewController = [MDCAddLemniCollectionViewController new];
     viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.navigationController pushViewController:viewController animated:YES];
 }
@@ -168,7 +168,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 #pragma mark - Custom Logic
 
 - (void)navigateToCollection:(LemniCollection *)collection {
-    OneLemniCollectionViewController *viewController = [OneLemniCollectionViewController new];
+    MDCOneLemniCollectionViewController *viewController = [MDCOneLemniCollectionViewController new];
     viewController.collection = collection;
     
     [self.navigationController pushViewController:viewController animated:YES];

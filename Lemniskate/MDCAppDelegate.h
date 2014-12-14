@@ -3,13 +3,13 @@
 //  Lemniskate
 //
 //  Created by Chebotaev Anton on 20/11/14.
-//  Copyright (c) 2014 MenadCompany. All rights reserved.
+//  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface MDCAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

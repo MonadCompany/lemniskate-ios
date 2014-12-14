@@ -6,25 +6,25 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "OneLemniCollectionViewController.h"
-#import "AppDelegate.h"
+#import "MDCOneLemniCollectionViewController.h"
+#import "MDCAppDelegate.h"
 #import "LemniWord.h"
-#import "AddLemniWordViewController.h"
+#import "MDCAddLemniWordViewController.h"
 
-@interface OneLemniCollectionViewController ()
+@interface MDCOneLemniCollectionViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
-@implementation OneLemniCollectionViewController
+@implementation MDCOneLemniCollectionViewController
 
 #pragma mark - Getters
 
 - (NSFetchedResultsController *)dataController
 {
     if (!_dataController) {
-        AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         
         NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"LemniWord"];
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"spelling" ascending:YES];
@@ -123,7 +123,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (void)addBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    AddLemniWordViewController *viewController = [[AddLemniWordViewController alloc] initWithCollection:self.collection];
+    MDCAddLemniWordViewController *viewController = [[MDCAddLemniWordViewController alloc] initWithCollection:self.collection];
     viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.navigationController pushViewController:viewController animated:YES];
 }

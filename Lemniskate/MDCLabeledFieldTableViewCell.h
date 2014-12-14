@@ -11,7 +11,7 @@
 #define CellTextFieldWidthPercent 0.6
 #define MarginBetweenControls 20.0
 
-@interface LabeledFieldTableViewCell : UITableViewCell
+@interface MDCLabeledFieldTableViewCell : UITableViewCell
 @property (nonatomic, strong) UILabel     *label;
 @property (nonatomic, strong) UITextField *field;
 @end
