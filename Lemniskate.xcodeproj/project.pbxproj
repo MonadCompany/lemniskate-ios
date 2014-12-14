@@ -21,6 +21,7 @@
 		3ACE58421A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58411A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.m */; };
 		3ACE584E1A2A772500AD1ECB /* LemniWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE584D1A2A772500AD1ECB /* LemniWord.m */; };
 		3ACE58511A2A772500AD1ECB /* LemniCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58501A2A772500AD1ECB /* LemniCollection.m */; };
+		3AF156E11A3E499900E44FDB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3AF156E01A3E499900E44FDB /* Podfile */; };
 		652650405E242B681D5482B7 /* MDCNewLemniCollectionForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526568B8F26FC87AA1AEC1C /* MDCNewLemniCollectionForm.m */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,8 @@
 		3ACE584F1A2A772500AD1ECB /* LemniCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniCollection.h; sourceTree = "<group>"; };
 		3ACE58501A2A772500AD1ECB /* LemniCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniCollection.m; sourceTree = "<group>"; };
 		3AF156DF1A3E453400E44FDB /* LemniskateModel v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LemniskateModel v2.xcdatamodel"; sourceTree = "<group>"; };
+		3AF156E01A3E499900E44FDB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		3AF156E21A3E4D9400E44FDB /* LemniskateModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LemniskateModel v3.xcdatamodel"; sourceTree = "<group>"; };
 		652651FB66F6F7AD216AEC2C /* MDCNewLemniCollectionForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCNewLemniCollectionForm.h; sourceTree = "<group>"; };
 		6526568B8F26FC87AA1AEC1C /* MDCNewLemniCollectionForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCNewLemniCollectionForm.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,11 +91,12 @@
 		3A8C8B121A1E5F1800473967 = {
 			isa = PBXGroup;
 			children = (
+				3AF156E01A3E499900E44FDB /* Podfile */,
 				3ACE582A1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld */,
 				3A8C8B221A1E5F1800473967 /* MDCAppDelegate.h */,
 				3A8C8B231A1E5F1800473967 /* MDCAppDelegate.m */,
 				3ACE58431A2A6C3400AD1ECB /* Generated */,
-				3ACE58451A2A6C6000AD1ECB /* viewcontrollers */,
+				3ACE58451A2A6C6000AD1ECB /* ViewControllers */,
 				3ACE58441A2A6C5400AD1ECB /* Controls */,
 				3A8C8B471A1E638D00473967 /* Resources */,
 				3A8C8B1E1A1E5F1800473967 /* Supporting Files */,
@@ -170,7 +174,7 @@
 			name = Controls;
 			sourceTree = "<group>";
 		};
-		3ACE58451A2A6C6000AD1ECB /* viewcontrollers */ = {
+		3ACE58451A2A6C6000AD1ECB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				3ACE58401A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.h */,
@@ -182,7 +186,7 @@
 				3AA4954D1A366BB500E8C439 /* MDCAddLemniWordViewController.h */,
 				3AA4954E1A366BB500E8C439 /* MDCAddLemniWordViewController.m */,
 			);
-			name = viewcontrollers;
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AF156E11A3E499900E44FDB /* Podfile in Resources */,
 				3A8C8B2F1A1E5F1800473967 /* LaunchScreen.xib in Resources */,
 				3A8C8B2C1A1E5F1800473967 /* Images.xcassets in Resources */,
 			);
@@ -497,9 +502,10 @@
 			isa = XCVersionGroup;
 			children = (
 				3AF156DF1A3E453400E44FDB /* LemniskateModel v2.xcdatamodel */,
+				3AF156E21A3E4D9400E44FDB /* LemniskateModel v3.xcdatamodel */,
 				3ACE582B1A2931BD00AD1ECB /* LemniskateModel.xcdatamodel */,
 			);
-			currentVersion = 3AF156DF1A3E453400E44FDB /* LemniskateModel v2.xcdatamodel */;
+			currentVersion = 3AF156E21A3E4D9400E44FDB /* LemniskateModel v3.xcdatamodel */;
 			path = LemniskateModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
