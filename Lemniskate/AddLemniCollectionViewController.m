@@ -27,7 +27,7 @@
 - (NewLemniCollectionForm *)form
 {
     if (!_form) {
-        _form = [[NewLemniCollectionForm new] initWithFrame:[self.view bounds]];
+        _form = [[NewLemniCollectionForm alloc] initWithFrame:[self.view bounds]];
     }
     return _form;
 }

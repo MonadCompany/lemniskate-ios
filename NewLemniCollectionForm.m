@@ -15,8 +15,6 @@
 
 @end
 
-static NSString *const WCCellIdentifier = @"WCCellIdentifier";
-
 @implementation NewLemniCollectionForm
 
 #pragma mark - Getters
@@ -27,14 +25,13 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.dataSource = self;
         _tableView.allowsSelection = NO;
-        [_tableView registerClass:[LabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
     return _tableView;
 }
 
 - (LabeledFieldTableViewCell *)nameCell {
     if (!_nameCell) {
-        _nameCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _nameCell = [[LabeledFieldTableViewCell alloc] initWithFrame:CGRectZero];
         _nameCell.label.text = @"Name";
     }
     return _nameCell;
@@ -42,7 +39,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (LabeledFieldTableViewCell *)commentCell {
     if (!_commentCell) {
-        _commentCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+        _commentCell = [[LabeledFieldTableViewCell alloc] initWithFrame:CGRectZero];
         _commentCell.label.text = @"Comment";
     }
     return _commentCell;
