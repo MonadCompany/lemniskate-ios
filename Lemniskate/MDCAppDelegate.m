@@ -8,6 +8,7 @@
 
 #import "MDCAppDelegate.h"
 #import "MDCAllLemniCollectionsViewController.h"
+#import "DZNPhotoPickerController.h"
 
 @implementation MDCAppDelegate
 
@@ -15,6 +16,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    [DZNPhotoPickerController registerService:DZNPhotoPickerControllerService500px
+                                  consumerKey:@"jBrdCpzwEhv12j2B2NCS0IWfmHhyfyumRkE8wvzt"
+                               consumerSecret:@"C7vLsYsGmZQd5N39XEEtPoz99ueN4zqL0Byvzkyw"
+                                 subscription:DZNPhotoPickerControllerSubscriptionFree];
+    
+    [DZNPhotoPickerController registerService:DZNPhotoPickerControllerServiceFlickr
+                                  consumerKey:@"1ce1168cfacd162aff0557cb4d7f1d9c"
+                               consumerSecret:@"5198f4bc0350a54c"
+                                 subscription:DZNPhotoPickerControllerSubscriptionFree];
+
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[MDCAllLemniCollectionsViewController new]];

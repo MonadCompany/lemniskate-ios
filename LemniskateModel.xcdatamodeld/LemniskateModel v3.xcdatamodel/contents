@@ -4,7 +4,7 @@
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
-        <attribute name="picture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Picture" syncable="YES"/>
         <relationship name="words" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LemniWord" inverseName="collection" inverseEntity="LemniWord" syncable="YES"/>
     </entity>
     <entity name="LemniWord" representedClassName="LemniWord" syncable="YES">
@@ -12,21 +12,24 @@
         <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="spelling" attributeType="String" syncable="YES"/>
         <relationship name="collection" maxCount="1" deletionRule="Nullify" destinationEntity="LemniCollection" inverseName="words" inverseEntity="LemniCollection" syncable="YES"/>
-        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LemniWordPicture" inverseName="word" inverseEntity="LemniWordPicture" syncable="YES"/>
+        <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Picture" syncable="YES"/>
         <relationship name="usages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LemniWordUsage" inverseName="word" inverseEntity="LemniWordUsage" syncable="YES"/>
-    </entity>
-    <entity name="LemniWordPicture" syncable="YES">
-        <attribute name="picture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LemniWord" inverseName="pictures" inverseEntity="LemniWord" syncable="YES"/>
     </entity>
     <entity name="LemniWordUsage" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LemniWord" inverseName="usages" inverseEntity="LemniWord" syncable="YES"/>
     </entity>
+    <entity name="Picture" syncable="YES">
+        <attribute name="copyrighted" attributeType="Boolean" syncable="YES"/>
+        <attribute name="copyrightOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="copyrightURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="data" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="pictureURL" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="LemniCollection" positionX="-72" positionY="-72" width="144" height="120"/>
-        <element name="LemniWord" positionX="216" positionY="-72" width="144" height="133"/>
-        <element name="LemniWordPicture" positionX="502" positionY="-72" width="128" height="73"/>
+        <element name="LemniCollection" positionX="-72" positionY="-72" width="144" height="118"/>
+        <element name="LemniWord" positionX="216" positionY="-72" width="144" height="135"/>
         <element name="LemniWordUsage" positionX="502" positionY="71" width="128" height="73"/>
+        <element name="Picture" positionX="171" positionY="54" width="128" height="118"/>
     </elements>
 </model>

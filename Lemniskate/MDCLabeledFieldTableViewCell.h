@@ -12,6 +12,12 @@
 #define MarginBetweenControls 20.0
 
 @interface MDCLabeledFieldTableViewCell : UITableViewCell
-@property (nonatomic, strong) UILabel     *label;
-@property (nonatomic, strong) UITextField *field;
+
+@property (readonly, nonatomic, strong) NSString *label;
+@property (readonly, nonatomic, strong) NSString *content;
+
+- (instancetype)initWithLabel:(NSString *)label;
++ (instancetype)cellWithLabel:(NSString *)label;
+
+
 @end

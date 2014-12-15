@@ -11,7 +11,7 @@
 #import "MDCAppDelegate.h"
 #import "MDCNewLemniCollectionForm.h"
 
-@interface MDCAddLemniCollectionViewController ()
+@interface MDCAddLemniCollectionViewController () <MDCImagePickerDelegate>
 @property (nonatomic, strong) MDCNewLemniCollectionForm *form;
 @end
 
@@ -28,6 +28,7 @@
 {
     if (!_form) {
         _form = [[MDCNewLemniCollectionForm alloc] initWithFrame:[self.view bounds]];
+        [_form setDelegate:self];
     }
     return _form;
 }
@@ -49,6 +50,17 @@
 
     [self.view addSubview:self.form];
 }
+
+#pragma mark - DZNPhotoPickerControllerDelegate
+
+- (void)presentPhotoPicker:(DZNPhotoPickerController *)picker {
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)hidePhotoPicker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 #pragma mark - Action handlers
 

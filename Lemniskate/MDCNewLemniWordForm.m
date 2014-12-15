@@ -19,8 +19,6 @@
 
 @end
 
-static NSString *const WCCellIdentifier = @"WCCellIdentifier";
-
 @implementation MDCNewLemniWordForm
 
 #pragma mark - Getters
@@ -31,46 +29,42 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.allowsSelection = NO;
-        [_tableView registerClass:[MDCLabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
     return _tableView;
 }
 
 - (MDCLabeledFieldTableViewCell *)spellingCell {
     if (!_spellingCell) {
-        _spellingCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-        _spellingCell.label.text = @"Spelling";
+        _spellingCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Spelling"];
     }
     return _spellingCell;
 }
 
 - (MDCLabeledFieldTableViewCell *)pronunciationCell {
     if (!_pronunciationCell) {
-        _pronunciationCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-        _pronunciationCell.label.text = @"Pronunce";
+        _pronunciationCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Pronounce"];
     }
     return _pronunciationCell;
 }
 
 - (MDCLabeledFieldTableViewCell *)meaningCell {
     if (!_meaningCell) {
-        _meaningCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-        _meaningCell.label.text = @"Meaning";
+        _meaningCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Meaning"];
     }
     return _meaningCell;
 }
 
 
 - (NSString *)spelling {
-    return self.spellingCell.field.text;
+    return self.spellingCell.content;
 }
 
 - (NSString *)pronunciation {
-    return self.pronunciationCell.field.text;
+    return self.pronunciationCell.content;
 }
 
 - (NSString *)meaning {
-    return self.meaningCell.field.text;
+    return self.meaningCell.content;
 }
 
 

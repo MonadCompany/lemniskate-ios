@@ -8,27 +8,56 @@
 
 #import "MDCLabeledFieldTableViewCell.h"
 
+@interface MDCLabeledFieldTableViewCell ()
+
+@property (nonatomic, strong) UILabel     *uiLabel;
+@property (nonatomic, strong) UITextField *uiTextField;
+
+@end
+
 @implementation MDCLabeledFieldTableViewCell
+
+#pragma mark - Getters
+
+- (NSString *)content {
+    return self.uiTextField.text;
+}
+
+#pragma mark - General Lifecycle
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
         // Initialize & Configure Main Label
-        self.label = [[UILabel alloc] initWithFrame:CGRectZero];
-        [self.label setTextAlignment:NSTextAlignmentRight];
-        [self.label setTextColor:[UIColor lightGrayColor]];
-        [self.label setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
-        [self.contentView addSubview:self.label];
+        self.uiLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+
+        [self.uiLabel setTextAlignment:NSTextAlignmentRight];
+        [self.uiLabel setTextColor:[UIColor lightGrayColor]];
+        [self.uiLabel setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        [self.contentView addSubview:self.uiLabel];
         
         // Initialize & Configure text field
-        self.field = [[UITextField alloc] initWithFrame:CGRectZero];
-//        self.field.clearsOnBeginEditing = NO;
-        self.field.returnKeyType = UIReturnKeyDone;
-        [self.contentView addSubview:self.field];
+        self.uiTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+        self.uiTextField.returnKeyType = UIReturnKeyDone;
+        [self.contentView addSubview:self.uiTextField];
     }
     
     return self;
+}
+
+- (instancetype)initWithLabel:(NSString *)label {
+    self = [super init];
+    if (self) {
+        _label = label;
+        self.uiLabel.text = self.label;        
+    }
+
+    return self;
+}
+
++ (instancetype)cellWithLabel:(NSString *)label {
+    return [[self alloc] initWithLabel:label];
 }
 
 #pragma mark Laying out subviews
@@ -41,13 +70,13 @@
                                   12.0,
                                   cappedWidth * (1 - CellTextFieldWidthPercent),
                                   25.0);
-    [self.label setFrame:labelRect];
+    [self.uiLabel setFrame:labelRect];
     
     CGRect fieldRect = CGRectMake((MarginBetweenControls * 2) + labelRect.size.width,
                                   12.0,
                                   cappedWidth * CellTextFieldWidthPercent,
                                   25.0);
-    [self.field setFrame:fieldRect];
+    [self.uiTextField setFrame:fieldRect];
     
 }
 

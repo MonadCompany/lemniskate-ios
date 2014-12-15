@@ -5,17 +5,18 @@
 
 #import "MDCNewLemniCollectionForm.h"
 #import "MDCLabeledFieldTableViewCell.h"
+#import "MDCImagePickerTableViewCell.h"
 
-@interface MDCNewLemniCollectionForm ()
+@interface MDCNewLemniCollectionForm () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) MDCLabeledFieldTableViewCell *nameCell;
 @property (nonatomic, strong) MDCLabeledFieldTableViewCell *commentCell;
+@property (nonatomic, strong) MDCImagePickerTableViewCell  *imageCell;
+
 
 @end
-
-static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 @implementation MDCNewLemniCollectionForm
 
@@ -27,34 +28,49 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
         _tableView.allowsSelection = NO;
-        [_tableView registerClass:[MDCLabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
     return _tableView;
 }
 
 - (MDCLabeledFieldTableViewCell *)nameCell {
     if (!_nameCell) {
-        _nameCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-        _nameCell.label.text = @"Name";
+        _nameCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Name"];
     }
     return _nameCell;
 }
 
 - (MDCLabeledFieldTableViewCell *)commentCell {
     if (!_commentCell) {
-        _commentCell = (MDCLabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-        _commentCell.label.text = @"Comment";
+        _commentCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Comment"];
     }
     return _commentCell;
 }
 
+- (MDCImagePickerTableViewCell *)imageCell {
+    if (!_imageCell) {
+        _imageCell = [MDCImagePickerTableViewCell new];
+    }
+    return _imageCell;
+}
+
 - (NSString *)name {
-    return _nameCell.field.text;
+    return _nameCell.content;
 }
 
 - (NSString *)comment {
-    return _commentCell.field.text;
+    return _commentCell.content;
 }
+
+- (id <MDCImagePickerDelegate>)delegate {
+    return self.imageCell.delegate;
+}
+
+#pragma mark - Setters
+
+- (void)setDelegate:(id <MDCImagePickerDelegate>)delegate {
+    self.imageCell.delegate = delegate;
+}
+
 
 #pragma mark - UIView
 
@@ -74,17 +90,44 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 #pragma mark - UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0: return @"Info";
+        case 1: return @"Picture";
+        default: return @"";
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    switch (section) {
+        case 0: return 2;
+        case 1: return 1;
+        default: return 0;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch (indexPath.row) {
-        case 0: return self.nameCell;
-        case 1: return self.commentCell;
-        default: return nil; // dunno, should app drop dead?
+    switch (indexPath.section) {
+        case 0:
+            switch (indexPath.row) {
+                case 0: return self.nameCell;
+                case 1: return self.commentCell;
+                default: return nil;
+            }
+            
+        case 1:
+            switch (indexPath.row) {
+                case 0: return self.imageCell;
+                default: return nil;
+            }
+            
+        default: return nil;
     }
 }
 
