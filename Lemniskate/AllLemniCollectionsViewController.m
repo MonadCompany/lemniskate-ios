@@ -122,9 +122,9 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath
 {
     LemniCollection *collection = (LemniCollection *)[self.dataController objectAtIndexPath:indexPath];
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
     [self navigateToCollection:collection];
 }
-
 
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {

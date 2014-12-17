@@ -9,6 +9,7 @@
 #import "OneLemniCollectionViewController.h"
 #import "AppDelegate.h"
 #import "LemniWord.h"
+#import "AddLemniWordViewController.h"
 
 @interface OneLemniCollectionViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
@@ -29,7 +30,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"spelling" ascending:YES];
         [fetchRequest setSortDescriptors:@[sortDescriptor]];
         
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"collection == '%@'", self.collection];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"collection == %@", self.collection];
         [fetchRequest setPredicate: predicate];
         
         _dataController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
@@ -76,7 +77,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
-                                                                                           action:nil];
+                                                                                           action:@selector(addBarButtonItemTap:)];
     
     [self.view addSubview:self.tableView];
 }
@@ -84,11 +85,6 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.tableView reloadData];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UITableViewDataSource
@@ -100,11 +96,17 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if ([[self.dataController sections] count] > 0) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.dataController sections] objectAtIndex:section];
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.dataController sections][section];
         return [sectionInfo numberOfObjects];
     } else {
         return 0;
     }
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadData];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -115,6 +117,15 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     cell.textLabel.text = word.spelling;
     
     return cell;
+}
+
+#pragma mark - Action handlers
+
+- (void)addBarButtonItemTap:(UIBarButtonItem *)sender
+{
+    AddLemniWordViewController *viewController = [[AddLemniWordViewController alloc] initWithCollection:self.collection];
+    viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark - Navigation
