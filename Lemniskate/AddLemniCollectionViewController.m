@@ -1,60 +1,37 @@
 //
-//  AddCollectionViewController.m
+//  AddLemniCollectionViewController.m
 //  Lemniskate
 //
 //  Created by Chebotaev Anton on 20/11/14.
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "AddCollectionViewController.h"
-#import "LabeledFieldTableViewCell.h"
+#import "AddLemniCollectionViewController.h"
 #import "LemniCollection.h"
 #import "AppDelegate.h"
+#import "NewLemniCollectionForm.h"
 
-@interface AddCollectionViewController ()
-
-@property (nonatomic, strong) LabeledFieldTableViewCell *nameCell;
-@property (nonatomic, strong) LabeledFieldTableViewCell *commentCell;
-
+@interface AddLemniCollectionViewController ()
+@property (nonatomic, strong) NewLemniCollectionForm *form;
 @end
 
-static NSString *const WCCellIdentifier = @"WCCellIdentifier";
-
-@implementation AddCollectionViewController
+@implementation AddLemniCollectionViewController
 
 #pragma mark - Getters
-
-- (UITableView *)tableView
-{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:[self.view bounds] style:UITableViewStylePlain];
-        _tableView.dataSource = self;
-        _tableView.allowsSelection = NO;
-        [_tableView registerClass:[LabeledFieldTableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
-    }
-    return _tableView;
-}
 
 - (NSString *)title
 {
     return @"New collection";
 }
 
-- (LabeledFieldTableViewCell *)nameCell {
-    if (!_nameCell) {
-        _nameCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-        _nameCell.label.text = @"Name";
+- (NewLemniCollectionForm *)form
+{
+    if (!_form) {
+        _form = [[NewLemniCollectionForm alloc] initWithFrame:[self.view bounds]];
     }
-    return _nameCell;
+    return _form;
 }
 
-- (LabeledFieldTableViewCell *)commentCell {
-    if (!_commentCell) {
-        _commentCell = (LabeledFieldTableViewCell *)[self.tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-        _commentCell.label.text = @"Comment";
-    }
-    return _commentCell;
-}
 
 #pragma mark - UIViewController lifecycle
 
@@ -70,29 +47,12 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
                                                                                            target:self
                                                                                            action:@selector(doneBarButtonItemTap:)];
 
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.form];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 2;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // this is probably not okay =/
-    if (indexPath.row == 0) {
-        return self.nameCell;
-    } else {
-        return self.commentCell;
-    }
 }
 
 #pragma mark - Action handlers
@@ -104,7 +64,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (void)doneBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    NSString *name = self.nameCell.field.text;
+    NSString *name = self.form.name;
     if ([name length] == 0) {
         return;
     }
@@ -114,10 +74,11 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     // add new collection
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniCollection"
                                               inManagedObjectContext:delegate.managedObjectContext];
+
     LemniCollection *collection = (LemniCollection *)[[NSManagedObject alloc] initWithEntity:entity
                                                               insertIntoManagedObjectContext:delegate.managedObjectContext];
-    collection.name = self.nameCell.field.text;
-    collection.comment = self.commentCell.field.text;
+    collection.name = name;
+    collection.comment = self.form.comment;
     collection.created = [NSDate new];
    
     // save it

@@ -8,7 +8,7 @@
 
 #import <CoreData/CoreData.h>
 #import "AllLemniCollectionsViewController.h"
-#import "AddCollectionViewController.h"
+#import "AddLemniCollectionViewController.h"
 #import "OneLemniCollectionViewController.h"
 #import "AppDelegate.h"
 #import "LemniCollection.h"
@@ -161,7 +161,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (void)addBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    AddCollectionViewController *viewController = [AddCollectionViewController new];
+    AddLemniCollectionViewController *viewController = [AddLemniCollectionViewController new];
     viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.navigationController pushViewController:viewController animated:YES];
 }
