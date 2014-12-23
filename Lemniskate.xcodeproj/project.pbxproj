@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22970596C4CF5C42EFF1D636 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF19FFE66887352E5189991 /* libPods.a */; };
+		3A1488101A49E35F001FA876 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A14880F1A49E35F001FA876 /* Media.xcassets */; };
 		3A8C8B211A1E5F1800473967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B201A1E5F1800473967 /* main.m */; };
 		3A8C8B241A1E5F1800473967 /* MDCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B231A1E5F1800473967 /* MDCAppDelegate.m */; };
 		3A8C8B271A1E5F1800473967 /* MDCAllLemniCollectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B261A1E5F1800473967 /* MDCAllLemniCollectionsViewController.m */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		0BF19FFE66887352E5189991 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A14880F1A49E35F001FA876 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Lemniskate/Media.xcassets; sourceTree = "<group>"; };
 		3A8C8B1B1A1E5F1800473967 /* Lemniskate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemniskate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C8B1F1A1E5F1800473967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8C8B201A1E5F1800473967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			children = (
 				3A8C8B2B1A1E5F1800473967 /* Images.xcassets */,
 				3A8C8B2D1A1E5F1800473967 /* LaunchScreen.xib */,
+				3A14880F1A49E35F001FA876 /* Media.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 			files = (
 				3AF156E11A3E499900E44FDB /* Podfile in Resources */,
 				3A8C8B2F1A1E5F1800473967 /* LaunchScreen.xib in Resources */,
+				3A1488101A49E35F001FA876 /* Media.xcassets in Resources */,
 				3A8C8B2C1A1E5F1800473967 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -499,6 +503,7 @@
 			baseConfigurationReference = F9CCF7B98F502E772F5E3B48 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Lemniskate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -510,6 +515,7 @@
 			baseConfigurationReference = 6072F0DFB0393D27B5C03717 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = Lemniskate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
