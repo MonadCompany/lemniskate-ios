@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		22970596C4CF5C42EFF1D636 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF19FFE66887352E5189991 /* libPods.a */; };
 		3A1488101A49E35F001FA876 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A14880F1A49E35F001FA876 /* Media.xcassets */; };
+		3A1488311A4A2722001FA876 /* LemniWordPicture.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1488301A4A2722001FA876 /* LemniWordPicture.m */; };
+		3A1488341A4A2723001FA876 /* LemniWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1488331A4A2723001FA876 /* LemniWord.m */; };
+		3A1488371A4A2723001FA876 /* LemniCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1488361A4A2723001FA876 /* LemniCollection.m */; };
+		3A14883A1A4A2723001FA876 /* LemniWordUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1488391A4A2723001FA876 /* LemniWordUsage.m */; };
 		3A8C8B211A1E5F1800473967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B201A1E5F1800473967 /* main.m */; };
 		3A8C8B241A1E5F1800473967 /* MDCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B231A1E5F1800473967 /* MDCAppDelegate.m */; };
 		3A8C8B271A1E5F1800473967 /* MDCAllLemniCollectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B261A1E5F1800473967 /* MDCAllLemniCollectionsViewController.m */; };
@@ -21,8 +25,6 @@
 		3ACE58251A2920BC00AD1ECB /* MDCLabeledFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58241A2920BC00AD1ECB /* MDCLabeledFieldTableViewCell.m */; };
 		3ACE582C1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE582A1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld */; };
 		3ACE58421A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58411A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.m */; };
-		3ACE584E1A2A772500AD1ECB /* LemniWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE584D1A2A772500AD1ECB /* LemniWord.m */; };
-		3ACE58511A2A772500AD1ECB /* LemniCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58501A2A772500AD1ECB /* LemniCollection.m */; };
 		3AF156E11A3E499900E44FDB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3AF156E01A3E499900E44FDB /* Podfile */; };
 		3AF156E51A3E578000E44FDB /* MDCImagePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF156E41A3E578000E44FDB /* MDCImagePickerTableViewCell.m */; };
 		652650405E242B681D5482B7 /* MDCNewLemniCollectionForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526568B8F26FC87AA1AEC1C /* MDCNewLemniCollectionForm.m */; };
@@ -41,6 +43,14 @@
 /* Begin PBXFileReference section */
 		0BF19FFE66887352E5189991 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A14880F1A49E35F001FA876 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Lemniskate/Media.xcassets; sourceTree = "<group>"; };
+		3A14882F1A4A2722001FA876 /* LemniWordPicture.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniWordPicture.h; sourceTree = "<group>"; };
+		3A1488301A4A2722001FA876 /* LemniWordPicture.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniWordPicture.m; sourceTree = "<group>"; };
+		3A1488321A4A2723001FA876 /* LemniWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniWord.h; sourceTree = "<group>"; };
+		3A1488331A4A2723001FA876 /* LemniWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniWord.m; sourceTree = "<group>"; };
+		3A1488351A4A2723001FA876 /* LemniCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniCollection.h; sourceTree = "<group>"; };
+		3A1488361A4A2723001FA876 /* LemniCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniCollection.m; sourceTree = "<group>"; };
+		3A1488381A4A2723001FA876 /* LemniWordUsage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniWordUsage.h; sourceTree = "<group>"; };
+		3A1488391A4A2723001FA876 /* LemniWordUsage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniWordUsage.m; sourceTree = "<group>"; };
 		3A8C8B1B1A1E5F1800473967 /* Lemniskate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemniskate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C8B1F1A1E5F1800473967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8C8B201A1E5F1800473967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -64,10 +74,6 @@
 		3ACE582B1A2931BD00AD1ECB /* LemniskateModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LemniskateModel.xcdatamodel; sourceTree = "<group>"; };
 		3ACE58401A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCOneLemniCollectionViewController.h; path = Lemniskate/MDCOneLemniCollectionViewController.h; sourceTree = "<group>"; };
 		3ACE58411A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCOneLemniCollectionViewController.m; path = Lemniskate/MDCOneLemniCollectionViewController.m; sourceTree = "<group>"; };
-		3ACE584C1A2A772500AD1ECB /* LemniWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniWord.h; sourceTree = "<group>"; };
-		3ACE584D1A2A772500AD1ECB /* LemniWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniWord.m; sourceTree = "<group>"; };
-		3ACE584F1A2A772500AD1ECB /* LemniCollection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniCollection.h; sourceTree = "<group>"; };
-		3ACE58501A2A772500AD1ECB /* LemniCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniCollection.m; sourceTree = "<group>"; };
 		3AF156DF1A3E453400E44FDB /* LemniskateModel v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LemniskateModel v2.xcdatamodel"; sourceTree = "<group>"; };
 		3AF156E01A3E499900E44FDB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		3AF156E21A3E4D9400E44FDB /* LemniskateModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LemniskateModel v3.xcdatamodel"; sourceTree = "<group>"; };
@@ -167,10 +173,14 @@
 		3ACE58431A2A6C3400AD1ECB /* Generated */ = {
 			isa = PBXGroup;
 			children = (
-				3ACE584F1A2A772500AD1ECB /* LemniCollection.h */,
-				3ACE58501A2A772500AD1ECB /* LemniCollection.m */,
-				3ACE584C1A2A772500AD1ECB /* LemniWord.h */,
-				3ACE584D1A2A772500AD1ECB /* LemniWord.m */,
+				3A1488381A4A2723001FA876 /* LemniWordUsage.h */,
+				3A1488391A4A2723001FA876 /* LemniWordUsage.m */,
+				3A1488351A4A2723001FA876 /* LemniCollection.h */,
+				3A1488361A4A2723001FA876 /* LemniCollection.m */,
+				3A1488321A4A2723001FA876 /* LemniWord.h */,
+				3A1488331A4A2723001FA876 /* LemniWord.m */,
+				3A14882F1A4A2722001FA876 /* LemniWordPicture.h */,
+				3A1488301A4A2722001FA876 /* LemniWordPicture.m */,
 			);
 			name = Generated;
 			sourceTree = "<group>";
@@ -376,18 +386,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AA495521A366BED00E8C439 /* MDCNewLemniWordForm.m in Sources */,
+				3A14883A1A4A2723001FA876 /* LemniWordUsage.m in Sources */,
+				3A1488371A4A2723001FA876 /* LemniCollection.m in Sources */,
 				3A8C8B4A1A1E6D3200473967 /* MDCAddLemniCollectionViewController.m in Sources */,
 				3A8C8B271A1E5F1800473967 /* MDCAllLemniCollectionsViewController.m in Sources */,
 				3ACE58251A2920BC00AD1ECB /* MDCLabeledFieldTableViewCell.m in Sources */,
 				3A8C8B241A1E5F1800473967 /* MDCAppDelegate.m in Sources */,
 				3ACE582C1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld in Sources */,
+				3A1488311A4A2722001FA876 /* LemniWordPicture.m in Sources */,
 				3A8C8B211A1E5F1800473967 /* main.m in Sources */,
 				3AF156E51A3E578000E44FDB /* MDCImagePickerTableViewCell.m in Sources */,
 				3ACE58421A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.m in Sources */,
-				3ACE584E1A2A772500AD1ECB /* LemniWord.m in Sources */,
 				3AA4954F1A366BB500E8C439 /* MDCAddLemniWordViewController.m in Sources */,
-				3ACE58511A2A772500AD1ECB /* LemniCollection.m in Sources */,
 				652650405E242B681D5482B7 /* MDCNewLemniCollectionForm.m in Sources */,
+				3A1488341A4A2723001FA876 /* LemniWord.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

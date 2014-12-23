@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C81f" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="LemniCollection" representedClassName="LemniCollection" syncable="YES">
+        <attribute name="background" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="created" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
-        <relationship name="picture" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LemniCollectionPicture" inverseName="collection" inverseEntity="LemniCollectionPicture" syncable="YES"/>
         <relationship name="words" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LemniWord" inverseName="collection" inverseEntity="LemniWord" syncable="YES"/>
-    </entity>
-    <entity name="LemniCollectionPicture" parentEntity="Picture" syncable="YES">
-        <relationship name="collection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LemniCollection" inverseName="picture" inverseEntity="LemniCollection" syncable="YES"/>
     </entity>
     <entity name="LemniWord" representedClassName="LemniWord" syncable="YES">
         <attribute name="meaning" attributeType="String" syncable="YES"/>
@@ -18,26 +15,18 @@
         <relationship name="pictures" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LemniWordPicture" inverseName="word" inverseEntity="LemniWordPicture" syncable="YES"/>
         <relationship name="usages" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LemniWordUsage" inverseName="word" inverseEntity="LemniWordUsage" syncable="YES"/>
     </entity>
-    <entity name="LemniWordPicture" parentEntity="LemniWord" syncable="YES">
+    <entity name="LemniWordPicture" representedClassName="LemniWordPicture" syncable="YES">
+        <attribute name="data" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LemniWord" inverseName="pictures" inverseEntity="LemniWord" syncable="YES"/>
     </entity>
-    <entity name="LemniWordUsage" syncable="YES">
+    <entity name="LemniWordUsage" representedClassName="LemniWordUsage" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="word" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LemniWord" inverseName="usages" inverseEntity="LemniWord" syncable="YES"/>
     </entity>
-    <entity name="Picture" isAbstract="YES" syncable="YES">
-        <attribute name="copyrighted" attributeType="Boolean" syncable="YES"/>
-        <attribute name="copyrightOwner" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="copyrightURL" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="data" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
-        <attribute name="pictureURL" optional="YES" attributeType="String" syncable="YES"/>
-    </entity>
     <elements>
-        <element name="LemniCollection" positionX="-72" positionY="-72" width="144" height="30"/>
-        <element name="LemniWord" positionX="216" positionY="-72" width="144" height="30"/>
-        <element name="LemniWordUsage" positionX="502" positionY="71" width="128" height="73"/>
-        <element name="Picture" positionX="171" positionY="54" width="128" height="30"/>
-        <element name="LemniCollectionPicture" positionX="135" positionY="36" width="128" height="30"/>
-        <element name="LemniWordPicture" positionX="144" positionY="27" width="128" height="30"/>
+        <element name="LemniCollection" positionX="-72" positionY="-72" width="144" height="118"/>
+        <element name="LemniWord" positionX="216" positionY="-72" width="144" height="133"/>
+        <element name="LemniWordUsage" positionX="502" positionY="71" width="128" height="75"/>
+        <element name="LemniWordPicture" positionX="369" positionY="-84" width="128" height="73"/>
     </elements>
 </model>

@@ -2,7 +2,7 @@
 //  LemniCollection.m
 //  Lemniskate
 //
-//  Created by Chebotaev Anton on 30/11/14.
+//  Created by Chebotaev Anton on 24/12/14.
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
@@ -12,9 +12,10 @@
 
 @implementation LemniCollection
 
-@dynamic name;
 @dynamic comment;
 @dynamic created;
+@dynamic name;
+@dynamic background;
 @dynamic words;
 
 @end
