@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define CellTextFieldWidthPercent 0.6
-#define MarginBetweenControls 20.0
+#define MarginBetweenControls 15.0
 
 @interface MDCLabeledFieldTableViewCell : UITableViewCell
 

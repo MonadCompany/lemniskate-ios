@@ -55,7 +55,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:[self.view bounds] style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:[self.view bounds] style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
@@ -65,7 +65,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (NSString *)title
 {
-    return @"Lemniskate";
+    return @"";
 }
 
 #pragma mark - UIViewController lifecycle
