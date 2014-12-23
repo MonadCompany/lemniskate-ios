@@ -8,7 +8,7 @@
     </entity>
     <entity name="LemniWord" representedClassName="LemniWord" syncable="YES">
         <attribute name="meaning" attributeType="String" syncable="YES"/>
-        <attribute name="pronounciation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="spelling" attributeType="String" syncable="YES"/>
         <relationship name="collection" maxCount="1" deletionRule="Nullify" destinationEntity="LemniCollection" inverseName="words" inverseEntity="LemniCollection" syncable="YES"/>
     </entity>

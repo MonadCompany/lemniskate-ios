@@ -13,7 +13,7 @@
 @implementation LemniWord
 
 @dynamic spelling;
-@dynamic pronounciation;
+@dynamic pronunciation;
 @dynamic meaning;
 @dynamic collection;
 

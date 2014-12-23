@@ -14,7 +14,7 @@
 @interface LemniWord : NSManagedObject
 
 @property (nonatomic, retain) NSString * spelling;
-@property (nonatomic, retain) NSString * pronounciation;
+@property (nonatomic, retain) NSString * pronunciation;
 @property (nonatomic, retain) NSString * meaning;
 @property (nonatomic, retain) LemniCollection *collection;
 
