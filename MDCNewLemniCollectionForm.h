@@ -9,5 +9,6 @@
 @interface MDCNewLemniCollectionForm : UIView
 @property (readonly, nonatomic, strong) NSString *name;
 @property (readonly, nonatomic, strong) NSString *comment;
+@property (readonly, nonatomic, strong) UIImage  *background;
 @property (nonatomic, weak) id <MDCPhotoPickerDelegate> photoPickerDelegate;
 @end

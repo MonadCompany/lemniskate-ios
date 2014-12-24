@@ -13,6 +13,7 @@
 		3A1488341A4A2723001FA876 /* LemniWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1488331A4A2723001FA876 /* LemniWord.m */; };
 		3A1488371A4A2723001FA876 /* LemniCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1488361A4A2723001FA876 /* LemniCollection.m */; };
 		3A14883A1A4A2723001FA876 /* LemniWordUsage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A1488391A4A2723001FA876 /* LemniWordUsage.m */; };
+		3A14883E1A4B42EF001FA876 /* MDCCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A14883D1A4B42EF001FA876 /* MDCCollectionTableViewCell.m */; };
 		3A8C8B211A1E5F1800473967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B201A1E5F1800473967 /* main.m */; };
 		3A8C8B241A1E5F1800473967 /* MDCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B231A1E5F1800473967 /* MDCAppDelegate.m */; };
 		3A8C8B271A1E5F1800473967 /* MDCAllLemniCollectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B261A1E5F1800473967 /* MDCAllLemniCollectionsViewController.m */; };
@@ -51,6 +52,9 @@
 		3A1488361A4A2723001FA876 /* LemniCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniCollection.m; sourceTree = "<group>"; };
 		3A1488381A4A2723001FA876 /* LemniWordUsage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LemniWordUsage.h; sourceTree = "<group>"; };
 		3A1488391A4A2723001FA876 /* LemniWordUsage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LemniWordUsage.m; sourceTree = "<group>"; };
+		3A14883B1A4B410F001FA876 /* MDCControlConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCControlConstants.h; sourceTree = "<group>"; };
+		3A14883C1A4B42EF001FA876 /* MDCCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCCollectionTableViewCell.h; path = Lemniskate/MDCCollectionTableViewCell.h; sourceTree = "<group>"; };
+		3A14883D1A4B42EF001FA876 /* MDCCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCCollectionTableViewCell.m; path = Lemniskate/MDCCollectionTableViewCell.m; sourceTree = "<group>"; };
 		3A8C8B1B1A1E5F1800473967 /* Lemniskate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemniskate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C8B1F1A1E5F1800473967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8C8B201A1E5F1800473967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		3ACE58441A2A6C5400AD1ECB /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				3A14883B1A4B410F001FA876 /* MDCControlConstants.h */,
 				3AF156E81A3E60CF00E44FDB /* MDCImagePickerDelegate.h */,
 				3AF156E71A3E57A800E44FDB /* Forms */,
 				3AF156E61A3E579D00E44FDB /* TableViewCell */,
@@ -217,6 +222,8 @@
 				3ACE58241A2920BC00AD1ECB /* MDCLabeledFieldTableViewCell.m */,
 				3AF156E31A3E578000E44FDB /* MDCImagePickerTableViewCell.h */,
 				3AF156E41A3E578000E44FDB /* MDCImagePickerTableViewCell.m */,
+				3A14883C1A4B42EF001FA876 /* MDCCollectionTableViewCell.h */,
+				3A14883D1A4B42EF001FA876 /* MDCCollectionTableViewCell.m */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -395,6 +402,7 @@
 				3ACE582C1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld in Sources */,
 				3A1488311A4A2722001FA876 /* LemniWordPicture.m in Sources */,
 				3A8C8B211A1E5F1800473967 /* main.m in Sources */,
+				3A14883E1A4B42EF001FA876 /* MDCCollectionTableViewCell.m in Sources */,
 				3AF156E51A3E578000E44FDB /* MDCImagePickerTableViewCell.m in Sources */,
 				3ACE58421A2A6C1D00AD1ECB /* MDCOneLemniCollectionViewController.m in Sources */,
 				3AA4954F1A366BB500E8C439 /* MDCAddLemniWordViewController.m in Sources */,

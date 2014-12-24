@@ -6,6 +6,7 @@
 #import "MDCNewLemniCollectionForm.h"
 #import "MDCLabeledFieldTableViewCell.h"
 #import "MDCImagePickerTableViewCell.h"
+#import "MDCControlConstants.h"
 
 @interface MDCNewLemniCollectionForm () <UITableViewDataSource, UITableViewDelegate>
 
@@ -60,6 +61,10 @@
 
 - (NSString *)comment {
     return _commentCell.content;
+}
+
+- (UIImage *)background {
+    return self.imageCell.image;
 }
 
 - (id <MDCPhotoPickerDelegate>)photoPickerDelegate {
@@ -138,8 +143,8 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
-        case 1: return 183/2; // TODO: introduce constant
-        default: return 43;
+        case 1: return MDCCollectionViewHeight;
+        default: return UITableViewAutomaticDimension;
     }
 }
 

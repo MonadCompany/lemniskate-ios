@@ -86,6 +86,7 @@
                                                               insertIntoManagedObjectContext:delegate.managedObjectContext];
     collection.name = name;
     collection.comment = self.form.comment;
+    collection.background = UIImagePNGRepresentation(self.form.background);
     collection.created = [NSDate new];
    
     // save it

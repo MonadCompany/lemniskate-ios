@@ -90,8 +90,9 @@
     picker.allowsEditing = YES;
     picker.delegate = self;
     
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
     picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
-    picker.cropSize = CGSizeMake(640*2, 183*2); //TODO: introduce constant
+    picker.cropSize = CGSizeMake(screenRect.size.width, screenRect.size.width * MDCCollectionViewAspect);
     
     [self.photoPickerDelegate presentPhotoPicker:picker];
 }

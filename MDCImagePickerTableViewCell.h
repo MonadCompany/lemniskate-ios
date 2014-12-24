@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MDCImagePickerDelegate.h"
+#import "MDCControlConstants.h"
 
 @interface MDCImagePickerTableViewCell : UITableViewCell
 @property (readonly, nonatomic, strong) UIImage *image;

@@ -10,14 +10,14 @@
 #import "MDCAllLemniCollectionsViewController.h"
 #import "MDCAddLemniCollectionViewController.h"
 #import "MDCOneLemniCollectionViewController.h"
+#import "MDCLabeledFieldTableViewCell.h"
+#import "MDCCollectionTableViewCell.h"
 #import "MDCAppDelegate.h"
 #import "LemniCollection.h"
 
 @interface MDCAllLemniCollectionsViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @end
-
-static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 @implementation MDCAllLemniCollectionsViewController
 
@@ -58,7 +58,9 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         _tableView = [[UITableView alloc] initWithFrame:[self.view bounds] style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
+        
+        _tableView.rowHeight = 183/2; //TODO: introduce constant
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
     }
     return _tableView;
 }
@@ -110,12 +112,13 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 {
     LemniCollection *collection = (LemniCollection *)[self.dataController objectAtIndexPath:indexPath];
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
-    cell.textLabel.text = collection.name;
+    UITableViewCell *cell = [MDCCollectionTableViewCell cellWithCollection:collection];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
+
+
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
@@ -157,6 +160,15 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 //        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if(section == 0) {
+        return 1; // TODO is this right? Looks like the only way to hide header
+    }
+    return UITableViewAutomaticDimension;
+}
+
 
 #pragma mark - Action handlers
 
