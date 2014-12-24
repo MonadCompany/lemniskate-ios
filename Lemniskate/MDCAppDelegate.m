@@ -31,18 +31,22 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[MDCAllLemniCollectionsViewController new]];
     
-    // Navigation Bar Style
+    // App Styles
+    UIColor *tintColor = [UIColor colorWithRed:208.0/256
+                                         green:2.0/256
+                                          blue:27.0/256
+                                         alpha:1.0];
+    [[[[UIApplication sharedApplication] delegate] window] setTintColor:tintColor];
+    
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIColor whiteColor], NSForegroundColorAttributeName, nil]];
     [[UINavigationBar appearance] setTranslucent:NO];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:208.0/256
-                                                                  green:2.0/256
-                                                                   blue:27.0/256
-                                                                  alpha:1.0]];
+    [[UINavigationBar appearance] setBarTintColor:tintColor];
+    // App Styles End
+    
     
     [self.window makeKeyAndVisible];
-    
     return YES;
 }
 

@@ -11,7 +11,7 @@
 #import "MDCAppDelegate.h"
 #import "MDCNewLemniCollectionForm.h"
 
-@interface MDCAddLemniCollectionViewController () <MDCImagePickerDelegate>
+@interface MDCAddLemniCollectionViewController () <MDCPhotoPickerDelegate>
 @property (nonatomic, strong) MDCNewLemniCollectionForm *form;
 @end
 
@@ -28,7 +28,7 @@
 {
     if (!_form) {
         _form = [[MDCNewLemniCollectionForm alloc] initWithFrame:[self.view bounds]];
-        [_form setDelegate:self];
+        [_form setPhotoPickerDelegate:self];
     }
     return _form;
 }

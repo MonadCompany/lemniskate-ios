@@ -8,7 +8,7 @@
 
 #import "DZNPhotoPickerController.h"
 
-@protocol MDCImagePickerDelegate <NSObject>
+@protocol MDCPhotoPickerDelegate <NSObject>
 - (void)presentPhotoPicker:(DZNPhotoPickerController *)picker;
 - (void)hidePhotoPicker;
 @end

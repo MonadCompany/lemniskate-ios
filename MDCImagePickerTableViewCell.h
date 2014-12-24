@@ -10,6 +10,6 @@
 #import "MDCImagePickerDelegate.h"
 
 @interface MDCImagePickerTableViewCell : UITableViewCell
-@property (readonly, nonatomic, strong) UIImage *image; //TODO: refactor to use MDCPicture (see data model)
-@property (nonatomic, assign) id <MDCImagePickerDelegate> delegate;
+@property (readonly, nonatomic, strong) UIImage *image;
+@property (nonatomic, assign) id <MDCPhotoPickerDelegate> photoPickerDelegate;
 @end

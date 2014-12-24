@@ -27,6 +27,7 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
+        _tableView.delegate = self;
         _tableView.allowsSelection = NO;
     }
     return _tableView;
@@ -61,14 +62,14 @@
     return _commentCell.content;
 }
 
-- (id <MDCImagePickerDelegate>)delegate {
-    return self.imageCell.delegate;
+- (id <MDCPhotoPickerDelegate>)photoPickerDelegate {
+    return self.imageCell.photoPickerDelegate;
 }
 
 #pragma mark - Setters
 
-- (void)setDelegate:(id <MDCImagePickerDelegate>)delegate {
-    self.imageCell.delegate = delegate;
+- (void)setPhotoPickerDelegate:(id <MDCPhotoPickerDelegate>)delegate {
+    self.imageCell.photoPickerDelegate = delegate;
 }
 
 
@@ -97,7 +98,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     switch (section) {
         case 0: return @"Info";
-        case 1: return @"Picture";
+        case 1: return @"Background";
         default: return @"";
     }
 }
@@ -128,6 +129,17 @@
             }
             
         default: return nil;
+    }
+}
+
+/*
+ For image cell set higher height
+ */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 1: return 183/2; // TODO: introduce constant
+        default: return 43;
     }
 }
 

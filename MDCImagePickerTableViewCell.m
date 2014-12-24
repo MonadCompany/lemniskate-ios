@@ -11,6 +11,8 @@
 
 @interface MDCImagePickerTableViewCell () <UINavigationControllerDelegate, DZNPhotoPickerControllerDelegate>
 @property (nonatomic, strong) UIButton *button;
+@property (nonatomic, strong) UIImage *pickedImage;
+@property (nonatomic, strong) UIImageView *background;
 @end
 
 
@@ -19,7 +21,7 @@
 #pragma mark - Getters
 
 - (UIImage *)image {
-    return nil;
+    return self.pickedImage;
 }
 
 #pragma mark - General Lifecycle
@@ -28,15 +30,21 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        // Initialize & Configure Background
+        self.background = [UIImageView new];
+        self.background.backgroundColor = [UIColor whiteColor];
+        self.background.contentMode = UIViewContentModeScaleAspectFill;
+        self.background.clipsToBounds = YES;
+        [self.contentView addSubview:self.background];
+
         // Initialize & Configure Button
-        self.button = [[UIButton alloc] init];
+        self.button = [UIButton new];
         
         [self.button setTitle:@"Choose image" forState:UIControlStateNormal];
         [self.button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [self.button addTarget:self action:@selector(addImageButtonTap:) forControlEvents:UIControlEventTouchDown];
         
         [self.contentView addSubview:self.button];
-        
     }
     
     return self;
@@ -45,28 +53,32 @@
 #pragma mark - Laying out subviews
 
 - (void)layoutSubviews {
-    if (self.image) {
-        [self.button setFrame:self.contentView.frame];
-    } else {
-        [self.button setFrame:self.contentView.frame];
-    }
+    CGRect frame = self.contentView.frame;
+    [self.button setFrame:frame];
+    [self.background setFrame:frame];
 }
 
 #pragma mark - DZNPhotoPickerControllerDelegate/UINavigationControllerDelegate Lifecycle
 
 - (void)photoPickerController:(DZNPhotoPickerController *)picker didFinishPickingPhotoWithInfo:(NSDictionary *)userInfo {
     NSLog(@"didFinishPickingPhotoWithInfo:%@", userInfo);
-    [self.delegate hidePhotoPicker];
+    
+    self.pickedImage = userInfo[UIImagePickerControllerEditedImage];
+    [self.background setImage:self.pickedImage];
+//    self.background.contentMode = UIViewContentModeScaleAspectFill;
+    [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    [self.photoPickerDelegate hidePhotoPicker];
 }
 
 - (void)photoPickerController:(DZNPhotoPickerController *)picker didFailedPickingPhotoWithError:(NSError *)error {
     NSLog(@"didFailedPickingPhotoWithError:%@", error);
-    [self.delegate hidePhotoPicker];
+    [self.photoPickerDelegate hidePhotoPicker];
 }
 
 - (void)photoPickerControllerDidCancel:(DZNPhotoPickerController *)picker {
     NSLog(@"photoPickerControllerDidCancel:%@", picker);
-    [self.delegate hidePhotoPicker];
+    [self.photoPickerDelegate hidePhotoPicker];
 }
 
 #pragma mark - Action handlers
@@ -78,7 +90,10 @@
     picker.allowsEditing = YES;
     picker.delegate = self;
     
-    [self.delegate presentPhotoPicker:picker];
+    picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
+    picker.cropSize = CGSizeMake(640*2, 183*2); //TODO: introduce constant
+    
+    [self.photoPickerDelegate presentPhotoPicker:picker];
 }
 
 
