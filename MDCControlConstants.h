@@ -21,6 +21,6 @@
 #define MDCSemiopaqueBalck ([UIColor colorWithRed:0 green:0 blue:0 alpha:0.55])
 #define MDCLessSemiopaqueBalck ([UIColor colorWithRed:0 green:0 blue:0 alpha:0.3])
 
-#define MDCLighterWhite ([UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1])
+#define MDCLighterWhite ([UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1])
 
 #endif

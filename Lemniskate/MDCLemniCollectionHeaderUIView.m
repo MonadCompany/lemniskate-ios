@@ -51,7 +51,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         self.collectionName = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.collectionName setText:collection.name];
         [self.collectionName setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionName setTextColor:MDCLighterWhite];
+        [self.collectionName setTextColor:[UIColor whiteColor]];
         [self.collectionName setFont:MDCCollectionNameFont];
         [self addSubview:self.collectionName];
         
@@ -59,7 +59,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         self.collectionComment = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.collectionComment setText:collection.comment];
         [self.collectionComment setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionComment setTextColor:[UIColor lightGrayColor]];
+        [self.collectionComment setTextColor:MDCLighterWhite];
         [self.collectionComment setFont:MDCCollectionCommentFont];
         [self addSubview:self.collectionComment];
         
@@ -129,7 +129,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
                                            25.0);
     
     self.collectionComment.frame = CGRectMake(sb.origin.x + 14.0,
-                                              sb.origin.y + 12.0 + 25.0,
+                                              sb.origin.y + 12.0 + 30.0,
                                               sb.size.width,
                                               25.0);
     float buttonWidth = 184/2;

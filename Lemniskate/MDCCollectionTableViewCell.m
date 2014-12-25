@@ -67,7 +67,7 @@
         self.collectionName = [[UILabel alloc] initWithFrame:CGRectZero];
         
         [self.collectionName setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionName setTextColor:MDCLighterWhite];
+        [self.collectionName setTextColor:[UIColor whiteColor]];
         [self.collectionName setFont:MDCCollectionNameFont];
         [self.contentView addSubview:self.collectionName];
 
@@ -75,7 +75,7 @@
         self.collectionComment = [[UILabel alloc] initWithFrame:CGRectZero];
         
         [self.collectionComment setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionComment setTextColor:[UIColor lightGrayColor]];
+        [self.collectionComment setTextColor:MDCLighterWhite];
         [self.collectionComment setFont:MDCCollectionCommentFont];
         [self.contentView addSubview:self.collectionComment];
 }
@@ -91,7 +91,7 @@
     CGRect frame = self.contentView.frame;
     
     [self.collectionName setFrame:CGRectMake(14.0, 12.0, frame.size.width, 25.0)];
-    [self.collectionComment setFrame:CGRectMake(14.0, 12.0 + 25.0, frame.size.width, 25.0)];
+    [self.collectionComment setFrame:CGRectMake(14.0, 12.0 + 30.0, frame.size.width, 25.0)];
 }
 
 
