@@ -127,6 +127,11 @@
     [self.tableView endUpdates];
 }
 
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
+}
+
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
@@ -161,12 +166,6 @@
             break;
     }
 }
-
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView beginUpdates];
-}
-
 
 #pragma mark - UITableViewDelegate
 

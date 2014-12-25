@@ -9,12 +9,12 @@
 #import "MDCSingleCollectionViewController.h"
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
-#import "MDCAddLemniWordViewController.h"
+#import "MDCAddWordViewController.h"
 #import "MDCCollectionWithHeaderForm.h"
 
 @interface MDCSingleCollectionViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
-@property (nonatomic, strong) MDCCollectionWithHeaderForm *collectionView;
+@property (nonatomic, strong) MDCCollectionWithHeaderForm *collectionForm;
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
@@ -60,11 +60,11 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     return @"";
 }
 
-- (MDCCollectionWithHeaderForm *)collectionView {
-    if (!_collectionView) {
-        _collectionView = [MDCCollectionWithHeaderForm viewWithFrame:[self.view bounds] collection:self.collection delegate:self];
+- (MDCCollectionWithHeaderForm *)collectionForm {
+    if (!_collectionForm) {
+        _collectionForm = [MDCCollectionWithHeaderForm viewWithFrame:[self.view bounds] collection:self.collection delegate:self];
     }
-    return _collectionView;
+    return _collectionForm;
 }
 
 
@@ -77,13 +77,13 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
                                                                                            action:@selector(addBarButtonItemTap:)];
-    [self.view addSubview:self.collectionView];
+    [self.view addSubview:self.collectionForm];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.collectionView reloadData];
+    [self.collectionForm.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -115,16 +115,57 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 #pragma mark - NSFetchedResultsControllerDelegate
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.collectionForm.tableView endUpdates];
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-//    [self.tableView reloadData];
+    [self.collectionForm.tableView beginUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    UITableView *tableView = self.collectionForm.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            if ([tableView numberOfSections]) {
+                [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                                 withRowAnimation:UITableViewRowAnimationAutomatic];
+            } else {
+                [tableView insertSections:[NSIndexSet indexSetWithIndex:0]
+                         withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+    }
 }
 
 #pragma mark - Action handlers
 
 - (void)addBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    MDCAddLemniWordViewController *viewController = [[MDCAddLemniWordViewController alloc] initWithCollection:self.collection];
+    MDCAddWordViewController *viewController = [[MDCAddWordViewController alloc] initWithCollection:self.collection];
     viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.navigationController pushViewController:viewController animated:YES];
 }

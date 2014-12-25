@@ -23,7 +23,7 @@
     return self.uiTextField.text;
 }
 
-#pragma mark - setters
+#pragma mark - Setters
 
 - (void)setContent:(NSString *)content {
     self.uiTextField.text = content;
@@ -31,7 +31,7 @@
 
 #pragma mark - General Lifecycle
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {

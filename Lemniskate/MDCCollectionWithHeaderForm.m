@@ -6,12 +6,12 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "MDCLemniCollectionHeaderUIView.h"
 #import "UIImageCategories.h"
 #import "LemniCollection.h"
 #import "MDCControlConstants.h"
+#import "MDCCollectionWithHeaderForm.h"
 
-@interface MDCLemniCollectionHeaderUIView ()
+@interface MDCCollectionWithHeaderForm ()
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -25,7 +25,7 @@
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
-@implementation MDCLemniCollectionHeaderUIView
+@implementation MDCCollectionWithHeaderForm
 
 #pragma mark - Initializations
 
@@ -100,12 +100,6 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
     }
     return _tableView;
-}
-
-#pragma mark - Interface methods
-
-- (void) reloadData {
-    [self.tableView reloadData];
 }
 
 #pragma mark - UIView Lifecycle

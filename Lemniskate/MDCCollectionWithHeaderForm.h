@@ -22,6 +22,6 @@ typedef id <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControll
                    collection:(LemniCollection *)collection
                      delegate:(MDCLemniCollectionHeaderUIViewDelegate) delegate;
 
-- (void)reloadData;
+- (UITableView *)tableView;
 
 @end

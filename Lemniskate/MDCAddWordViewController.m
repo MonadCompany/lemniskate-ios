@@ -6,18 +6,19 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "MDCAddLemniWordViewController.h"
+#import "MDCAddWordViewController.h"
 #import "MDCWordForm.h"
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
 #import "LemniCollection.h"
 
-@interface MDCAddLemniWordViewController ()
+@interface MDCAddWordViewController ()
 @property (nonatomic, strong) LemniCollection *collection;
+@property (nonatomic, strong) LemniWord *word;
 @property (nonatomic, strong) MDCWordForm *form;
 @end
 
-@implementation MDCAddLemniWordViewController
+@implementation MDCAddWordViewController
 
 #pragma mark - Initialization
 
@@ -43,18 +44,23 @@
     return self.form.word.spelling; // how this will be dynamic? should this be observable?
 }
 
-- (MDCWordForm *)form {
-    if (!_form) {
-        _form = [[MDCWordForm alloc] initWithFrame:[self.view bounds]];
-        
+- (LemniWord *)word
+{
+    if (!_word) {
         MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniWord"
                                                   inManagedObjectContext:delegate.managedObjectContext];
-        LemniWord *word = (LemniWord *)[[NSManagedObject alloc] initWithEntity:entity
-                                                insertIntoManagedObjectContext:delegate.managedObjectContext];
-        
-        word.collection = self.collection;
-        [_form setWord:word];
+        _word = (LemniWord *)[[NSManagedObject alloc] initWithEntity:entity
+                                      insertIntoManagedObjectContext:delegate.managedObjectContext];
+        _word.collection = self.collection;
+    }
+    return _word;
+}
+
+- (MDCWordForm *)form {
+    if (!_form) {
+        _form = [[MDCWordForm alloc] initWithFrame:[self.view bounds]];
+        [_form setWord:self.word];
     }
     return _form;
 }
@@ -69,11 +75,9 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self
                                                                                           action:@selector(cancelBarButtonItemTap:)];
-
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                            target:self
                                                                                            action:@selector(doneBarButtonItemTap:)];
-
     [self.view addSubview:self.form];
 }
 

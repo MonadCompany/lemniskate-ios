@@ -51,8 +51,7 @@
 
 - (LemniWord *)word {
     _word.spelling = self.spellingCell.content;
-    _word.meaning  = self.meaningCell.content;
-    
+    _word.meaning  = self.meaningCell.content;    
     return _word;
 }
 
@@ -60,7 +59,6 @@
 
 - (void)setWord:(LemniWord *)word {
     _word = word;
-
     self.spellingCell.content = word.spelling;
     self.meaningCell.content  = word.meaning;
 }
