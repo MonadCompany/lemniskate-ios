@@ -124,7 +124,47 @@
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView reloadData];
+    [self.tableView endUpdates];
+}
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            if ([self.tableView numberOfSections]) {
+                [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                                 withRowAnimation:UITableViewRowAnimationAutomatic];
+            } else {
+                [self.tableView insertSections:[NSIndexSet indexSetWithIndex:0]
+                              withRowAnimation:UITableViewRowAnimationAutomatic];
+            }
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                  withRowAnimation:UITableViewRowAnimationAutomatic];
+            [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
+                             withRowAnimation:UITableViewRowAnimationAutomatic];
+            break;
+    }
+}
+
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.tableView beginUpdates];
 }
 
 
@@ -153,6 +193,7 @@
         NSManagedObject *managedObject = [self.dataController objectAtIndexPath:indexPath];
         MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         [delegate.managedObjectContext deleteObject:managedObject];
+        
         [delegate.managedObjectContext save:nil];
     }
 }
