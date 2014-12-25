@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MDCAllLemniCollectionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface MDCAllCollectionsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @end
 

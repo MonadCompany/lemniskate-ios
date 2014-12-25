@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "LemniCollection.h"
 
-@interface MDCOneLemniCollectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
+@interface MDCSingleCollectionViewController : UIViewController <UITableViewDataSource,
+                                                                 UITableViewDelegate,
+                                                                 NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) LemniCollection *collection;
 

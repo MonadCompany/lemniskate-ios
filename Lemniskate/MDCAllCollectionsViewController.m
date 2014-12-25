@@ -7,20 +7,20 @@
 //
 
 #import <CoreData/CoreData.h>
-#import "MDCAllLemniCollectionsViewController.h"
-#import "MDCAddLemniCollectionViewController.h"
-#import "MDCOneLemniCollectionViewController.h"
+#import "MDCAllCollectionsViewController.h"
+#import "MDCAddCollectionViewController.h"
+#import "MDCSingleCollectionViewController.h"
 #import "MDCLabeledFieldTableViewCell.h"
 #import "MDCCollectionTableViewCell.h"
 #import "MDCAppDelegate.h"
 #import "LemniCollection.h"
 #import "MDCControlConstants.h"
 
-@interface MDCAllLemniCollectionsViewController ()
+@interface MDCAllCollectionsViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @end
 
-@implementation MDCAllLemniCollectionsViewController
+@implementation MDCAllCollectionsViewController
 
 #pragma mark - Getters
 
@@ -211,7 +211,7 @@
 
 - (void)addBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    MDCAddLemniCollectionViewController *viewController = [MDCAddLemniCollectionViewController new];
+    MDCAddCollectionViewController *viewController = [MDCAddCollectionViewController new];
     viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.navigationController pushViewController:viewController animated:YES];
 }
@@ -224,7 +224,7 @@
 #pragma mark - Custom Logic
 
 - (void)navigateToCollection:(LemniCollection *)collection {
-    MDCOneLemniCollectionViewController *viewController = [MDCOneLemniCollectionViewController new];
+    MDCSingleCollectionViewController *viewController = [MDCSingleCollectionViewController new];
     viewController.collection = collection;
     
     [self.navigationController pushViewController:viewController animated:YES];

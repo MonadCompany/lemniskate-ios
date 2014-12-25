@@ -8,5 +8,5 @@
 
 @import UIKit;
 
-@interface MDCAddLemniCollectionViewController : UIViewController
+@interface MDCAddCollectionViewController : UIViewController
 @end

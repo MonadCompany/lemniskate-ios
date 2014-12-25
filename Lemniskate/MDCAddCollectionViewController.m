@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "MDCAddLemniCollectionViewController.h"
+#import "MDCAddCollectionViewController.h"
 #import "LemniCollection.h"
 #import "MDCAppDelegate.h"
 #import "MDCNewLemniCollectionForm.h"
 
-@interface MDCAddLemniCollectionViewController () <MDCPhotoPickerDelegate>
+@interface MDCAddCollectionViewController () <MDCPhotoPickerDelegate>
 @property (nonatomic, strong) MDCNewLemniCollectionForm *form;
 @end
 
-@implementation MDCAddLemniCollectionViewController
+@implementation MDCAddCollectionViewController
 
 #pragma mark - Getters
 

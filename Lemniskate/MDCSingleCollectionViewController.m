@@ -6,20 +6,20 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "MDCOneLemniCollectionViewController.h"
+#import "MDCSingleCollectionViewController.h"
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
 #import "MDCAddLemniWordViewController.h"
 #import "MDCLemniCollectionHeaderUIView.h"
 
-@interface MDCOneLemniCollectionViewController ()
+@interface MDCSingleCollectionViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @property (nonatomic, strong) MDCLemniCollectionHeaderUIView *collectionView;
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
-@implementation MDCOneLemniCollectionViewController
+@implementation MDCSingleCollectionViewController
 
 #pragma mark - Getters
 
@@ -108,6 +108,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     LemniWord *word = (LemniWord *)[self.dataController objectAtIndexPath:indexPath];
     
     cell.textLabel.text = word.spelling;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }

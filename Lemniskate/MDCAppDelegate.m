@@ -7,7 +7,7 @@
 //
 
 #import "MDCAppDelegate.h"
-#import "MDCAllLemniCollectionsViewController.h"
+#import "MDCAllCollectionsViewController.h"
 #import "DZNPhotoPickerController.h"
 
 @implementation MDCAppDelegate
@@ -29,7 +29,7 @@
 
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[MDCAllLemniCollectionsViewController new]];
+    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[MDCAllCollectionsViewController new]];
     
     // App Styles
     UIColor *tintColor = [UIColor colorWithRed:208.0/256

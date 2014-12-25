@@ -30,6 +30,10 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
     if (self) {
+        // Hide separator
+        self.layoutMargins = UIEdgeInsetsZero;
+        self.separatorInset = UIEdgeInsetsMake(0,10000,0,0);
+        
         // Initialize & Configure Background
         self.background = [UIImageView new];
         self.background.backgroundColor = [UIColor whiteColor];
@@ -65,7 +69,6 @@
     
     self.pickedImage = userInfo[UIImagePickerControllerEditedImage];
     [self.background setImage:self.pickedImage];
-//    self.background.contentMode = UIViewContentModeScaleAspectFill;
     [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [self.photoPickerDelegate hidePhotoPicker];
@@ -90,9 +93,8 @@
     picker.allowsEditing = YES;
     picker.delegate = self;
     
-    CGRect screenRect = [[UIScreen mainScreen] bounds];
     picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
-    picker.cropSize = CGSizeMake(screenRect.size.width, screenRect.size.width * MDCCollectionViewAspect);
+    picker.cropSize = CGSizeMake(MDCCollectionViewWidth, MDCCollectionViewHeight);
     
     [self.photoPickerDelegate presentPhotoPicker:picker];
 }
