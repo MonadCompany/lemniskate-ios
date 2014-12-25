@@ -220,8 +220,6 @@
     [self setEditing:![self isEditing] animated:YES];
 }
 
-#pragma mark - Custom Logic
-
 - (void)navigateToCollection:(LemniCollection *)collection {
     MDCSingleCollectionViewController *viewController = [MDCSingleCollectionViewController new];
     viewController.collection = collection;

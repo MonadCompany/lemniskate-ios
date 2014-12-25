@@ -10,6 +10,7 @@
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
 #import "MDCAddWordViewController.h"
+#import "MDCEditWordViewController.h"
 #import "MDCCollectionWithHeaderForm.h"
 
 @interface MDCSingleCollectionViewController ()
@@ -113,6 +114,21 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     return cell;
 }
 
+#pragma mark - UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *) indexPath
+{
+    LemniWord *word = (LemniWord *)[self.dataController objectAtIndexPath:indexPath];
+    [self.collectionForm.tableView deselectRowAtIndexPath:indexPath animated:NO];
+    [self navigateToWord:word];
+}
+
+- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
+{
+    LemniWord *word = (LemniWord *)[self.dataController objectAtIndexPath:indexPath];
+    [self navigateToWord:word];
+}
+
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
@@ -165,12 +181,19 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (void)addBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    MDCAddWordViewController *viewController = [[MDCAddWordViewController alloc] initWithCollection:self.collection];
+
+    MDCAddWordViewController *viewController = [MDCAddWordViewController controllerWithCollection:self.collection];
     viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.navigationController pushViewController:viewController animated:YES];
 }
 
 #pragma mark - Navigation
 
+- (void)navigateToWord:(LemniWord *)word
+{
+    MDCEditWordViewController *viewController = [MDCEditWordViewController controllerWithWord:word];
+    viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self.navigationController pushViewController:viewController animated:YES];
+}
 
 @end
