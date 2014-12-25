@@ -14,6 +14,7 @@
 #import "MDCCollectionTableViewCell.h"
 #import "MDCAppDelegate.h"
 #import "LemniCollection.h"
+#import "MDCControlConstants.h"
 
 @interface MDCAllLemniCollectionsViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
@@ -59,8 +60,8 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         
-        _tableView.rowHeight = 183/2; //TODO: introduce constant
-        _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLineEtched;
+        _tableView.rowHeight = MDCCollectionViewHeight;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _tableView;
 }
@@ -149,22 +150,17 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"TODO"
-                                                        message:@"Not implemented yet"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil];
-        [alert show];
-        // Update data source array here, something like [array removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        NSManagedObject *managedObject = [self.dataController objectAtIndexPath:indexPath];
+        MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        [delegate.managedObjectContext deleteObject:managedObject];
+        [delegate.managedObjectContext save:nil];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if(section == 0) {
-        return 1; // TODO is this right? Looks like the only way to hide header
+        return 0.1; // TODO is this right? Looks like the only way to hide header
     }
     return UITableViewAutomaticDimension;
 }
