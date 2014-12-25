@@ -23,6 +23,12 @@
     return self.uiTextField.text;
 }
 
+#pragma mark - setters
+
+- (void)setContent:(NSString *)content {
+    self.uiTextField.text = content;
+}
+
 #pragma mark - General Lifecycle
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

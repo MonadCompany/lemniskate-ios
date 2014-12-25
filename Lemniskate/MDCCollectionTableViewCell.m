@@ -8,6 +8,8 @@
 
 #import "MDCCollectionTableViewCell.h"
 #import "LemniCollection.h"
+#import "UIImageCategories.h"
+#import "MDCControlConstants.h"
 
 @interface MDCCollectionTableViewCell ()
 
@@ -32,14 +34,8 @@
         [self.collectionComment setText:collection.comment];
         
         UIImage *backgroundImage = [UIImage imageWithData:collection.background];
-        
-        UIColor *semiopaqueBalck = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-        UIImage *shadedImage = [MDCCollectionTableViewCell colorizeImage:backgroundImage withColor:semiopaqueBalck];
-        [(UIImageView *)self.backgroundView setImage:shadedImage];
-        
-        UIColor *lessSemiopaqueBalck = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.2];
-        UIImage *lessShadedImage = [MDCCollectionTableViewCell colorizeImage:backgroundImage withColor:lessSemiopaqueBalck];
-        [(UIImageView *)self.selectedBackgroundView setImage:lessShadedImage];
+        [(UIImageView *)self.backgroundView setImage:[backgroundImage withColor:MDCSemiopaqueBalck]];
+        [(UIImageView *)self.selectedBackgroundView setImage:[backgroundImage withColor:MDCLessSemiopaqueBalck]];
     }
     
     return self;
@@ -70,11 +66,9 @@
         // Initialize & Configure Name Label
         self.collectionName = [[UILabel alloc] initWithFrame:CGRectZero];
         
-        UIColor *lighterWhite = [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1];
         [self.collectionName setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionName setTextColor:lighterWhite];
-        [self.collectionName setFont:[UIFont boldSystemFontOfSize:16.0f]];
-        [self.collectionName setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        [self.collectionName setTextColor:MDCLighterWhite];
+        [self.collectionName setFont:MDCCollectionNameFont];
         [self.contentView addSubview:self.collectionName];
 
         // Initialize & Configure Comment Label
@@ -82,8 +76,7 @@
         
         [self.collectionComment setTextAlignment:NSTextAlignmentLeft];
         [self.collectionComment setTextColor:[UIColor lightGrayColor]];
-        [self.collectionComment setFont:[UIFont systemFontOfSize:14.0f]];
-        [self.collectionName setAutoresizingMask:(UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight)];
+        [self.collectionComment setFont:MDCCollectionCommentFont];
         [self.contentView addSubview:self.collectionComment];
 }
     
@@ -101,34 +94,5 @@
     [self.collectionComment setFrame:CGRectMake(14.0, 12.0 + 25.0, frame.size.width, 25.0)];
 }
 
-#pragma mark - Helpers
-
-+ (UIImage *)colorizeImage:(UIImage *)image withColor:(UIColor *)color {
-    UIGraphicsBeginImageContext(image.size);
-    
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGRect area = CGRectMake(0, 0, image.size.width, image.size.height);
-    
-    CGContextScaleCTM(context, 1, -1);
-    CGContextTranslateCTM(context, 0, -area.size.height);
-    
-    CGContextSaveGState(context);
-    CGContextClipToMask(context, area, image.CGImage);
-    
-    [color set];
-    CGContextFillRect(context, area);
-    
-    CGContextRestoreGState(context);
-    
-    CGContextSetBlendMode(context, kCGBlendModeMultiply);
-    
-    CGContextDrawImage(context, area, image.CGImage);
-    
-    UIImage *colorizedImage = UIGraphicsGetImageFromCurrentImageContext();
-    
-    UIGraphicsEndImageContext();
-    
-    return colorizedImage;
-}
 
 @end

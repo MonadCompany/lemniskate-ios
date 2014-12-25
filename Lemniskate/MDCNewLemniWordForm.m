@@ -8,18 +8,20 @@
 
 #import "MDCNewLemniWordForm.h"
 #import "MDCLabeledFieldTableViewCell.h"
+#import "LemniWord.h"
 
 @interface MDCNewLemniWordForm () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
 @property (nonatomic, strong) MDCLabeledFieldTableViewCell *spellingCell;
-@property (nonatomic, strong) MDCLabeledFieldTableViewCell *pronunciationCell;
 @property (nonatomic, strong) MDCLabeledFieldTableViewCell *meaningCell;
 
 @end
 
 @implementation MDCNewLemniWordForm
+
+@synthesize word = _word;
 
 #pragma mark - Getters
 
@@ -40,13 +42,6 @@
     return _spellingCell;
 }
 
-- (MDCLabeledFieldTableViewCell *)pronunciationCell {
-    if (!_pronunciationCell) {
-        _pronunciationCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Pronounce"];
-    }
-    return _pronunciationCell;
-}
-
 - (MDCLabeledFieldTableViewCell *)meaningCell {
     if (!_meaningCell) {
         _meaningCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Meaning"];
@@ -54,17 +49,20 @@
     return _meaningCell;
 }
 
-
-- (NSString *)spelling {
-    return self.spellingCell.content;
+- (LemniWord *)word {
+    _word.spelling = self.spellingCell.content;
+    _word.meaning  = self.meaningCell.content;
+    
+    return _word;
 }
 
-- (NSString *)pronunciation {
-    return self.pronunciationCell.content;
-}
+#pragma mark - Setters
 
-- (NSString *)meaning {
-    return self.meaningCell.content;
+- (void)setWord:(LemniWord *)word {
+    _word = word;
+
+    self.spellingCell.content = word.spelling;
+    self.meaningCell.content  = word.meaning;
 }
 
 
@@ -87,11 +85,7 @@
 #pragma mark - UITableViewDataSource
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0: return @"Basic Info";
-        case 1: return @"Additional data";
-        default: return @"";
-    }
+    return @"";
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -102,7 +96,7 @@
 {
     switch (section) {
         case 0: return 2;
-        case 1: return 1;
+        case 1: return 0;
         default: return 0;
     }
 }
@@ -113,13 +107,12 @@
         case 0:
             switch (indexPath.row) {
                 case 0: return self.spellingCell;
-                case 1: return self.pronunciationCell;
+                case 1: return self.meaningCell;
                 default: return nil;
             }
 
         case 1:
             switch (indexPath.row) {
-                case 0: return self.meaningCell;
                 default: return nil;
             }
 

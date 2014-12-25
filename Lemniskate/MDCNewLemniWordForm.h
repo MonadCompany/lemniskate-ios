@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class LemniWord;
+
 @interface MDCNewLemniWordForm : UIView
-@property (readonly, nonatomic, strong) NSString *spelling;
-@property (readonly, nonatomic, strong) NSString *pronunciation;
-@property (readonly, nonatomic, strong) NSString *meaning;
+@property (nonatomic, strong) LemniWord *word;
 @end

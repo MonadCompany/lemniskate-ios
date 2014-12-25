@@ -40,12 +40,21 @@
 
 - (NSString *)title
 {
-    return self.form.spelling; // how this will be dynamic? should this be observable?
+    return self.form.word.spelling; // how this will be dynamic? should this be observable?
 }
 
 - (MDCNewLemniWordForm *)form {
     if (!_form) {
         _form = [[MDCNewLemniWordForm alloc] initWithFrame:[self.view bounds]];
+        
+        MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniWord"
+                                                  inManagedObjectContext:delegate.managedObjectContext];
+        LemniWord *word = (LemniWord *)[[NSManagedObject alloc] initWithEntity:entity
+                                                insertIntoManagedObjectContext:delegate.managedObjectContext];
+        
+        word.collection = self.collection;
+        [_form setWord:word];
     }
     return _form;
 }
@@ -78,30 +87,15 @@
 
 - (void)doneBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    NSString *name = self.form.spelling;
+    NSString *name = self.form.word.spelling;
     if ([name length] == 0) {
         return;
     }
 
-    MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-
-    //todo: how this should be in case of editing?
-    // add new collection
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniWord"
-                                              inManagedObjectContext:delegate.managedObjectContext];
-
-    LemniWord *word = (LemniWord *)[[NSManagedObject alloc] initWithEntity:entity
-                                            insertIntoManagedObjectContext:delegate.managedObjectContext];
-
-    //todo: can following be made with Observable?
-    word.spelling      = self.form.spelling;
-    word.pronunciation = self.form.pronunciation;
-    word.meaning       = self.form.meaning;
-    word.collection    = self.collection;
-
-    // save it
+    // save word from form
     NSError *error = nil;
-    [word.managedObjectContext save:&error];
+    [self.form.word.managedObjectContext save:&error];
+    NSLog(@"Saved word, error: %@", error);
 
     // and pop out
     [self.navigationController popViewControllerAnimated:YES];

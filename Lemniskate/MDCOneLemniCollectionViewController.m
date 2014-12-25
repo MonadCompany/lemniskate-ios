@@ -10,9 +10,11 @@
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
 #import "MDCAddLemniWordViewController.h"
+#import "MDCLemniCollectionHeaderUIView.h"
 
 @interface MDCOneLemniCollectionViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
+@property (nonatomic, strong) MDCLemniCollectionHeaderUIView *collectionView;
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
@@ -53,38 +55,35 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     return _dataController;
 }
 
-- (UITableView *)tableView
-{
-    if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:[self.view bounds] style:UITableViewStylePlain];
-        _tableView.dataSource = self;
-        _tableView.allowsSelection = NO;
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
-    }
-    return _tableView;
-}
-
 - (NSString *)title
 {
-    return self.collection.name;
+    return @"";
+}
+
+- (MDCLemniCollectionHeaderUIView *)collectionView {
+    if (!_collectionView) {
+        _collectionView = [MDCLemniCollectionHeaderUIView viewWithFrame:[self.view bounds] collection:self.collection delegate:self];
+    }
+    return _collectionView;
 }
 
 
 #pragma mark - ViewController Lifecycle
 
-- (void)loadView {
+- (void)loadView
+{
     [super loadView];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self
                                                                                            action:@selector(addBarButtonItemTap:)];
-    
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.collectionView];
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
-    [self.tableView reloadData];
+    [self.collectionView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -103,12 +102,6 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     }
 }
 
-#pragma mark - NSFetchedResultsControllerDelegate
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView reloadData];
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
@@ -117,6 +110,13 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     cell.textLabel.text = word.spelling;
     
     return cell;
+}
+
+#pragma mark - NSFetchedResultsControllerDelegate
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+//    [self.tableView reloadData];
 }
 
 #pragma mark - Action handlers

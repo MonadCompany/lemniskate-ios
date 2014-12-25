@@ -12,6 +12,5 @@
 @interface MDCOneLemniCollectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, strong) LemniCollection *collection;
-@property (nonatomic, strong) UITableView *tableView;
 
 @end

@@ -14,7 +14,7 @@
 @interface MDCLabeledFieldTableViewCell : UITableViewCell
 
 @property (readonly, nonatomic, strong) NSString *label;
-@property (readonly, nonatomic, strong) NSString *content;
+@property (nonatomic, strong) NSString *content;
 
 - (instancetype)initWithLabel:(NSString *)label;
 + (instancetype)cellWithLabel:(NSString *)label;
