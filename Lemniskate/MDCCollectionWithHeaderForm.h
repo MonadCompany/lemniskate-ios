@@ -12,7 +12,7 @@
 @class LemniCollection;
 typedef id <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> MDCLemniCollectionHeaderUIViewDelegate;
 
-@interface MDCLemniCollectionHeaderUIView : UIView
+@interface MDCCollectionWithHeaderForm : UIView
 
 - (instancetype)initWithFrame:(CGRect)frame
                    collection:(LemniCollection *)collection

@@ -57,7 +57,7 @@
 		3A14883B1A4B410F001FA876 /* MDCControlConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCControlConstants.h; sourceTree = "<group>"; };
 		3A14883C1A4B42EF001FA876 /* MDCCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCCollectionTableViewCell.h; path = Lemniskate/MDCCollectionTableViewCell.h; sourceTree = "<group>"; };
 		3A14883D1A4B42EF001FA876 /* MDCCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCCollectionTableViewCell.m; path = Lemniskate/MDCCollectionTableViewCell.m; sourceTree = "<group>"; };
-		3A73148A1A4B85B800FBFF13 /* MDCLemniCollectionHeaderUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCLemniCollectionHeaderUIView.h; path = Lemniskate/MDCLemniCollectionHeaderUIView.h; sourceTree = "<group>"; };
+		3A73148A1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCCollectionWithHeaderForm.h; path = Lemniskate/MDCCollectionWithHeaderForm.h; sourceTree = "<group>"; };
 		3A73148B1A4B85B800FBFF13 /* MDCLemniCollectionHeaderUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCLemniCollectionHeaderUIView.m; path = Lemniskate/MDCLemniCollectionHeaderUIView.m; sourceTree = "<group>"; };
 		3A73148F1A4B8ED900FBFF13 /* UIImageCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageCategories.m; sourceTree = "<group>"; };
 		3A7314911A4B8FEC00FBFF13 /* UIImageCategories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageCategories.h; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 		3ACE58441A2A6C5400AD1ECB /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				3A73148A1A4B85B800FBFF13 /* MDCLemniCollectionHeaderUIView.h */,
+				3A73148A1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.h */,
 				3A73148B1A4B85B800FBFF13 /* MDCLemniCollectionHeaderUIView.m */,
 				3AF156E81A3E60CF00E44FDB /* MDCImagePickerDelegate.h */,
 				3AF156E71A3E57A800E44FDB /* Forms */,

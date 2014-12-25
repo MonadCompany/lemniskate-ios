@@ -10,11 +10,11 @@
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
 #import "MDCAddLemniWordViewController.h"
-#import "MDCLemniCollectionHeaderUIView.h"
+#import "MDCCollectionWithHeaderForm.h"
 
 @interface MDCSingleCollectionViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
-@property (nonatomic, strong) MDCLemniCollectionHeaderUIView *collectionView;
+@property (nonatomic, strong) MDCCollectionWithHeaderForm *collectionView;
 @end
 
 static NSString *const WCCellIdentifier = @"WCCellIdentifier";
@@ -60,9 +60,9 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     return @"";
 }
 
-- (MDCLemniCollectionHeaderUIView *)collectionView {
+- (MDCCollectionWithHeaderForm *)collectionView {
     if (!_collectionView) {
-        _collectionView = [MDCLemniCollectionHeaderUIView viewWithFrame:[self.view bounds] collection:self.collection delegate:self];
+        _collectionView = [MDCCollectionWithHeaderForm viewWithFrame:[self.view bounds] collection:self.collection delegate:self];
     }
     return _collectionView;
 }
