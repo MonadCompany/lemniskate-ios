@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "MDCNewLemniWordForm.h"
+#import "MDCWordForm.h"
 #import "MDCLabeledFieldTableViewCell.h"
 #import "LemniWord.h"
 
-@interface MDCNewLemniWordForm () <UITableViewDataSource, UITableViewDelegate>
+@interface MDCWordForm () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation MDCNewLemniWordForm
+@implementation MDCWordForm
 
 @synthesize word = _word;
 

@@ -6,7 +6,7 @@
 #import <UIKit/UIKit.h>
 #import "MDCImagePickerDelegate.h"
 
-@interface MDCNewLemniCollectionForm : UIView
+@interface MDCCollectionForm : UIView
 @property (readonly, nonatomic, strong) NSString *name;
 @property (readonly, nonatomic, strong) NSString *comment;
 @property (readonly, nonatomic, strong) UIImage  *background;

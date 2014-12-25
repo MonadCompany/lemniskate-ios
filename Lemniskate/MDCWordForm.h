@@ -10,6 +10,6 @@
 
 @class LemniWord;
 
-@interface MDCNewLemniWordForm : UIView
+@interface MDCWordForm : UIView
 @property (nonatomic, strong) LemniWord *word;
 @end

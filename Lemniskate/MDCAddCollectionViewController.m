@@ -9,10 +9,10 @@
 #import "MDCAddCollectionViewController.h"
 #import "LemniCollection.h"
 #import "MDCAppDelegate.h"
-#import "MDCNewLemniCollectionForm.h"
+#import "MDCCollectionForm.h"
 
 @interface MDCAddCollectionViewController () <MDCPhotoPickerDelegate>
-@property (nonatomic, strong) MDCNewLemniCollectionForm *form;
+@property (nonatomic, strong) MDCCollectionForm *form;
 @end
 
 @implementation MDCAddCollectionViewController
@@ -24,10 +24,10 @@
     return @"New collection";
 }
 
-- (MDCNewLemniCollectionForm *)form
+- (MDCCollectionForm *)form
 {
     if (!_form) {
-        _form = [[MDCNewLemniCollectionForm alloc] initWithFrame:[self.view bounds]];
+        _form = [[MDCCollectionForm alloc] initWithFrame:[self.view bounds]];
         [_form setPhotoPickerDelegate:self];
     }
     return _form;

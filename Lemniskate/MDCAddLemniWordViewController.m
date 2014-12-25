@@ -7,14 +7,14 @@
 //
 
 #import "MDCAddLemniWordViewController.h"
-#import "MDCNewLemniWordForm.h"
+#import "MDCWordForm.h"
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
 #import "LemniCollection.h"
 
 @interface MDCAddLemniWordViewController ()
 @property (nonatomic, strong) LemniCollection *collection;
-@property (nonatomic, strong) MDCNewLemniWordForm *form;
+@property (nonatomic, strong) MDCWordForm *form;
 @end
 
 @implementation MDCAddLemniWordViewController
@@ -43,9 +43,9 @@
     return self.form.word.spelling; // how this will be dynamic? should this be observable?
 }
 
-- (MDCNewLemniWordForm *)form {
+- (MDCWordForm *)form {
     if (!_form) {
-        _form = [[MDCNewLemniWordForm alloc] initWithFrame:[self.view bounds]];
+        _form = [[MDCWordForm alloc] initWithFrame:[self.view bounds]];
         
         MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniWord"

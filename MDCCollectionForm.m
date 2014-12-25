@@ -3,12 +3,12 @@
 // Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "MDCNewLemniCollectionForm.h"
+#import "MDCCollectionForm.h"
 #import "MDCLabeledFieldTableViewCell.h"
 #import "MDCImagePickerTableViewCell.h"
 #import "MDCControlConstants.h"
 
-@interface MDCNewLemniCollectionForm () <UITableViewDataSource, UITableViewDelegate>
+@interface MDCCollectionForm () <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
@@ -19,7 +19,7 @@
 
 @end
 
-@implementation MDCNewLemniCollectionForm
+@implementation MDCCollectionForm
 
 #pragma mark - Getters
 
