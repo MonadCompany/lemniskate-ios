@@ -47,34 +47,20 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         self.background = background;
         [self addSubview:self.background];
         
-        // Initialize & Configure Name Label
-        self.collectionName = [[UILabel alloc] initWithFrame:CGRectZero];
+        // Configure & add name label
         [self.collectionName setText:collection.name];
-        [self.collectionName setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionName setTextColor:MDCCollectionNameColor];
-        [self.collectionName setFont:MDCCollectionNameFont];
         [self addSubview:self.collectionName];
         
-        // Initialize & Configure Comment Label
-        self.collectionComment = [[UILabel alloc] initWithFrame:CGRectZero];
+        // Configure & add comment label
         [self.collectionComment setText:collection.comment];
-        [self.collectionComment setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionComment setTextColor:MDCCollectionCommentColor];
-        [self.collectionComment setFont:MDCCollectionCommentFont];
         [self addSubview:self.collectionComment];
         
-        // Initialize & Configure Practice Button
-        self.practiceButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        self.practiceButton.layer.cornerRadius = 4;
-        self.practiceButton.tintColor = [UIColor whiteColor];
-        [self.practiceButton setBackgroundColor:MDCPracticeButtonColor];
-        [self.practiceButton setTitle:@"Practice" forState:UIControlStateNormal];
+        // Configure & add practice button
         [self addSubview:self.practiceButton];
 
-        // Add table
+        // Configure & add table
         self.tableView.delegate = delegate;
         self.tableView.dataSource = delegate;
-        
         [self addSubview:self.tableView];
     }
     
@@ -99,17 +85,44 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     return _tableView;
 }
 
+- (UIButton *)practiceButton {
+    if (!_practiceButton) {
+        _practiceButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        _practiceButton.tintColor = [UIColor whiteColor];
+        [_practiceButton setBackgroundColor:MDCPracticeButtonColor];
+        [_practiceButton setTitle:@"Practice" forState:UIControlStateNormal];
+        [_practiceButton.titleLabel setFont:[UIFont systemFontOfSize:18]];
+    }
+    return _practiceButton;
+}
+
+- (UILabel *)collectionName {
+    if (!_collectionName) {
+        _collectionName = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_collectionName setTextAlignment:NSTextAlignmentLeft];
+        [_collectionName setTextColor:MDCCollectionNameColor];
+        [_collectionName setFont:MDCCollectionNameFont];
+    }
+    return _collectionName;
+}
+
+- (UILabel *)collectionComment {
+    if (!_collectionComment) {
+        _collectionComment = [[UILabel alloc] initWithFrame:CGRectZero];
+        [_collectionComment setTextAlignment:NSTextAlignmentLeft];
+        [_collectionComment setTextColor:MDCCollectionCommentColor];
+        [_collectionComment setFont:MDCCollectionCommentFont];
+        
+    }
+    return _collectionComment;
+}
+
 #pragma mark - UIView Lifecycle
 
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     CGRect sb = self.bounds;
-    
-    self.tableView.frame = CGRectMake(sb.origin.x,
-                                      sb.origin.y + MDCCollectionViewHeight,
-                                      sb.size.width,
-                                      sb.size.height - MDCCollectionViewHeight);
     
     self.background.frame = CGRectMake(sb.origin.x, sb.origin.y, sb.size.width, MDCCollectionViewHeight);
     
@@ -122,11 +135,16 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
                                               sb.origin.y + 12.0 + 30.0,
                                               sb.size.width,
                                               25.0);
-    float buttonWidth = 184/2;
-    self.practiceButton.frame = CGRectMake(sb.size.width - buttonWidth - 14,
-                                           sb.origin.y + 12.0,
-                                           buttonWidth,
-                                           25.0);
+    float practiceButtonHeight = 115.0/2;
+    self.practiceButton.frame = CGRectMake(sb.origin.x,
+                                           MDCCollectionViewHeight,
+                                           sb.size.width,
+                                           practiceButtonHeight);
+    
+    self.tableView.frame = CGRectMake(sb.origin.x,
+                                      sb.origin.y + MDCCollectionViewHeight + practiceButtonHeight,
+                                      sb.size.width,
+                                      sb.size.height - MDCCollectionViewHeight);
 }
 
 

@@ -51,6 +51,7 @@
 - (MDCImagePickerTableViewCell *)imageCell {
     if (!_imageCell) {
         _imageCell = [MDCImagePickerTableViewCell new];
+        _imageCell.cropSize = CGSizeMake(MDCCollectionViewWidth, MDCCollectionViewHeight);
     }
     return _imageCell;
 }

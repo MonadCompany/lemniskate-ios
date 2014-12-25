@@ -24,6 +24,13 @@
     return self.pickedImage;
 }
 
+#pragma mark - Seters
+
+- (void)setImage:(UIImage *)image {
+    self.pickedImage = image;
+    [self.background setImage:image];
+}
+
 #pragma mark - General Lifecycle
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -94,7 +101,7 @@
     picker.delegate = self;
     
     picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
-    picker.cropSize = CGSizeMake(MDCCollectionViewWidth, MDCCollectionViewHeight);
+    picker.cropSize = self.cropSize;
     
     [self.photoPickerDelegate presentPhotoPicker:picker];
 }

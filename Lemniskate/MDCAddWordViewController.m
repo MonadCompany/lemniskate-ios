@@ -12,7 +12,7 @@
 #import "LemniWord.h"
 #import "LemniCollection.h"
 
-@interface MDCAddWordViewController ()
+@interface MDCAddWordViewController () <MDCPhotoPickerDelegate>
 @property (nonatomic, strong) LemniCollection *collection;
 @property (nonatomic, strong) LemniWord *word;
 @property (nonatomic, strong) MDCWordForm *form;
@@ -61,6 +61,7 @@
     if (!_form) {
         _form = [[MDCWordForm alloc] initWithFrame:[self.view bounds]];
         [_form setWord:self.word];
+        [_form setPhotoPickerDelegate:self];
     }
     return _form;
 }
@@ -81,6 +82,15 @@
     [self.view addSubview:self.form];
 }
 
+#pragma mark - DZNPhotoPickerControllerDelegate
+
+- (void)presentPhotoPicker:(DZNPhotoPickerController *)picker {
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)hidePhotoPicker {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 #pragma mark - Action handlers
 

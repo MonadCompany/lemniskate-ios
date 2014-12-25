@@ -8,7 +8,11 @@
 
 #import "MDCWordForm.h"
 #import "MDCLabeledFieldTableViewCell.h"
+#import "MDCImagePickerTableViewCell.h"
+#import "MDCAppDelegate.h"
 #import "LemniWord.h"
+#import "LemniWordPicture.h"
+
 
 @interface MDCWordForm () <UITableViewDataSource, UITableViewDelegate>
 
@@ -16,6 +20,7 @@
 
 @property (nonatomic, strong) MDCLabeledFieldTableViewCell *spellingCell;
 @property (nonatomic, strong) MDCLabeledFieldTableViewCell *meaningCell;
+@property (nonatomic, strong) MDCImagePickerTableViewCell  *imageCell;
 
 @end
 
@@ -49,9 +54,34 @@
     return _meaningCell;
 }
 
+- (MDCImagePickerTableViewCell *)imageCell {
+    if (!_imageCell) {
+        _imageCell = [MDCImagePickerTableViewCell new];
+        _imageCell.cropSize = CGSizeMake(500, 500);
+    }
+    return _imageCell;
+}
+
 - (LemniWord *)word {
     _word.spelling = self.spellingCell.content;
-    _word.meaning  = self.meaningCell.content;    
+    _word.meaning  = self.meaningCell.content;
+    
+    if (self.imageCell.image != nil) {
+        LemniWordPicture *picture = nil;
+        if (_word.pictures.count == 0) {
+            MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+            NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniWordPicture"
+                                                      inManagedObjectContext:delegate.managedObjectContext];
+            picture = (LemniWordPicture *)[[NSManagedObject alloc] initWithEntity:entity
+                                                 insertIntoManagedObjectContext:delegate.managedObjectContext];
+            [_word addPicturesObject:picture];
+        } else {
+            picture = [_word.pictures anyObject];
+        }
+        
+        picture.data = UIImagePNGRepresentation(self.imageCell.image);
+    }
+
     return _word;
 }
 
@@ -61,8 +91,17 @@
     _word = word;
     self.spellingCell.content = word.spelling;
     self.meaningCell.content  = word.meaning;
+    
+    if (word.pictures.count > 0) {
+        LemniWordPicture *picture = (LemniWordPicture *)[word.pictures anyObject];
+        UIImage *image = [UIImage imageWithData:picture.data];
+        self.imageCell.image = image;
+    }
 }
 
+- (void)setPhotoPickerDelegate:(id <MDCPhotoPickerDelegate>)delegate {
+    self.imageCell.photoPickerDelegate = delegate;
+}
 
 #pragma mark - UIView
 
@@ -82,19 +121,23 @@
 
 #pragma mark - UITableViewDataSource
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"";
-}
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0: return @"Info";
+        case 1: return @"Picture";
+        default: return @"";
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0: return 2;
-        case 1: return 0;
+        case 1: return 1;
         default: return 0;
     }
 }
@@ -111,7 +154,7 @@
 
         case 1:
             switch (indexPath.row) {
-                default: return nil;
+                default: return self.imageCell;
             }
 
         default: return nil;

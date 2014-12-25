@@ -11,6 +11,7 @@
 #import "MDCControlConstants.h"
 
 @interface MDCImagePickerTableViewCell : UITableViewCell
-@property (readonly, nonatomic, strong) UIImage *image;
+@property (nonatomic) CGSize cropSize;
+@property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) id <MDCPhotoPickerDelegate> photoPickerDelegate;
 @end

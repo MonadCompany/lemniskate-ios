@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDCImagePickerTableViewCell.h"
 
 @class LemniWord;
 
 @interface MDCWordForm : UIView
 @property (nonatomic, strong) LemniWord *word;
+@property (nonatomic, weak) id <MDCPhotoPickerDelegate> photoPickerDelegate;
 @end
