@@ -51,7 +51,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         self.collectionName = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.collectionName setText:collection.name];
         [self.collectionName setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionName setTextColor:[UIColor whiteColor]];
+        [self.collectionName setTextColor:MDCCollectionNameColor];
         [self.collectionName setFont:MDCCollectionNameFont];
         [self addSubview:self.collectionName];
         
@@ -59,7 +59,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         self.collectionComment = [[UILabel alloc] initWithFrame:CGRectZero];
         [self.collectionComment setText:collection.comment];
         [self.collectionComment setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionComment setTextColor:MDCLighterWhite];
+        [self.collectionComment setTextColor:MDCCollectionCommentColor];
         [self.collectionComment setFont:MDCCollectionCommentFont];
         [self addSubview:self.collectionComment];
         

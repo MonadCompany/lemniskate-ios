@@ -52,7 +52,7 @@
     if (self) {
         // Initialize & Configure Backgrounds
         UIImageView *background = [UIImageView new];
-        background.backgroundColor = [UIColor blackColor];
+        background.backgroundColor = [UIColor whiteColor];
         background.contentMode = UIViewContentModeScaleAspectFill;
         background.clipsToBounds = YES;
         self.backgroundView = background;
@@ -67,7 +67,7 @@
         self.collectionName = [[UILabel alloc] initWithFrame:CGRectZero];
         
         [self.collectionName setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionName setTextColor:[UIColor whiteColor]];
+        [self.collectionName setTextColor:MDCCollectionNameColor];
         [self.collectionName setFont:MDCCollectionNameFont];
         [self.contentView addSubview:self.collectionName];
 
@@ -75,7 +75,7 @@
         self.collectionComment = [[UILabel alloc] initWithFrame:CGRectZero];
         
         [self.collectionComment setTextAlignment:NSTextAlignmentLeft];
-        [self.collectionComment setTextColor:MDCLighterWhite];
+        [self.collectionComment setTextColor:MDCCollectionCommentColor];
         [self.collectionComment setFont:MDCCollectionCommentFont];
         [self.contentView addSubview:self.collectionComment];
 }

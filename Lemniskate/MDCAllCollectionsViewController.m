@@ -68,7 +68,7 @@
 
 - (NSString *)title
 {
-    return @"";
+    return @"Collections";
 }
 
 #pragma mark - UIViewController lifecycle
@@ -76,6 +76,8 @@
 - (void)loadView
 {
     [super loadView];
+    
+    self.navigationItem.titleView = [[UILabel alloc] init];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                           target:self

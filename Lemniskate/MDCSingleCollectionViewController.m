@@ -58,7 +58,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (NSString *)title
 {
-    return @"";
+    return self.collection.name;
 }
 
 - (MDCCollectionWithHeaderForm *)collectionForm {
@@ -74,6 +74,8 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 - (void)loadView
 {
     [super loadView];
+    
+    self.navigationItem.titleView = [[UILabel alloc] init];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                                                                            target:self

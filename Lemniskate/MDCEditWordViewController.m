@@ -54,9 +54,9 @@
 {
     [super loadView];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                                          target:self
-                                                                                          action:@selector(cancelBarButtonItemTap:)];
+//    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+//                                                                                          target:self
+//                                                                                          action:@selector(cancelBarButtonItemTap:)];
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                            target:self
                                                                                            action:@selector(saveBarButtonItemTap:)];
