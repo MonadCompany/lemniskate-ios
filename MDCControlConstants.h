@@ -18,10 +18,13 @@
 #define MDCCollectionNameFont ([UIFont boldSystemFontOfSize:16.0f])
 #define MDCCollectionCommentFont ([UIFont systemFontOfSize:14.0f])
 
+#define MDCCollectionBackgroundColor ([UIColor blackColor])
 #define MDCSemiopaqueBalck ([UIColor colorWithRed:0 green:0 blue:0 alpha:0.5])
 #define MDCLessSemiopaqueBalck ([UIColor colorWithRed:0 green:0 blue:0 alpha:0.3])
 
 #define MDCCollectionNameColor ([UIColor whiteColor])
 #define MDCCollectionCommentColor ([UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1])
+
+#define MDCPracticeButtonColor ([UIColor colorWithRed:126.0/256 green:211.0/256 blue:33.0/256 alpha:1.0])
 
 #endif

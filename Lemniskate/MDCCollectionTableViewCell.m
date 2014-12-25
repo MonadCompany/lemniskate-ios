@@ -52,13 +52,13 @@
     if (self) {
         // Initialize & Configure Backgrounds
         UIImageView *background = [UIImageView new];
-        background.backgroundColor = [UIColor whiteColor];
+        background.backgroundColor = MDCCollectionBackgroundColor;
         background.contentMode = UIViewContentModeScaleAspectFill;
         background.clipsToBounds = YES;
         self.backgroundView = background;
 
         UIImageView *selectedBackground = [UIImageView new];
-        selectedBackground.backgroundColor = [UIColor blackColor];
+        selectedBackground.backgroundColor = MDCCollectionBackgroundColor;
         selectedBackground.contentMode = UIViewContentModeScaleAspectFill;
         selectedBackground.clipsToBounds = YES;
         self.selectedBackgroundView = selectedBackground;

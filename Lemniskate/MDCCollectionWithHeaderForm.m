@@ -37,7 +37,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
     if (self) {
         // Set up background
         UIImageView *background = [UIImageView new];
-        background.backgroundColor = [UIColor blackColor];
+        background.backgroundColor = MDCCollectionBackgroundColor;
         background.contentMode = UIViewContentModeScaleAspectFill;
         background.clipsToBounds = YES;
         
@@ -67,10 +67,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
         self.practiceButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         self.practiceButton.layer.cornerRadius = 4;
         self.practiceButton.tintColor = [UIColor whiteColor];
-        [self.practiceButton setBackgroundColor:[UIColor colorWithRed:126.0/256
-                                                                green:211.0/256
-                                                                 blue:33.0/256
-                                                                alpha:1.0]];
+        [self.practiceButton setBackgroundColor:MDCPracticeButtonColor];
         [self.practiceButton setTitle:@"Practice" forState:UIControlStateNormal];
         [self addSubview:self.practiceButton];
 
