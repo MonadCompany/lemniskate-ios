@@ -11,7 +11,6 @@
 #import "MDCImagePickerTableViewCell.h"
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
-#import "LemniWordPicture.h"
 
 
 @interface MDCWordForm () <UITableViewDataSource, UITableViewDelegate>
@@ -67,19 +66,7 @@
     _word.meaning  = self.meaningCell.content;
     
     if (self.imageCell.image != nil) {
-        LemniWordPicture *picture = nil;
-        if (_word.pictures.count == 0) {
-            MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-            NSEntityDescription *entity = [NSEntityDescription entityForName:@"LemniWordPicture"
-                                                      inManagedObjectContext:delegate.managedObjectContext];
-            picture = (LemniWordPicture *)[[NSManagedObject alloc] initWithEntity:entity
-                                                 insertIntoManagedObjectContext:delegate.managedObjectContext];
-            [_word addPicturesObject:picture];
-        } else {
-            picture = [_word.pictures anyObject];
-        }
-        
-        picture.data = UIImagePNGRepresentation(self.imageCell.image);
+        _word.picture = UIImagePNGRepresentation(self.imageCell.image);
     }
 
     return _word;
@@ -92,9 +79,8 @@
     self.spellingCell.content = word.spelling;
     self.meaningCell.content  = word.meaning;
     
-    if (word.pictures.count > 0) {
-        LemniWordPicture *picture = (LemniWordPicture *)[word.pictures anyObject];
-        UIImage *image = [UIImage imageWithData:picture.data];
+    if (word.picture) {
+        UIImage *image = [UIImage imageWithData:word.picture];
         self.imageCell.image = image;
     }
 }

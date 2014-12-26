@@ -14,7 +14,6 @@
 #import "MDCCollectionWithHeaderForm.h"
 #import "MDCWordTableViewCell.h"
 #import "MDCPracticeViewController.h"
-#import "LemniWordPicture.h"
 #import "ZLSwipeableView.h"
 
 @interface MDCSingleCollectionViewController () <MDCCollectionPracticeDelegate>

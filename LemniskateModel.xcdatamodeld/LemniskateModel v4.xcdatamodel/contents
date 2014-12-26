@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C81f" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="LemniCollection" representedClassName="LemniCollection" syncable="YES">
+        <attribute name="background" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="created" attributeType="Date" indexed="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" indexed="YES" syncable="YES"/>
+        <relationship name="words" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LemniWord" inverseName="collection" inverseEntity="LemniWord" syncable="YES"/>
+    </entity>
+    <entity name="LemniWord" representedClassName="LemniWord" syncable="YES">
+        <attribute name="meaning" attributeType="String" syncable="YES"/>
+        <attribute name="picture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="pronunciation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="spelling" attributeType="String" syncable="YES"/>
+        <attribute name="usage" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="collection" maxCount="1" deletionRule="Nullify" destinationEntity="LemniCollection" inverseName="words" inverseEntity="LemniCollection" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="LemniCollection" positionX="-72" positionY="-72" width="144" height="118"/>
+        <element name="LemniWord" positionX="216" positionY="-72" width="144" height="135"/>
+    </elements>
+</model>

@@ -50,6 +50,12 @@
 - (void)loadView
 {
     [super loadView];
+    
+    self.view.backgroundColor = [UIColor colorWithRed:226.0/255
+                                                green:225.0/255
+                                                 blue:231.0/255
+                                                alpha:1];
+
     [self.view addSubview:self.swipeableView];
 }
 

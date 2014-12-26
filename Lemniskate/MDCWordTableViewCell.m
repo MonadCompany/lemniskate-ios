@@ -68,7 +68,7 @@
     CGSize imagesPresentedSize = self.imagesPresented.image.size;
     CGSize usagesPresentedSize = self.usagesPresented.image.size;
     
-    if (self.word.pictures.count > 0) {
+    if (self.word.picture) {
         self.imagesPresented.frame = CGRectMake(-10 + cb.origin.x + cb.size.width - imagesPresentedSize.width,
                                                 cb.origin.y + 43.0/2 - imagesPresentedSize.height/2,
                                                 imagesPresentedSize.width,
@@ -77,7 +77,7 @@
         self.imagesPresented.frame = CGRectZero;
     }
     
-    if (self.word.usages.count > 0) {
+    if (self.word.usage) {
         self.usagesPresented.frame = CGRectMake(-10 + cb.origin.x + cb.size.width - imagesPresentedSize.width - 10 - usagesPresentedSize.width,
                                                 cb.origin.y + 43.0/2 - usagesPresentedSize.height/2,
                                                 usagesPresentedSize.width,

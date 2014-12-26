@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDCPracticeViewController.h"
 
 @class LemniWord;
 
 @interface MDCWordCardView : UIView
 @property (nonatomic, strong) LemniWord *word;
+@property (nonatomic) MDCPracticeType practiceType;
 @end
