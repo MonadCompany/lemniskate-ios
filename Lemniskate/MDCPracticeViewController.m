@@ -84,6 +84,7 @@
     
     MDCWordCardView *view = [[MDCWordCardView alloc] initWithFrame:cardBounds];
     [view setWord:[self.collection.words anyObject]];
+    [view setPracticeType:self.practiceType];
     return view;
 }
 

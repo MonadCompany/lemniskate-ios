@@ -29,7 +29,7 @@
         _spelling = [[UILabel alloc] initWithFrame:self.bounds];
         [_spelling setFont:[UIFont fontWithName:@"American Typewriter" size:64]];
         [_spelling setTextAlignment:NSTextAlignmentCenter];
-        [_practiceTextContent setHidden:YES];
+        [_spelling setHidden:YES];
     }
     return _spelling;
 }
@@ -38,7 +38,7 @@
 {
     if (!_practiceTextContent) {
         _practiceTextContent = [[UILabel alloc] initWithFrame:self.bounds];
-        [_practiceTextContent setFont:[UIFont fontWithName:@"American Typewriter" size:64]];
+        [_practiceTextContent setFont:[UIFont fontWithName:@"American Typewriter" size:20]];
         [_practiceTextContent setTextAlignment:NSTextAlignmentCenter];
         [_practiceTextContent setHidden:YES];
     }
@@ -60,8 +60,6 @@
         _flipButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [_flipButton setBackgroundColor:[UIColor clearColor]];
         [_flipButton addTarget:self action:@selector(flipCard:) forControlEvents:UIControlEventTouchUpInside];
-        //        [_practiceButton setTitle:@"Practice" forState:UIControlStateNormal];
-        //        [_practiceButton.titleLabel setFont:[UIFont systemFontOfSize:18]];
     }
     return _flipButton;
 }
@@ -79,6 +77,22 @@
     if (word.picture) {
         UIImage *image = [UIImage imageWithData:word.picture];
         self.practiceImageContent.image = image;
+    }
+}
+
+- (void)setPracticeType:(MDCPracticeType)practiceType {
+    _practiceType = practiceType;
+    
+    switch (practiceType) {
+        case MDCPracticeTypePicture:
+            self.practiceImageContent.hidden = NO;
+            break;
+        case MDCPracticeTypeUsage:
+        case MDCPracticeTypeMeaning:
+            self.practiceTextContent.hidden = NO;
+            break;
+        default:
+            break;
     }
 }
 
@@ -131,7 +145,20 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.spelling.frame = self.bounds;
+    self.spelling.frame = [MDCWordCardView centerFrame:self.spelling.frame inBounds:self.bounds];
+    self.practiceImageContent.frame = [MDCWordCardView centerFrame:self.practiceImageContent.frame inBounds:self.bounds];;
+    self.practiceTextContent.frame  = [MDCWordCardView centerFrame:self.practiceTextContent.frame inBounds:self.bounds];;
+    
+    // take all space
+    self.flipButton.frame = self.bounds;
+}
+
++ (CGRect)centerFrame:(CGRect)frame inBounds:(CGRect)bounds
+{
+    return CGRectMake(bounds.origin.x + bounds.size.width / 2 - frame.size.width / 2,
+                      bounds.origin.y + bounds.size.height / 2 - frame.size.height / 2,
+                      frame.size.width,
+                      frame.size.height);
 }
 
 #pragma mark - Action Handlers

@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "RotationalNavigationController.h"
+#import "UINavigationController_RotationAdditions.h"
 
 @implementation UINavigationController (ForcedRotation)
 

@@ -11,7 +11,7 @@
 		3A1488101A49E35F001FA876 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A14880F1A49E35F001FA876 /* Media.xcassets */; };
 		3A14883E1A4B42EF001FA876 /* MDCCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A14883D1A4B42EF001FA876 /* MDCCollectionTableViewCell.m */; };
 		3A73148C1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73148B1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.m */; };
-		3A7314901A4B8ED900FBFF13 /* UIImageCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73148F1A4B8ED900FBFF13 /* UIImageCategories.m */; };
+		3A7314901A4B8ED900FBFF13 /* UIImage_ColorizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73148F1A4B8ED900FBFF13 /* UIImage_ColorizeAdditions.m */; };
 		3A7314941A4C8DCB00FBFF13 /* MDCEditWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7314931A4C8DCB00FBFF13 /* MDCEditWordViewController.m */; };
 		3A7314971A4CCA1A00FBFF13 /* MDCWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7314961A4CCA1A00FBFF13 /* MDCWordTableViewCell.m */; };
 		3A8C8B211A1E5F1800473967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B201A1E5F1800473967 /* main.m */; };
@@ -29,10 +29,11 @@
 		3AF156E11A3E499900E44FDB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3AF156E01A3E499900E44FDB /* Podfile */; };
 		3AF156E51A3E578000E44FDB /* MDCImagePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF156E41A3E578000E44FDB /* MDCImagePickerTableViewCell.m */; };
 		3AFDED2A1A4D7E6B0089205D /* MDCPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED291A4D7E6B0089205D /* MDCPracticeViewController.m */; };
-		3AFDED2D1A4D97E20089205D /* RotationalNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED2C1A4D97E20089205D /* RotationalNavigationController.m */; };
+		3AFDED2D1A4D97E20089205D /* UINavigationController_RotationAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED2C1A4D97E20089205D /* UINavigationController_RotationAdditions.m */; };
 		3AFDED301A4D9AF40089205D /* MDCWordCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED2F1A4D9AF40089205D /* MDCWordCardView.m */; };
 		3AFDED341A4DD3070089205D /* LemniCollection.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED331A4DD3070089205D /* LemniCollection.m */; };
 		3AFDED371A4DD3080089205D /* LemniWord.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED361A4DD3080089205D /* LemniWord.m */; };
+		3AFDED3A1A4DE0D70089205D /* NSMutableArray_QueueAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED391A4DE0D70089205D /* NSMutableArray_QueueAdditions.m */; };
 		652650405E242B681D5482B7 /* MDCCollectionForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526568B8F26FC87AA1AEC1C /* MDCCollectionForm.m */; };
 /* End PBXBuildFile section */
 
@@ -54,8 +55,8 @@
 		3A14883D1A4B42EF001FA876 /* MDCCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCCollectionTableViewCell.m; path = Lemniskate/MDCCollectionTableViewCell.m; sourceTree = "<group>"; };
 		3A73148A1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCCollectionWithHeaderForm.h; path = Lemniskate/MDCCollectionWithHeaderForm.h; sourceTree = "<group>"; };
 		3A73148B1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCCollectionWithHeaderForm.m; path = Lemniskate/MDCCollectionWithHeaderForm.m; sourceTree = "<group>"; };
-		3A73148F1A4B8ED900FBFF13 /* UIImageCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImageCategories.m; sourceTree = "<group>"; };
-		3A7314911A4B8FEC00FBFF13 /* UIImageCategories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageCategories.h; sourceTree = "<group>"; };
+		3A73148F1A4B8ED900FBFF13 /* UIImage_ColorizeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImage_ColorizeAdditions.m; sourceTree = "<group>"; };
+		3A7314911A4B8FEC00FBFF13 /* UIImage_ColorizeAdditions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImage_ColorizeAdditions.h; sourceTree = "<group>"; };
 		3A7314921A4C8DCB00FBFF13 /* MDCEditWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCEditWordViewController.h; path = Lemniskate/MDCEditWordViewController.h; sourceTree = "<group>"; };
 		3A7314931A4C8DCB00FBFF13 /* MDCEditWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCEditWordViewController.m; path = Lemniskate/MDCEditWordViewController.m; sourceTree = "<group>"; };
 		3A7314951A4CCA1A00FBFF13 /* MDCWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCWordTableViewCell.h; path = Lemniskate/MDCWordTableViewCell.h; sourceTree = "<group>"; };
@@ -90,8 +91,8 @@
 		3AF156E41A3E578000E44FDB /* MDCImagePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCImagePickerTableViewCell.m; sourceTree = "<group>"; };
 		3AFDED281A4D7E6B0089205D /* MDCPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCPracticeViewController.h; path = Lemniskate/MDCPracticeViewController.h; sourceTree = "<group>"; };
 		3AFDED291A4D7E6B0089205D /* MDCPracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCPracticeViewController.m; path = Lemniskate/MDCPracticeViewController.m; sourceTree = "<group>"; };
-		3AFDED2B1A4D97E20089205D /* RotationalNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotationalNavigationController.h; path = Lemniskate/RotationalNavigationController.h; sourceTree = "<group>"; };
-		3AFDED2C1A4D97E20089205D /* RotationalNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotationalNavigationController.m; path = Lemniskate/RotationalNavigationController.m; sourceTree = "<group>"; };
+		3AFDED2B1A4D97E20089205D /* UINavigationController_RotationAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UINavigationController_RotationAdditions.h; path = Lemniskate/UINavigationController_RotationAdditions.h; sourceTree = "<group>"; };
+		3AFDED2C1A4D97E20089205D /* UINavigationController_RotationAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UINavigationController_RotationAdditions.m; path = Lemniskate/UINavigationController_RotationAdditions.m; sourceTree = "<group>"; };
 		3AFDED2E1A4D9AF40089205D /* MDCWordCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCWordCardView.h; path = Lemniskate/MDCWordCardView.h; sourceTree = "<group>"; };
 		3AFDED2F1A4D9AF40089205D /* MDCWordCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCWordCardView.m; path = Lemniskate/MDCWordCardView.m; sourceTree = "<group>"; };
 		3AFDED311A4DD1EE0089205D /* LemniskateModel v4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LemniskateModel v4.xcdatamodel"; sourceTree = "<group>"; };
@@ -99,6 +100,8 @@
 		3AFDED331A4DD3070089205D /* LemniCollection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LemniCollection.m; path = Lemniskate/LemniCollection.m; sourceTree = "<group>"; };
 		3AFDED351A4DD3080089205D /* LemniWord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LemniWord.h; path = Lemniskate/LemniWord.h; sourceTree = "<group>"; };
 		3AFDED361A4DD3080089205D /* LemniWord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LemniWord.m; path = Lemniskate/LemniWord.m; sourceTree = "<group>"; };
+		3AFDED381A4DE0D70089205D /* NSMutableArray_QueueAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSMutableArray_QueueAdditions.h; sourceTree = "<group>"; };
+		3AFDED391A4DE0D70089205D /* NSMutableArray_QueueAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSMutableArray_QueueAdditions.m; sourceTree = "<group>"; };
 		6072F0DFB0393D27B5C03717 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		652651FB66F6F7AD216AEC2C /* MDCCollectionForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCCollectionForm.h; sourceTree = "<group>"; };
 		6526568B8F26FC87AA1AEC1C /* MDCCollectionForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCCollectionForm.m; sourceTree = "<group>"; };
@@ -151,10 +154,12 @@
 		3A73148E1A4B8EBB00FBFF13 /* Custom Categories */ = {
 			isa = PBXGroup;
 			children = (
-				3A7314911A4B8FEC00FBFF13 /* UIImageCategories.h */,
-				3A73148F1A4B8ED900FBFF13 /* UIImageCategories.m */,
-				3AFDED2B1A4D97E20089205D /* RotationalNavigationController.h */,
-				3AFDED2C1A4D97E20089205D /* RotationalNavigationController.m */,
+				3A7314911A4B8FEC00FBFF13 /* UIImage_ColorizeAdditions.h */,
+				3A73148F1A4B8ED900FBFF13 /* UIImage_ColorizeAdditions.m */,
+				3AFDED2B1A4D97E20089205D /* UINavigationController_RotationAdditions.h */,
+				3AFDED2C1A4D97E20089205D /* UINavigationController_RotationAdditions.m */,
+				3AFDED381A4DE0D70089205D /* NSMutableArray_QueueAdditions.h */,
+				3AFDED391A4DE0D70089205D /* NSMutableArray_QueueAdditions.m */,
 			);
 			name = "Custom Categories";
 			sourceTree = "<group>";
@@ -460,7 +465,7 @@
 				3AA495521A366BED00E8C439 /* MDCWordForm.m in Sources */,
 				3A8C8B4A1A1E6D3200473967 /* MDCAddCollectionViewController.m in Sources */,
 				3A8C8B271A1E5F1800473967 /* MDCAllCollectionsViewController.m in Sources */,
-				3A7314901A4B8ED900FBFF13 /* UIImageCategories.m in Sources */,
+				3A7314901A4B8ED900FBFF13 /* UIImage_ColorizeAdditions.m in Sources */,
 				3ACE58251A2920BC00AD1ECB /* MDCLabeledFieldTableViewCell.m in Sources */,
 				3A8C8B241A1E5F1800473967 /* MDCAppDelegate.m in Sources */,
 				3A7314971A4CCA1A00FBFF13 /* MDCWordTableViewCell.m in Sources */,
@@ -469,6 +474,7 @@
 				3A14883E1A4B42EF001FA876 /* MDCCollectionTableViewCell.m in Sources */,
 				3AF156E51A3E578000E44FDB /* MDCImagePickerTableViewCell.m in Sources */,
 				3ACE58421A2A6C1D00AD1ECB /* MDCSingleCollectionViewController.m in Sources */,
+				3AFDED3A1A4DE0D70089205D /* NSMutableArray_QueueAdditions.m in Sources */,
 				3A7314941A4C8DCB00FBFF13 /* MDCEditWordViewController.m in Sources */,
 				3AFDED301A4D9AF40089205D /* MDCWordCardView.m in Sources */,
 				3AA4954F1A366BB500E8C439 /* MDCAddWordViewController.m in Sources */,
@@ -476,7 +482,7 @@
 				3AFDED2A1A4D7E6B0089205D /* MDCPracticeViewController.m in Sources */,
 				3AFDED341A4DD3070089205D /* LemniCollection.m in Sources */,
 				652650405E242B681D5482B7 /* MDCCollectionForm.m in Sources */,
-				3AFDED2D1A4D97E20089205D /* RotationalNavigationController.m in Sources */,
+				3AFDED2D1A4D97E20089205D /* UINavigationController_RotationAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

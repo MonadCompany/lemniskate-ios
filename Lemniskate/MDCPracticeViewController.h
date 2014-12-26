@@ -19,7 +19,7 @@ typedef NS_ENUM(NSInteger, MDCPracticeType) {
 @interface MDCPracticeViewController : UIViewController
 
 @property (nonatomic, strong) LemniCollection *collection;
-@property (nonatomic) MDCPracticeType *practiceType;
+@property (nonatomic) MDCPracticeType practiceType;
 
 - (instancetype)initWithType:(MDCPracticeType)type collection:(LemniCollection *)collection;
 + (instancetype)controllerWithType:(MDCPracticeType)type collection:(LemniCollection *)collection;

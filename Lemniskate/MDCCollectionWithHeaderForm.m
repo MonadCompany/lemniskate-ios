@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 MonadCompany. All rights reserved.
 //
 
-#import "UIImageCategories.h"
+#import "UIImage_ColorizeAdditions.h"
 #import "LemniCollection.h"
 #import "MDCControlConstants.h"
 #import "MDCCollectionWithHeaderForm.h"
