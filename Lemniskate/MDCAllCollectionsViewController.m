@@ -71,7 +71,7 @@
     return @"Collections";
 }
 
-#pragma mark - UIViewController lifecycle
+#pragma mark - UIViewController
 
 - (void)loadView
 {
@@ -94,6 +94,11 @@
 {
     [super viewDidLoad];    
     [self.tableView reloadData];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - UITableViewDataSource

@@ -32,6 +32,9 @@
 		3ACE58421A2A6C1D00AD1ECB /* MDCSingleCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3ACE58411A2A6C1D00AD1ECB /* MDCSingleCollectionViewController.m */; };
 		3AF156E11A3E499900E44FDB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3AF156E01A3E499900E44FDB /* Podfile */; };
 		3AF156E51A3E578000E44FDB /* MDCImagePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF156E41A3E578000E44FDB /* MDCImagePickerTableViewCell.m */; };
+		3AFDED2A1A4D7E6B0089205D /* MDCPracticeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED291A4D7E6B0089205D /* MDCPracticeViewController.m */; };
+		3AFDED2D1A4D97E20089205D /* RotationalNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED2C1A4D97E20089205D /* RotationalNavigationController.m */; };
+		3AFDED301A4D9AF40089205D /* MDCWordCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AFDED2F1A4D9AF40089205D /* MDCWordCardView.m */; };
 		652650405E242B681D5482B7 /* MDCCollectionForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 6526568B8F26FC87AA1AEC1C /* MDCCollectionForm.m */; };
 /* End PBXBuildFile section */
 
@@ -95,6 +98,12 @@
 		3AF156E21A3E4D9400E44FDB /* LemniskateModel v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "LemniskateModel v3.xcdatamodel"; sourceTree = "<group>"; };
 		3AF156E31A3E578000E44FDB /* MDCImagePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCImagePickerTableViewCell.h; sourceTree = "<group>"; };
 		3AF156E41A3E578000E44FDB /* MDCImagePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCImagePickerTableViewCell.m; sourceTree = "<group>"; };
+		3AFDED281A4D7E6B0089205D /* MDCPracticeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCPracticeViewController.h; path = Lemniskate/MDCPracticeViewController.h; sourceTree = "<group>"; };
+		3AFDED291A4D7E6B0089205D /* MDCPracticeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCPracticeViewController.m; path = Lemniskate/MDCPracticeViewController.m; sourceTree = "<group>"; };
+		3AFDED2B1A4D97E20089205D /* RotationalNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RotationalNavigationController.h; path = Lemniskate/RotationalNavigationController.h; sourceTree = "<group>"; };
+		3AFDED2C1A4D97E20089205D /* RotationalNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RotationalNavigationController.m; path = Lemniskate/RotationalNavigationController.m; sourceTree = "<group>"; };
+		3AFDED2E1A4D9AF40089205D /* MDCWordCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCWordCardView.h; path = Lemniskate/MDCWordCardView.h; sourceTree = "<group>"; };
+		3AFDED2F1A4D9AF40089205D /* MDCWordCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCWordCardView.m; path = Lemniskate/MDCWordCardView.m; sourceTree = "<group>"; };
 		6072F0DFB0393D27B5C03717 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		652651FB66F6F7AD216AEC2C /* MDCCollectionForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCCollectionForm.h; sourceTree = "<group>"; };
 		6526568B8F26FC87AA1AEC1C /* MDCCollectionForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCCollectionForm.m; sourceTree = "<group>"; };
@@ -147,8 +156,10 @@
 		3A73148E1A4B8EBB00FBFF13 /* Custom Categories */ = {
 			isa = PBXGroup;
 			children = (
-				3A73148F1A4B8ED900FBFF13 /* UIImageCategories.m */,
 				3A7314911A4B8FEC00FBFF13 /* UIImageCategories.h */,
+				3A73148F1A4B8ED900FBFF13 /* UIImageCategories.m */,
+				3AFDED2B1A4D97E20089205D /* RotationalNavigationController.h */,
+				3AFDED2C1A4D97E20089205D /* RotationalNavigationController.m */,
 			);
 			name = "Custom Categories";
 			sourceTree = "<group>";
@@ -250,7 +261,7 @@
 		3ACE58451A2A6C6000AD1ECB /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				3AFDED271A4CE8660089205D /* Cards */,
+				3AFDED271A4CE8660089205D /* Practice */,
 				3A7314881A4B80A800FBFF13 /* Collections */,
 				3A7314891A4B80B100FBFF13 /* Words */,
 			);
@@ -286,15 +297,19 @@
 		3AFDED261A4CE39C0089205D /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				3AFDED2E1A4D9AF40089205D /* MDCWordCardView.h */,
+				3AFDED2F1A4D9AF40089205D /* MDCWordCardView.m */,
 			);
 			name = Cards;
 			sourceTree = "<group>";
 		};
-		3AFDED271A4CE8660089205D /* Cards */ = {
+		3AFDED271A4CE8660089205D /* Practice */ = {
 			isa = PBXGroup;
 			children = (
+				3AFDED281A4D7E6B0089205D /* MDCPracticeViewController.h */,
+				3AFDED291A4D7E6B0089205D /* MDCPracticeViewController.m */,
 			);
-			name = Cards;
+			name = Practice;
 			sourceTree = "<group>";
 		};
 		AC6A1D56B5D45DB6C75E7B29 /* Frameworks */ = {
@@ -466,10 +481,13 @@
 				3AF156E51A3E578000E44FDB /* MDCImagePickerTableViewCell.m in Sources */,
 				3ACE58421A2A6C1D00AD1ECB /* MDCSingleCollectionViewController.m in Sources */,
 				3A7314941A4C8DCB00FBFF13 /* MDCEditWordViewController.m in Sources */,
+				3AFDED301A4D9AF40089205D /* MDCWordCardView.m in Sources */,
 				3AA4954F1A366BB500E8C439 /* MDCAddWordViewController.m in Sources */,
 				3A73148C1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.m in Sources */,
+				3AFDED2A1A4D7E6B0089205D /* MDCPracticeViewController.m in Sources */,
 				652650405E242B681D5482B7 /* MDCCollectionForm.m in Sources */,
 				3A1488341A4A2723001FA876 /* LemniWord.m in Sources */,
+				3AFDED2D1A4D97E20089205D /* RotationalNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

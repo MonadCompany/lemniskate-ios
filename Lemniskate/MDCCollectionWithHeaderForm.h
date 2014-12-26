@@ -10,23 +10,23 @@
 #import <CoreData/CoreData.h>
 
 @class LemniCollection;
-typedef id <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> MDCLemniCollectionHeaderUIViewDelegate;
+typedef id <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> MDCLemniCollectionDataDelegate;
 
-@protocol MDCCollectionWithHeaderFormDelegate <NSObject>
+@protocol MDCCollectionPracticeDelegate <NSObject>
 - (void)startPractice:(id)sender;
 @end
 
 @interface MDCCollectionWithHeaderForm : UIView
 
-@property (nonatomic, assign) id <MDCCollectionWithHeaderFormDelegate> practiceDelegate;
+@property (nonatomic, assign) id <MDCCollectionPracticeDelegate> practiceDelegate;
 
 - (instancetype)initWithFrame:(CGRect)frame
                    collection:(LemniCollection *)collection
-                     delegate:(MDCLemniCollectionHeaderUIViewDelegate) delegate;
+                 dataDelegate:(MDCLemniCollectionDataDelegate) delegate;
 
 + (instancetype)viewWithFrame:(CGRect)frame
                    collection:(LemniCollection *)collection
-                     delegate:(MDCLemniCollectionHeaderUIViewDelegate) delegate;
+                 dataDelegate:(MDCLemniCollectionDataDelegate) delegate;
 
 - (UITableView *)tableView;
 

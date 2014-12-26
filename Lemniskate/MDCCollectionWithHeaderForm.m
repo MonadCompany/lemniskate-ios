@@ -30,7 +30,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame
                    collection:(LemniCollection *)collection
-                     delegate:(MDCLemniCollectionHeaderUIViewDelegate) delegate
+                 dataDelegate:(MDCLemniCollectionDataDelegate) delegate
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -68,9 +68,9 @@
 
 + (instancetype)viewWithFrame:(CGRect)frame
                    collection:(LemniCollection *)collection
-                     delegate:(MDCLemniCollectionHeaderUIViewDelegate) delegate
+                 dataDelegate:(MDCLemniCollectionDataDelegate) delegate
 {
-    return [[self alloc] initWithFrame:frame collection:collection delegate:delegate];
+    return [[self alloc] initWithFrame:frame collection:collection dataDelegate:delegate];
 }
 
 #pragma mark - Getters

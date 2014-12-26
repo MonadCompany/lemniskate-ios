@@ -34,7 +34,7 @@
 }
 
 
-#pragma mark - UIViewController lifecycle
+#pragma mark - UIViewController
 
 - (void)loadView
 {
@@ -49,6 +49,11 @@
                                                                                            action:@selector(doneBarButtonItemTap:)];
 
     [self.view addSubview:self.form];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - DZNPhotoPickerControllerDelegate

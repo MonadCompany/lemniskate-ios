@@ -13,10 +13,11 @@
 #import "MDCEditWordViewController.h"
 #import "MDCCollectionWithHeaderForm.h"
 #import "MDCWordTableViewCell.h"
+#import "MDCPracticeViewController.h"
 #import "LemniWordPicture.h"
 #import "ZLSwipeableView.h"
 
-@interface MDCSingleCollectionViewController () <MDCCollectionWithHeaderFormDelegate>
+@interface MDCSingleCollectionViewController () <MDCCollectionPracticeDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @property (nonatomic, strong) MDCCollectionWithHeaderForm *collectionForm;
 @end
@@ -64,13 +65,16 @@
 
 - (MDCCollectionWithHeaderForm *)collectionForm {
     if (!_collectionForm) {
-        _collectionForm = [MDCCollectionWithHeaderForm viewWithFrame:[self.view bounds] collection:self.collection delegate:self];
+        _collectionForm = [MDCCollectionWithHeaderForm viewWithFrame:[self.view bounds]
+                                                          collection:self.collection
+                                                        dataDelegate:self];
+        _collectionForm.practiceDelegate = self;
     }
     return _collectionForm;
 }
 
 
-#pragma mark - ViewController Lifecycle
+#pragma mark - ViewController
 
 - (void)loadView
 {
@@ -88,6 +92,11 @@
 {
     [super viewDidLoad];
     [self.collectionForm.tableView reloadData];
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
 }
 
 #pragma mark - UITableViewDataSource
@@ -191,9 +200,10 @@
 
 - (void)startPractice:(MDCCollectionWithHeaderForm *)sender
 {
-    NSLog(@"START PRACTICE");
-    ZLSwipeableView *swipeableView = [[ZLSwipeableView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:swipeableView];
+    MDCPracticeViewController *viewController = [MDCPracticeViewController controllerWithType:MDCPracticeTypeMeaning
+                                                                                   collection:self.collection];
+    viewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:viewController animated:YES completion:nil];
 }
 
 #pragma mark - Navigation

@@ -138,9 +138,7 @@
     }
 }
 
-/*
- For image cell set higher height
- */
+/* For image cell set higher height */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     switch (indexPath.section) {
