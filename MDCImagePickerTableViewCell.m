@@ -95,15 +95,37 @@
 
 - (void)addImageButtonTap:(UIBarButtonItem *)sender
 {
-    DZNPhotoPickerController *picker = [[DZNPhotoPickerController alloc] init];
-    picker.supportedServices = DZNPhotoPickerControllerService500px | DZNPhotoPickerControllerServiceFlickr;
-    picker.allowsEditing = YES;
-    picker.delegate = self;
+    UIAlertController *popup = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *remote = [UIAlertAction actionWithTitle:@"Internet" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        DZNPhotoPickerController *picker = [[DZNPhotoPickerController alloc] init];
+        picker.supportedServices = DZNPhotoPickerControllerServiceFlickr;// | DZNPhotoPickerControllerService500px;
+        picker.allowsEditing = YES;
+        picker.delegate = self;
     
-    picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
-    picker.cropSize = self.cropSize;
+        picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
+        picker.cropSize = self.cropSize;
     
-    [self.photoPickerDelegate presentPhotoPicker:picker];
+        [self.photoPickerDelegate presentPhotoPicker:picker];
+    }];
+    [popup addAction:remote];
+
+    UIAlertAction *local = [UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // present default image picker
+    }];
+    [popup addAction:local];
+
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // present default image picker
+    }];
+    [popup addAction:camera];
+
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {}];
+    [popup addAction:cancel];
+
+    [self.photoPickerDelegate presentActionSheet:popup];
+    
 }
 
 

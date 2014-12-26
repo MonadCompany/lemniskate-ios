@@ -9,6 +9,7 @@
 #import "DZNPhotoPickerController.h"
 
 @protocol MDCPhotoPickerDelegate <NSObject>
+- (void)presentActionSheet:(UIAlertController *)controller;
 - (void)presentPhotoPicker:(DZNPhotoPickerController *)picker;
 - (void)hidePhotoPicker;
 @end

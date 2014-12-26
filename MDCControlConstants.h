@@ -11,7 +11,7 @@
 
 // Collection View
 
-#define MDCCollectionViewAspect 0.285
+#define MDCCollectionViewAspect (43.0/640*4)
 #define MDCCollectionViewWidth ([[UIScreen mainScreen] bounds].size.width)
 #define MDCCollectionViewHeight (MDCCollectionViewWidth * MDCCollectionViewAspect)
 

@@ -84,6 +84,10 @@
 
 #pragma mark - DZNPhotoPickerControllerDelegate
 
+- (void)presentActionSheet:(UIAlertController *)controller {
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 - (void)presentPhotoPicker:(DZNPhotoPickerController *)picker {
     [self presentViewController:picker animated:YES completion:nil];
 }

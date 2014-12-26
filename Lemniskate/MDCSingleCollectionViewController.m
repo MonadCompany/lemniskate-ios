@@ -12,14 +12,13 @@
 #import "MDCAddWordViewController.h"
 #import "MDCEditWordViewController.h"
 #import "MDCCollectionWithHeaderForm.h"
+#import "MDCWordTableViewCell.h"
 #import "LemniWordPicture.h"
 
 @interface MDCSingleCollectionViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @property (nonatomic, strong) MDCCollectionWithHeaderForm *collectionForm;
 @end
-
-static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 @implementation MDCSingleCollectionViewController
 
@@ -108,18 +107,10 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WCCellIdentifier];
+    MDCWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:MDCWordTableCellViewReuseIdentifier];
     LemniWord *word = (LemniWord *)[self.dataController objectAtIndexPath:indexPath];
-    
-    cell.textLabel.text = word.spelling;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-//    if (word.pictures.count > 0) {
-//        LemniWordPicture *picture = (LemniWordPicture *)[word.pictures anyObject];
-//        UIImage *image = [UIImage imageWithData:picture.data];
-//
-//        [cell.imageView setImage:image];
-//    }
+
+    [cell setWord:word];
     
     return cell;
 }

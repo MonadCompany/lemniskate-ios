@@ -17,6 +17,7 @@
 		3A73148C1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73148B1A4B85B800FBFF13 /* MDCCollectionWithHeaderForm.m */; };
 		3A7314901A4B8ED900FBFF13 /* UIImageCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73148F1A4B8ED900FBFF13 /* UIImageCategories.m */; };
 		3A7314941A4C8DCB00FBFF13 /* MDCEditWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7314931A4C8DCB00FBFF13 /* MDCEditWordViewController.m */; };
+		3A7314971A4CCA1A00FBFF13 /* MDCWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7314961A4CCA1A00FBFF13 /* MDCWordTableViewCell.m */; };
 		3A8C8B211A1E5F1800473967 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B201A1E5F1800473967 /* main.m */; };
 		3A8C8B241A1E5F1800473967 /* MDCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B231A1E5F1800473967 /* MDCAppDelegate.m */; };
 		3A8C8B271A1E5F1800473967 /* MDCAllCollectionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C8B261A1E5F1800473967 /* MDCAllCollectionsViewController.m */; };
@@ -64,6 +65,8 @@
 		3A7314911A4B8FEC00FBFF13 /* UIImageCategories.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImageCategories.h; sourceTree = "<group>"; };
 		3A7314921A4C8DCB00FBFF13 /* MDCEditWordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCEditWordViewController.h; path = Lemniskate/MDCEditWordViewController.h; sourceTree = "<group>"; };
 		3A7314931A4C8DCB00FBFF13 /* MDCEditWordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCEditWordViewController.m; path = Lemniskate/MDCEditWordViewController.m; sourceTree = "<group>"; };
+		3A7314951A4CCA1A00FBFF13 /* MDCWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCWordTableViewCell.h; path = Lemniskate/MDCWordTableViewCell.h; sourceTree = "<group>"; };
+		3A7314961A4CCA1A00FBFF13 /* MDCWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCWordTableViewCell.m; path = Lemniskate/MDCWordTableViewCell.m; sourceTree = "<group>"; };
 		3A8C8B1B1A1E5F1800473967 /* Lemniskate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemniskate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C8B1F1A1E5F1800473967 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8C8B201A1E5F1800473967 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 				3ACE58241A2920BC00AD1ECB /* MDCLabeledFieldTableViewCell.m */,
 				3AF156E31A3E578000E44FDB /* MDCImagePickerTableViewCell.h */,
 				3AF156E41A3E578000E44FDB /* MDCImagePickerTableViewCell.m */,
+				3A7314951A4CCA1A00FBFF13 /* MDCWordTableViewCell.h */,
+				3A7314961A4CCA1A00FBFF13 /* MDCWordTableViewCell.m */,
 				3A14883C1A4B42EF001FA876 /* MDCCollectionTableViewCell.h */,
 				3A14883D1A4B42EF001FA876 /* MDCCollectionTableViewCell.m */,
 			);
@@ -439,6 +444,7 @@
 				3A7314901A4B8ED900FBFF13 /* UIImageCategories.m in Sources */,
 				3ACE58251A2920BC00AD1ECB /* MDCLabeledFieldTableViewCell.m in Sources */,
 				3A8C8B241A1E5F1800473967 /* MDCAppDelegate.m in Sources */,
+				3A7314971A4CCA1A00FBFF13 /* MDCWordTableViewCell.m in Sources */,
 				3ACE582C1A2931BD00AD1ECB /* LemniskateModel.xcdatamodeld in Sources */,
 				3A1488311A4A2722001FA876 /* LemniWordPicture.m in Sources */,
 				3A8C8B211A1E5F1800473967 /* main.m in Sources */,

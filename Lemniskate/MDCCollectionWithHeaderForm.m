@@ -10,6 +10,7 @@
 #import "LemniCollection.h"
 #import "MDCControlConstants.h"
 #import "MDCCollectionWithHeaderForm.h"
+#import "MDCWordTableViewCell.h"
 
 @interface MDCCollectionWithHeaderForm ()
 
@@ -22,8 +23,6 @@
 @property (nonatomic, strong) UIButton    *practiceButton;
 
 @end
-
-static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 
 @implementation MDCCollectionWithHeaderForm
 
@@ -80,7 +79,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
 {
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
-        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:WCCellIdentifier];
+        [_tableView registerClass:[MDCWordTableViewCell class] forCellReuseIdentifier:MDCWordTableCellViewReuseIdentifier];
     }
     return _tableView;
 }
@@ -135,7 +134,7 @@ static NSString *const WCCellIdentifier = @"WCCellIdentifier";
                                               sb.origin.y + 12.0 + 30.0,
                                               sb.size.width,
                                               25.0);
-    float practiceButtonHeight = 115.0/2;
+    float practiceButtonHeight = 43;
     self.practiceButton.frame = CGRectMake(sb.origin.x,
                                            MDCCollectionViewHeight,
                                            sb.size.width,

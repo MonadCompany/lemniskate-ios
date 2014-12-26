@@ -77,7 +77,8 @@
 {
     [super loadView];
     
-    self.navigationItem.titleView = [[UILabel alloc] init];
+    UIImageView *logo = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"logo-icon"]];
+    self.navigationItem.titleView = logo;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                           target:self
