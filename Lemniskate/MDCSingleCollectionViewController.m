@@ -139,6 +139,15 @@
     [self navigateToWord:word];
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObject *managedObject = [self.dataController objectAtIndexPath:indexPath];
+        MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+        [delegate.managedObjectContext deleteObject:managedObject];    
+        [delegate.managedObjectContext save:nil];
+    }
+}
+
 #pragma mark - NSFetchedResultsControllerDelegate
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {

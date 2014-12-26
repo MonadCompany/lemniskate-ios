@@ -34,6 +34,7 @@
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
         _tableView.dataSource = self;
+        _tableView.delegate = self;
         _tableView.allowsSelection = NO;
     }
     return _tableView;
@@ -111,19 +112,11 @@
     return 2;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    switch (section) {
-        case 0: return @"Info";
-        case 1: return @"Picture";
-        default: return @"";
-    }
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0: return 2;
-        case 1: return 1;
+//        case 1: return 1;
         default: return 0;
     }
 }
