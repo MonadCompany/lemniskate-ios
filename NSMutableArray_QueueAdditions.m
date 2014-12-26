@@ -9,9 +9,11 @@
 #import "NSMutableArray_QueueAdditions.h"
 
 @implementation NSMutableArray (QueueAdditions)
+
 // Queues are first-in-first-out, so we remove objects from the head
-- (id) dequeue {
-    // if ([self count] == 0) return nil; // to avoid raising exception (Quinn)
+- (id) dequeue
+{
+    if ([self count] == 0) return nil; // to avoid raising exception (Quinn)
     id headObject = [self objectAtIndex:0];
     if (headObject != nil) {
         [self removeObjectAtIndex:0];
@@ -20,8 +22,19 @@
 }
 
 // Add to the tail of the queue (no one likes it when people cut in line!)
-- (void) enqueue:(id)anObject {
+- (void) enqueue:(id)anObject
+{
     [self addObject:anObject];
-    //this method automatically adds to the end of the array
 }
+
+- (void)shuffle
+{
+    NSUInteger count = [self count];
+    for (NSUInteger i = 0; i < count; ++i) {
+        NSInteger remainingCount = count - i;
+        NSInteger exchangeIndex = i + arc4random_uniform((u_int32_t )remainingCount);
+        [self exchangeObjectAtIndex:i withObjectAtIndex:exchangeIndex];
+    }
+}
+
 @end

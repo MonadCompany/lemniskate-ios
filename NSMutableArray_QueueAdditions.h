@@ -11,4 +11,5 @@
 @interface NSMutableArray (QueueAdditions)
 - (id) dequeue;
 - (void) enqueue:(id)obj;
+- (void) shuffle;
 @end

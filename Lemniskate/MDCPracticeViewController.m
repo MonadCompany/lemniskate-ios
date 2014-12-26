@@ -10,9 +10,17 @@
 #import "ZLSwipeableView.h"
 #import "LemniCollection.h"
 #import "MDCWordCardView.h"
+#import "NSMutableArray_QueueAdditions.h"
 
 @interface MDCPracticeViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
+
 @property (nonatomic, strong) ZLSwipeableView *swipeableView;
+
+// this will hold words that left to show in this practice
+@property (nonatomic, strong) NSMutableArray *wordsLeft;
+// this will countdown untill no words left, because words are dequeued in advance
+@property (nonatomic) NSInteger dismissCountdown;
+
 @end
 
 
@@ -25,6 +33,11 @@
     self = [super init];
     if (self) {
         self.collection = collection;
+        
+        self.wordsLeft = [NSMutableArray arrayWithArray:[collection.words allObjects]];
+        [self.wordsLeft shuffle];
+        
+        self.dismissCountdown = [collection.words count];
     }
     return self;
 }
@@ -81,22 +94,30 @@
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
     CGRect selfBouds = [self.view bounds];
     CGRect cardBounds = CGRectMake(50, 50, selfBouds.size.width - 100, selfBouds.size.height - 100);
-    
-    MDCWordCardView *view = [[MDCWordCardView alloc] initWithFrame:cardBounds];
-    [view setWord:[self.collection.words anyObject]];
-    [view setPracticeType:self.practiceType];
-    return view;
+
+    if (self.wordsLeft.count > 0) {
+        LemniWord *word = (LemniWord *)[self.wordsLeft dequeue];
+
+        MDCWordCardView *view = [[MDCWordCardView alloc] initWithFrame:cardBounds];
+        [view setWord:word];
+        [view setPracticeType:self.practiceType];
+        return view;
+    } else {
+        return nil;
+    }
 }
 
 #pragma mark - ZLSwipeableViewDelegate
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeLeft:(UIView *)view
 {
+    [self cardSwiped];
     NSLog(@"did swipe left");
 }
 
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didSwipeRight:(UIView *)view
 {
+    [self cardSwiped];
     NSLog(@"did swipe right");
 }
 
@@ -113,6 +134,22 @@
 }
 - (void)swipeableView:(ZLSwipeableView *)swipeableView didEndSwipingView:(UIView *)view atLocation:(CGPoint)location {
 //    NSLog(@"did start swiping at location: x %f, y%f", location.x, location.y);
+}
+
+#pragma mark - Helpers
+
+- (void)cardSwiped {
+    self.dismissCountdown -= 1;
+    NSLog(@"Countdown is %lu", self.dismissCountdown);
+    if (self.dismissCountdown == 0) {
+        
+        // wait sec and then dismiss
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
+        
+        
+    }
 }
 
 @end
