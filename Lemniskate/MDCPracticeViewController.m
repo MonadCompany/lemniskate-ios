@@ -39,7 +39,7 @@
 - (ZLSwipeableView *)swipeableView {
     if (!_swipeableView) {
         _swipeableView = [[ZLSwipeableView alloc] initWithFrame:self.view.bounds];
-        _swipeableView.dataSource = self;
+        _swipeableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
         _swipeableView.delegate = self;
     }
     return _swipeableView;
@@ -58,6 +58,12 @@
     [super viewDidLoad];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    // do this here because setting dataSource will cause view to prefetch cards, which will call delegate (self)
+    // as delegate uses current bouds, we need to do this after view is loaded and rotated to correct position
+    [self.swipeableView setDataSource:self];
+}
+
 - (NSUInteger)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskLandscape;
@@ -67,16 +73,8 @@
 #pragma mark - ZLSwipeableViewDataSource
 
 - (UIView *)nextViewForSwipeableView:(ZLSwipeableView *)swipeableView {
-//    CGFloat hue        = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
-//    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
-//    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
-//    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
-//    
-//    UIView *view = [[UIView alloc] initWithFrame:swipeableView.frame];
-//    [view setBackgroundColor:color];
-    
     CGRect selfBouds = [self.view bounds];
-    CGRect cardBounds = CGRectMake(50, 50, selfBouds.size.height - 100, selfBouds.size.width - 100);
+    CGRect cardBounds = CGRectMake(50, 50, selfBouds.size.width - 100, selfBouds.size.height - 100);
     
     MDCWordCardView *view = [[MDCWordCardView alloc] initWithFrame:cardBounds];
     [view setWord:[self.collection.words anyObject]];

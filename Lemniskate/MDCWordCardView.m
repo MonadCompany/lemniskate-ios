@@ -21,7 +21,7 @@
 {
     if (!_spelling) {
         _spelling = [[UILabel alloc] initWithFrame:self.bounds];
-        [_spelling setFont:[UIFont fontWithName:@"American Typewriter" size:72]];
+        [_spelling setFont:[UIFont fontWithName:@"American Typewriter" size:64]];
         [_spelling setTextAlignment:NSTextAlignmentCenter];
     }
     return _spelling;
