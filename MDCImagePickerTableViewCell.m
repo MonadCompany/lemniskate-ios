@@ -53,7 +53,7 @@
         
         [self.button setTitle:@"Choose image" forState:UIControlStateNormal];
         [self.button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [self.button addTarget:self action:@selector(addImageButtonTap:) forControlEvents:UIControlEventTouchDown];
+        [self.button addTarget:self action:@selector(addImageButtonTap:) forControlEvents:UIControlEventTouchUpInside];
         
         [self.contentView addSubview:self.button];
     }

@@ -91,6 +91,7 @@
         [_practiceButton setBackgroundColor:MDCPracticeButtonColor];
         [_practiceButton setTitle:@"Practice" forState:UIControlStateNormal];
         [_practiceButton.titleLabel setFont:[UIFont systemFontOfSize:18]];
+        [_practiceButton addTarget:self.practiceDelegate action:@selector(startPractice:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _practiceButton;
 }
@@ -146,5 +147,10 @@
                                       sb.size.height - MDCCollectionViewHeight);
 }
 
+#pragma mark - Selectors
+
+- (void)startPractice:(id)sender {
+    [self.practiceDelegate startPractice:sender];
+}
 
 @end

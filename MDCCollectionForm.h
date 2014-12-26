@@ -4,7 +4,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MDCImagePickerDelegate.h"
+#import "MDCImagePickerTableViewCell.h"
 
 @interface MDCCollectionForm : UIView
 @property (readonly, nonatomic, strong) NSString *name;

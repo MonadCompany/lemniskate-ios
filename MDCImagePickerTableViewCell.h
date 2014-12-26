@@ -7,8 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MDCImagePickerDelegate.h"
 #import "MDCControlConstants.h"
+#import "DZNPhotoPickerController.h"
+
+@protocol MDCPhotoPickerDelegate <NSObject>
+- (void)presentActionSheet:(UIAlertController *)controller;
+- (void)presentPhotoPicker:(DZNPhotoPickerController *)picker;
+- (void)hidePhotoPicker;
+@end
 
 @interface MDCImagePickerTableViewCell : UITableViewCell
 @property (nonatomic) CGSize cropSize;

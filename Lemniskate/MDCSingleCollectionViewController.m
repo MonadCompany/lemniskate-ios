@@ -14,8 +14,9 @@
 #import "MDCCollectionWithHeaderForm.h"
 #import "MDCWordTableViewCell.h"
 #import "LemniWordPicture.h"
+#import "ZLSwipeableView.h"
 
-@interface MDCSingleCollectionViewController ()
+@interface MDCSingleCollectionViewController () <MDCCollectionWithHeaderFormDelegate>
 @property (nonatomic, strong) NSFetchedResultsController *dataController;
 @property (nonatomic, strong) MDCCollectionWithHeaderForm *collectionForm;
 @end
@@ -186,6 +187,13 @@
     MDCAddWordViewController *viewController = [MDCAddWordViewController controllerWithCollection:self.collection];
     viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self.navigationController pushViewController:viewController animated:YES];
+}
+
+- (void)startPractice:(MDCCollectionWithHeaderForm *)sender
+{
+    NSLog(@"START PRACTICE");
+    ZLSwipeableView *swipeableView = [[ZLSwipeableView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:swipeableView];
 }
 
 #pragma mark - Navigation

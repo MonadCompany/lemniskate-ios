@@ -12,8 +12,13 @@
 @class LemniCollection;
 typedef id <UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate> MDCLemniCollectionHeaderUIViewDelegate;
 
+@protocol MDCCollectionWithHeaderFormDelegate <NSObject>
+- (void)startPractice:(id)sender;
+@end
 
 @interface MDCCollectionWithHeaderForm : UIView
+
+@property (nonatomic, assign) id <MDCCollectionWithHeaderFormDelegate> practiceDelegate;
 
 - (instancetype)initWithFrame:(CGRect)frame
                    collection:(LemniCollection *)collection
