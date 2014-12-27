@@ -10,6 +10,7 @@
 #import "MDCControlConstants.h"
 #import "DZNPhotoPickerController.h"
 
+/// Allows to present VieControllers to choose pictures from internet
 @protocol MDCPhotoPickerDelegate <NSObject>
 - (void)presentActionSheet:(UIAlertController *)controller;
 - (void)presentPhotoPicker:(DZNPhotoPickerController *)picker;

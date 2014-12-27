@@ -10,7 +10,7 @@
 #import "LemniWord.h"
 #import "MDCWordForm.h"
 
-@interface MDCEditWordViewController () <MDCPhotoPickerDelegate>
+@interface MDCEditWordViewController () <MDCPhotoPickerDelegate, MDCTextViewTableViewCellDelegate>
 @property (nonatomic, strong) LemniWord *word;
 @property (nonatomic, strong) MDCWordForm *form;
 @end
@@ -45,6 +45,7 @@
         _form = [[MDCWordForm alloc] initWithFrame:[self.view bounds]];
         [_form setWord:self.word];
         [_form setPhotoPickerDelegate:self];
+        [_form setTextViewDelegate:self];
     }
     return _form;
 }
@@ -55,7 +56,7 @@
 {
     [super loadView];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                            target:self
                                                                                            action:@selector(saveBarButtonItemTap:)];
     [self.view addSubview:self.form];
@@ -73,6 +74,13 @@
 
 - (void)hidePhotoPicker {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - MDCTextViewTableViewCellDelegate
+
+- (void)presentTextViewViewController:(MDCTextViewViewController *)controller
+{
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 #pragma mark - Action handlers

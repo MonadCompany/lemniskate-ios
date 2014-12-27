@@ -12,7 +12,7 @@
 #import "LemniWord.h"
 #import "LemniCollection.h"
 
-@interface MDCAddWordViewController () <MDCPhotoPickerDelegate>
+@interface MDCAddWordViewController () <MDCPhotoPickerDelegate, MDCTextViewTableViewCellDelegate>
 @property (nonatomic, strong) LemniCollection *collection;
 @property (nonatomic, strong) LemniWord *word;
 @property (nonatomic, strong) MDCWordForm *form;
@@ -41,7 +41,7 @@
 
 - (NSString *)title
 {
-    return self.form.word.spelling;
+    return @"New Word";
 }
 
 - (LemniWord *)word
@@ -62,6 +62,7 @@
         _form = [[MDCWordForm alloc] initWithFrame:[self.view bounds]];
         [_form setWord:self.word];
         [_form setPhotoPickerDelegate:self];
+        [_form setTextViewDelegate:self];
     }
     return _form;
 }
@@ -76,7 +77,7 @@
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self
                                                                                           action:@selector(cancelBarButtonItemTap:)];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                            target:self
                                                                                            action:@selector(doneBarButtonItemTap:)];
     [self.view addSubview:self.form];
@@ -96,10 +97,18 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+#pragma mark - MDCTextViewTableViewCellDelegate
+
+- (void)presentTextViewViewController:(MDCTextViewViewController *)controller
+{
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 #pragma mark - Action handlers
 
 - (void)cancelBarButtonItemTap:(UIBarButtonItem *)sender
 {
+    [self.word.managedObjectContext deleteObject:self.word];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

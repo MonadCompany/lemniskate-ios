@@ -8,16 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#define CellTextFieldWidthPercent 0.6
-#define MarginBetweenControls 15.0
+@interface MDCTextFieldTableViewCell : UITableViewCell
 
-@interface MDCLabeledFieldTableViewCell : UITableViewCell
-
-@property (nonatomic, strong) NSString *label;
 @property (nonatomic, strong) NSString *content;
 
 - (instancetype)initWithLabel:(NSString *)label;
 + (instancetype)cellWithLabel:(NSString *)label;
-
 
 @end

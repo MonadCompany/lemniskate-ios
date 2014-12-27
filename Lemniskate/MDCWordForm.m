@@ -7,7 +7,8 @@
 //
 
 #import "MDCWordForm.h"
-#import "MDCLabeledFieldTableViewCell.h"
+#import "MDCTextFieldTableViewCell.h"
+#import "MDCTextViewTableViewCell.h"
 #import "MDCImagePickerTableViewCell.h"
 #import "MDCAppDelegate.h"
 #import "LemniWord.h"
@@ -17,8 +18,9 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) MDCLabeledFieldTableViewCell *spellingCell;
-@property (nonatomic, strong) MDCLabeledFieldTableViewCell *meaningCell;
+@property (nonatomic, strong) MDCTextFieldTableViewCell *spellingCell;
+@property (nonatomic, strong) MDCTextFieldTableViewCell *meaningCell;
+@property (nonatomic, strong) MDCTextViewTableViewCell *usageCell;
 @property (nonatomic, strong) MDCImagePickerTableViewCell  *imageCell;
 
 @end
@@ -40,21 +42,32 @@
     return _tableView;
 }
 
-- (MDCLabeledFieldTableViewCell *)spellingCell {
+- (MDCTextFieldTableViewCell *)spellingCell
+{
     if (!_spellingCell) {
-        _spellingCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Spelling"];
+        _spellingCell = [MDCTextFieldTableViewCell cellWithLabel:@"Spelling"];
     }
     return _spellingCell;
 }
 
-- (MDCLabeledFieldTableViewCell *)meaningCell {
+- (MDCTextFieldTableViewCell *)meaningCell
+{
     if (!_meaningCell) {
-        _meaningCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Meaning"];
+        _meaningCell = [MDCTextFieldTableViewCell cellWithLabel:@"Meaning"];
     }
     return _meaningCell;
 }
 
-- (MDCImagePickerTableViewCell *)imageCell {
+- (MDCTextViewTableViewCell *)usageCell
+{
+    if (!_usageCell) {
+        _usageCell = [MDCTextViewTableViewCell cellWithLabel:@"Usage Example"];
+    }
+    return _usageCell;
+}
+
+- (MDCImagePickerTableViewCell *)imageCell
+{
     if (!_imageCell) {
         _imageCell = [MDCImagePickerTableViewCell new];
         _imageCell.cropSize = CGSizeMake(500, 500);
@@ -62,9 +75,11 @@
     return _imageCell;
 }
 
-- (LemniWord *)word {
+- (LemniWord *)word
+{
     _word.spelling = self.spellingCell.content;
     _word.meaning  = self.meaningCell.content;
+    _word.usage    = self.usageCell.content;
     
     if (self.imageCell.image != nil) {
         _word.picture = UIImagePNGRepresentation(self.imageCell.image);
@@ -79,6 +94,7 @@
     _word = word;
     self.spellingCell.content = word.spelling;
     self.meaningCell.content  = word.meaning;
+    self.usageCell.content    = word.usage;
     
     if (word.picture) {
         UIImage *image = [UIImage imageWithData:word.picture];
@@ -88,6 +104,11 @@
 
 - (void)setPhotoPickerDelegate:(id <MDCPhotoPickerDelegate>)delegate {
     self.imageCell.photoPickerDelegate = delegate;
+}
+
+- (void)setTextViewDelegate:(id<MDCTextViewTableViewCellDelegate>)delegate
+{
+    self.usageCell.delegate = delegate;
 }
 
 #pragma mark - UIView
@@ -108,15 +129,26 @@
 
 #pragma mark - UITableViewDataSource
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0: return @"Info";
+        case 1: return @"Usage Example";
+        case 2: return @"Picture";
+        default: return @"";
+    }
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     switch (section) {
         case 0: return 2;
-//        case 1: return 1;
+        case 1: return 1;
+        case 2: return 1;
         default: return 0;
     }
 }
@@ -133,10 +165,25 @@
 
         case 1:
             switch (indexPath.row) {
+                default: return self.usageCell;
+            }
+            
+        case 2:
+            switch (indexPath.row) {
                 default: return self.imageCell;
             }
 
         default: return nil;
+    }
+}
+
+/* For image cell set higher height */
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.section) {
+        case 1: return MDCCollectionViewHeight;
+        case 2: return MDCCollectionViewHeight;
+        default: return UITableViewAutomaticDimension;
     }
 }
 

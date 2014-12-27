@@ -44,7 +44,7 @@
                                                                                           target:self
                                                                                           action:@selector(cancelBarButtonItemTap:)];
 
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave
                                                                                            target:self
                                                                                            action:@selector(doneBarButtonItemTap:)];
 

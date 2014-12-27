@@ -10,7 +10,7 @@
 #import "MDCAllCollectionsViewController.h"
 #import "MDCAddCollectionViewController.h"
 #import "MDCSingleCollectionViewController.h"
-#import "MDCLabeledFieldTableViewCell.h"
+#import "MDCTextFieldTableViewCell.h"
 #import "MDCCollectionTableViewCell.h"
 #import "MDCAppDelegate.h"
 #import "LemniCollection.h"

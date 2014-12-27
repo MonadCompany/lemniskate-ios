@@ -4,7 +4,7 @@
 //
 
 #import "MDCCollectionForm.h"
-#import "MDCLabeledFieldTableViewCell.h"
+#import "MDCTextFieldTableViewCell.h"
 #import "MDCImagePickerTableViewCell.h"
 #import "MDCControlConstants.h"
 
@@ -12,8 +12,8 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) MDCLabeledFieldTableViewCell *nameCell;
-@property (nonatomic, strong) MDCLabeledFieldTableViewCell *commentCell;
+@property (nonatomic, strong) MDCTextFieldTableViewCell *nameCell;
+@property (nonatomic, strong) MDCTextFieldTableViewCell *commentCell;
 @property (nonatomic, strong) MDCImagePickerTableViewCell  *imageCell;
 
 
@@ -34,16 +34,16 @@
     return _tableView;
 }
 
-- (MDCLabeledFieldTableViewCell *)nameCell {
+- (MDCTextFieldTableViewCell *)nameCell {
     if (!_nameCell) {
-        _nameCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Name"];
+        _nameCell = [[MDCTextFieldTableViewCell alloc] initWithLabel:@"Name"];
     }
     return _nameCell;
 }
 
-- (MDCLabeledFieldTableViewCell *)commentCell {
+- (MDCTextFieldTableViewCell *)commentCell {
     if (!_commentCell) {
-        _commentCell = [[MDCLabeledFieldTableViewCell alloc] initWithLabel:@"Comment"];
+        _commentCell = [[MDCTextFieldTableViewCell alloc] initWithLabel:@"Comment"];
     }
     return _commentCell;
 }
@@ -96,6 +96,16 @@
 }
 
 #pragma mark - UITableViewDataSource
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    switch (section) {
+        case 0: return @"Info";
+        case 1: return @"Background";
+        default: return @"";
+    }
+}
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;

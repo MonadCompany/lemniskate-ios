@@ -8,6 +8,7 @@
 
 #import "MDCImagePickerTableViewCell.h"
 #import "DZNPhotoPickerController.h"
+#import "MDCControlConstants.h"
 
 @interface MDCImagePickerTableViewCell () <UINavigationControllerDelegate, DZNPhotoPickerControllerDelegate>
 @property (nonatomic, strong) UIButton *button;
@@ -20,8 +21,31 @@
 
 #pragma mark - Getters
 
-- (UIImage *)image {
+- (UIImage *)image
+{
     return self.pickedImage;
+}
+
+- (UIImageView *)background
+{
+    if (!_background) {
+        _background = [UIImageView new];
+        _background.backgroundColor = [UIColor whiteColor];
+        _background.contentMode = UIViewContentModeScaleAspectFill;
+        _background.clipsToBounds = YES;
+    }
+    return _background;
+}
+
+- (UIButton *)button
+{
+    if (!_button) {
+        _button = [UIButton new];
+        [_button setTitle:@"Choose image" forState:UIControlStateNormal];
+        [_button setTitleColor:MDCPlaceholderLabelColor forState:UIControlStateNormal];
+        [_button addTarget:self action:@selector(addImageButtonTap:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _button;
 }
 
 #pragma mark - Seters
@@ -34,30 +58,15 @@
 #pragma mark - General Lifecycle
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];    
     if (self) {
         // Hide separator
         self.layoutMargins = UIEdgeInsetsZero;
-        self.separatorInset = UIEdgeInsetsMake(0,10000,0,0);
+        self.separatorInset = UIEdgeInsetsMake(0,1e7,0,0);
         
-        // Initialize & Configure Background
-        self.background = [UIImageView new];
-        self.background.backgroundColor = [UIColor whiteColor];
-        self.background.contentMode = UIViewContentModeScaleAspectFill;
-        self.background.clipsToBounds = YES;
         [self.contentView addSubview:self.background];
-
-        // Initialize & Configure Button
-        self.button = [UIButton new];
-        
-        [self.button setTitle:@"Choose image" forState:UIControlStateNormal];
-        [self.button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [self.button addTarget:self action:@selector(addImageButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-        
         [self.contentView addSubview:self.button];
     }
-    
     return self;
 }
 

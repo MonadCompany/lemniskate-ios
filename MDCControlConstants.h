@@ -9,6 +9,10 @@
 #ifndef Lemniskate_MDCControlConstants_h
 #define Lemniskate_MDCControlConstants_h
 
+// Overall Colors
+
+#define MDCPlaceholderLabelColor ([UIColor colorWithRed:0.78 green:0.78 blue:0.804 alpha:1])
+
 // Collection View
 
 #define MDCCollectionViewAspect (43.0/640*4)
