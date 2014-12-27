@@ -144,7 +144,7 @@
     self.tableView.frame = CGRectMake(sb.origin.x,
                                       sb.origin.y + MDCCollectionViewHeight + practiceButtonHeight,
                                       sb.size.width,
-                                      sb.size.height - MDCCollectionViewHeight);
+                                      sb.size.height - MDCCollectionViewHeight - practiceButtonHeight - MDCMagicalTableOffset);
 }
 
 #pragma mark - Selectors

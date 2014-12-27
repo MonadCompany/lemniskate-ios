@@ -15,6 +15,7 @@
 @interface MDCPracticeViewController () <ZLSwipeableViewDataSource, ZLSwipeableViewDelegate>
 
 @property (nonatomic, strong) ZLSwipeableView *swipeableView;
+@property (nonatomic, strong) UIImageView *background;
 
 // this will hold words that left to show in this practice
 @property (nonatomic, strong) NSMutableArray *wordsLeft;
@@ -58,6 +59,16 @@
     return _swipeableView;
 }
 
+- (UIImageView *)background {
+    if (!_background) {
+        _background = [[UIImageView alloc] initWithFrame:self.view.bounds];
+        [_background setImage:[UIImage imageNamed:@"practice-screen-background"]];
+        _background.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _background.hidden = YES;
+    }
+    return _background;
+}
+
 #pragma mark - UIViewController lifecycle
 
 - (void)loadView
@@ -69,6 +80,7 @@
                                                  blue:231.0/255
                                                 alpha:1];
 
+    [self.view addSubview:self.background];
     [self.view addSubview:self.swipeableView];
 }
 
@@ -81,6 +93,7 @@
     // do this here because setting dataSource will cause view to prefetch cards, which will call delegate (self)
     // as delegate uses current bouds, we need to do this after view is loaded and rotated to correct position
     [self.swipeableView setDataSource:self];
+    self.background.hidden = NO;
 }
 
 - (NSUInteger)supportedInterfaceOrientations

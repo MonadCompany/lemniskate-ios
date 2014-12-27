@@ -56,12 +56,16 @@
 - (UITableView *)tableView
 {
     if (!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:[self.view bounds] style:UITableViewStyleGrouped];
+        CGRect sb = [self.view frame];
+        CGRect frame = CGRectMake(sb.origin.x, sb.origin.y, sb.size.width, sb.size.height - MDCMagicalTableOffset);
+        
+        _tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStyleGrouped];
         _tableView.delegate = self;
         _tableView.dataSource = self;
-        
+        _tableView.indicatorStyle = UIScrollViewIndicatorStyleWhite;
         _tableView.rowHeight = MDCCollectionViewHeight;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        _tableView.backgroundColor = [UIColor blackColor];
     }
     return _tableView;
 }
@@ -200,19 +204,19 @@
         NSManagedObject *managedObject = [self.dataController objectAtIndexPath:indexPath];
         MDCAppDelegate *delegate = [[UIApplication sharedApplication] delegate];
         [delegate.managedObjectContext deleteObject:managedObject];
-        
         [delegate.managedObjectContext save:nil];
     }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    if(section == 0) {
-        return 0.1; // TODO is this right? Looks like the only way to hide header
-    }
-    return UITableViewAutomaticDimension;
+    return 0.1; // TODO is this right? Looks like the only way to hide header
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 0.1; // TODO is this right? Looks like the only way to hide header
+}
 
 #pragma mark - Action handlers
 

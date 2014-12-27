@@ -35,7 +35,6 @@
         _textView = [[UITextView alloc] initWithFrame:padded];
         _textView.returnKeyType = UIReturnKeyDone;
         _textView.font = [UIFont systemFontOfSize:18];
-        NSLog(@"Initialized textView");
     }
     return _textView;
 }
@@ -45,8 +44,6 @@
 - (void)loadView
 {
     [super loadView];
-    NSLog(@"loadView called");
-
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                                                                           target:self
