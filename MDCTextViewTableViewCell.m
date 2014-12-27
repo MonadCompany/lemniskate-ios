@@ -108,6 +108,7 @@
 - (void)layoutSubviews
 {
     CGSize size = self.contentView.frame.size;
+    self.placeholderLabel.hidden = self.contentLabel.text.length > 0;
     [self.placeholderLabel setFrame:CGRectMake(14, 12, size.width - 14*2, 25)];
     
     [self.contentLabel setFrame:CGRectMake(14, 12, size.width - 14*2, size.height - 18)];

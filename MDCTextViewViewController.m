@@ -71,7 +71,6 @@
 
 - (void)doneBarButtonItemTap:(UIBarButtonItem *)sender
 {
-    NSLog(@"Finished editing with content: %@", self.textView.text);
     [self.delegate finishedEditing:self.textView.text];
     [self.navigationController popViewControllerAnimated:YES];
 }
