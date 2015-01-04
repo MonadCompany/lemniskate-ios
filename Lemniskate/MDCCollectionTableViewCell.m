@@ -8,7 +8,7 @@
 
 #import "MDCCollectionTableViewCell.h"
 #import "LemniCollection.h"
-#import "UIImageCategories.h"
+#import "UIImage_ColorizeAdditions.h"
 #import "MDCControlConstants.h"
 
 @interface MDCCollectionTableViewCell ()
