@@ -144,6 +144,7 @@
     // construct and add Gallery button
     UIAlertAction *local = [UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+        pickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         pickerController.delegate = self;
         [self.photoPickerDelegate presentChildViewController:pickerController];
 
@@ -152,7 +153,10 @@
 
     // construct and add Camera button
     UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        // present default image picker
+        UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+        pickerController.sourceType = UIImagePickerControllerSourceTypeCamera;
+        pickerController.delegate = self;
+        [self.photoPickerDelegate presentChildViewController:pickerController];
     }];
     [popup addAction:camera];
 
