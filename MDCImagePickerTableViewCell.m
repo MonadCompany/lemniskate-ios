@@ -10,7 +10,7 @@
 #import "DZNPhotoPickerController.h"
 #import "MDCControlConstants.h"
 
-@interface MDCImagePickerTableViewCell () <UINavigationControllerDelegate, DZNPhotoPickerControllerDelegate>
+@interface MDCImagePickerTableViewCell () <UINavigationControllerDelegate, DZNPhotoPickerControllerDelegate, UIImagePickerControllerDelegate>
 @property (nonatomic, strong) UIButton *button;
 @property (nonatomic, strong) UIImage *pickedImage;
 @property (nonatomic, strong) UIImageView *background;
@@ -82,12 +82,8 @@
 
 - (void)photoPickerController:(DZNPhotoPickerController *)picker didFinishPickingPhotoWithInfo:(NSDictionary *)userInfo {
     NSLog(@"didFinishPickingPhotoWithInfo:%@", userInfo);
-    
-    self.pickedImage = userInfo[UIImagePickerControllerEditedImage];
-    [self.background setImage:self.pickedImage];
-    [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    [self.photoPickerDelegate hidePhotoPicker];
+    UIImage *image = userInfo[UIImagePickerControllerEditedImage];
+    [self imageSelected:image];
 }
 
 - (void)photoPickerController:(DZNPhotoPickerController *)picker didFailedPickingPhotoWithError:(NSError *)error {
@@ -100,53 +96,81 @@
     [self.photoPickerDelegate hidePhotoPicker];
 }
 
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo
+{
+    DZNPhotoEditorViewController *editor = [[DZNPhotoEditorViewController alloc] initWithImage:image];
+    editor.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
+    editor.cropSize = self.cropSize;
+    
+    [editor setAcceptBlock:^(DZNPhotoEditorViewController *editor, NSDictionary *userInfo){
+        NSLog(@"Local image selected");
+        UIImage *image = userInfo[UIImagePickerControllerEditedImage];
+        [self imageSelected:image];
+    }];
+    
+    [editor setCancelBlock:^(DZNPhotoEditorViewController *editor){
+        [picker popViewControllerAnimated:YES];
+    }];
+    
+    // The view controller requieres to be nested in a navigation controller
+    [picker pushViewController:editor animated:YES];
+}
+
 #pragma mark - Action handlers
 
 - (void)addImageButtonTap:(UIBarButtonItem *)sender
 {
-//    UIAlertController *popup = [UIAlertController alertControllerWithTitle:nil
-//                                                                   message:nil
-//                                                            preferredStyle:UIAlertControllerStyleActionSheet];
-//    UIAlertAction *remote = [UIAlertAction actionWithTitle:@"Internet" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//        DZNPhotoPickerController *picker = [[DZNPhotoPickerController alloc] init];
-//        picker.supportedServices = DZNPhotoPickerControllerServiceFlickr | DZNPhotoPickerControllerService500px;
-//        picker.allowsEditing = YES;
-//        picker.delegate = self;
-//    
-//        picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
-//        picker.cropSize = self.cropSize;
-//    
-//        [self.photoPickerDelegate presentPhotoPicker:picker];
-//    }];
-//    [popup addAction:remote];
-//
-//    UIAlertAction *local = [UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//        // present default image picker
-//    }];
-//    [popup addAction:local];
-//
-//    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-//        // present default image picker
-//    }];
-//    [popup addAction:camera];
-//
-//    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {}];
-//    [popup addAction:cancel];
-//
-//    [self.photoPickerDelegate presentActionSheet:popup];
+    // contruct popup sheet
+    UIAlertController *popup = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:nil
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    // construct and add Internet button
+    UIAlertAction *remote = [UIAlertAction actionWithTitle:@"Internet" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        DZNPhotoPickerController *picker = [[DZNPhotoPickerController alloc] init];
+        picker.initialSearchTerm = [self.photoPickerDelegate initialSearchTerm];
+        picker.supportedServices = DZNPhotoPickerControllerServiceFlickr | DZNPhotoPickerControllerService500px;
+        picker.allowsEditing = YES;
+        picker.delegate = self;
+    
+        picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
+        picker.cropSize = self.cropSize;
+    
+        [self.photoPickerDelegate presentChildViewController:picker];
+    }];
+    [popup addAction:remote];
 
-    DZNPhotoPickerController *picker = [[DZNPhotoPickerController alloc] init];
-    picker.supportedServices = DZNPhotoPickerControllerServiceFlickr | DZNPhotoPickerControllerService500px;
-    picker.allowsEditing = YES;
-    picker.delegate = self;
-    
-    picker.cropMode = DZNPhotoEditorViewControllerCropModeCustom;
-    picker.cropSize = self.cropSize;
-    
-    [self.photoPickerDelegate presentPhotoPicker:picker];
+    // construct and add Gallery button
+    UIAlertAction *local = [UIAlertAction actionWithTitle:@"Gallery" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        UIImagePickerController *pickerController = [[UIImagePickerController alloc] init];
+        pickerController.delegate = self;
+        [self.photoPickerDelegate presentChildViewController:pickerController];
 
-    
+    }];
+    [popup addAction:local];
+
+    // construct and add Camera button
+    UIAlertAction *camera = [UIAlertAction actionWithTitle:@"Camera" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // present default image picker
+    }];
+    [popup addAction:camera];
+
+    // construct and add Cancel button
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {}];
+    [popup addAction:cancel];
+
+    [self.photoPickerDelegate presentChildViewController:popup];
 }
 
+#pragma mark - Shared Actions
+
+- (void)imageSelected:(UIImage *)image
+{
+    self.pickedImage = image;
+    [self.background setImage:self.pickedImage];
+    [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.photoPickerDelegate hidePhotoPicker];
+}
 
 @end

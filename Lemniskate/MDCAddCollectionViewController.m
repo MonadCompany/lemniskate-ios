@@ -58,18 +58,20 @@
 
 #pragma mark - DZNPhotoPickerControllerDelegate
 
-- (void)presentActionSheet:(UIAlertController *)controller {
-    [self presentViewController:controller animated:YES completion:nil];
+- (void)presentChildViewController:(UIViewController *)viewController
+{
+    [self presentViewController:viewController animated:YES completion:nil];
 }
 
-- (void)presentPhotoPicker:(DZNPhotoPickerController *)picker {
-    [self presentViewController:picker animated:YES completion:nil];
-}
-
-- (void)hidePhotoPicker {
+- (void)hidePhotoPicker
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (NSString *)initialSearchTerm
+{
+    return self.form.name;
+}
 
 #pragma mark - Action handlers
 

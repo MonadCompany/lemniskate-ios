@@ -17,6 +17,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        // app already launched
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        // This is the first launch ever
+    }
+    
     [DZNPhotoPickerController registerService:DZNPhotoPickerControllerService500px
                                   consumerKey:@"jBrdCpzwEhv12j2B2NCS0IWfmHhyfyumRkE8wvzt"
                                consumerSecret:@"C7vLsYsGmZQd5N39XEEtPoz99ueN4zqL0Byvzkyw"
