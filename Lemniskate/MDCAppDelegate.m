@@ -9,6 +9,9 @@
 #import "MDCAppDelegate.h"
 #import "MDCAllCollectionsViewController.h"
 #import "DZNPhotoPickerController.h"
+#import <Fabric/Fabric.h>
+#import <Crashlytics/Crashlytics.h>
+
 
 @implementation MDCAppDelegate
 
@@ -16,6 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [Fabric with:@[CrashlyticsKit]];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {

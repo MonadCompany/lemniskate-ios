@@ -54,6 +54,7 @@
     if (!_swipeableView) {
         _swipeableView = [[ZLSwipeableView alloc] initWithFrame:self.view.bounds];
         _swipeableView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        _swipeableView.rotationDegree = 7;
         _swipeableView.delegate = self;
     }
     return _swipeableView;

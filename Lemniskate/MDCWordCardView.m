@@ -27,7 +27,7 @@
 {
     if (!_spelling) {
         _spelling = [[UILabel alloc] initWithFrame:self.bounds];
-        [_spelling setFont:[UIFont fontWithName:@"American Typewriter" size:64]];
+        [_spelling setFont:[UIFont fontWithName:@"Helvetica Neue" size:30]];
         [_spelling setTextAlignment:NSTextAlignmentCenter];
         [_spelling setHidden:YES];
     }
@@ -38,7 +38,7 @@
 {
     if (!_practiceTextContent) {
         _practiceTextContent = [[UILabel alloc] initWithFrame:self.bounds];
-        [_practiceTextContent setFont:[UIFont fontWithName:@"American Typewriter" size:20]];
+        [_practiceTextContent setFont:[UIFont fontWithName:@"Helvetica Neue" size:20]];
         [_practiceTextContent setTextAlignment:NSTextAlignmentCenter];
         [_practiceTextContent setHidden:YES];
     }
@@ -127,10 +127,12 @@
     
     // Shadow
     self.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.layer.shadowOpacity = 0.33;
+    self.layer.shadowOpacity = 0.11;
     self.layer.shadowOffset = CGSizeMake(0, 1.5);
     self.layer.shadowRadius = 4.0;
+    
     self.layer.shouldRasterize = YES;
+    self.layer.rasterizationScale = [[UIScreen mainScreen] scale];
     
     // Corner Radius
     self.layer.cornerRadius = 15.0;
@@ -145,9 +147,9 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
-    self.spelling.frame = [MDCWordCardView centerFrame:self.spelling.frame inBounds:self.bounds];
-    self.practiceImageContent.frame = [MDCWordCardView centerFrame:self.practiceImageContent.frame inBounds:self.bounds];;
-    self.practiceTextContent.frame  = [MDCWordCardView centerFrame:self.practiceTextContent.frame inBounds:self.bounds];;
+    self.spelling.frame = CGRectIntegral([MDCWordCardView centerFrame:self.spelling.frame inBounds:self.bounds]);
+    self.practiceImageContent.frame = [MDCWordCardView centerFrame:self.practiceImageContent.frame inBounds:self.bounds];
+    self.practiceTextContent.frame  = CGRectIntegral([MDCWordCardView centerFrame:self.practiceTextContent.frame inBounds:self.bounds]);
     
     // take all space
     self.flipButton.frame = self.bounds;
