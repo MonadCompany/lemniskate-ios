@@ -11,6 +11,7 @@
 #import "DZNPhotoPickerController.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
+#import <Parse/Parse.h>
 
 
 @implementation ACAppDelegate
@@ -19,7 +20,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // Init Fabric SDK
     [Fabric with:@[CrashlyticsKit]];
+    
+    // Init Parse SDK
+    [Parse setApplicationId:@"FnUnnmMLxGhTILaIDCKvV4ETg3TEHYnZgtaZvu27"
+                  clientKey:@"MRtT2BaZm9dTC6z3Bcurfz9NA661TlkingGoZs1J"];
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {

@@ -10,8 +10,6 @@
 		22970596C4CF5C42EFF1D636 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BF19FFE66887352E5189991 /* libPods.a */; };
 		3A1488101A49E35F001FA876 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A14880F1A49E35F001FA876 /* Media.xcassets */; };
 		3A14883E1A4B42EF001FA876 /* ACCollectionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A14883D1A4B42EF001FA876 /* ACCollectionTableViewCell.m */; };
-		3A52B5C81A686901002FBCBE /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A52B5C61A686901002FBCBE /* Crashlytics.framework */; };
-		3A52B5C91A686901002FBCBE /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A52B5C71A686901002FBCBE /* Fabric.framework */; };
 		3A73148C1A4B85B800FBFF13 /* ACCollectionWithHeaderForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73148B1A4B85B800FBFF13 /* ACCollectionWithHeaderForm.m */; };
 		3A7314901A4B8ED900FBFF13 /* UIImage_ColorizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A73148F1A4B8ED900FBFF13 /* UIImage_ColorizeAdditions.m */; };
 		3A7314941A4C8DCB00FBFF13 /* ACEditWordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7314931A4C8DCB00FBFF13 /* ACEditWordViewController.m */; };
@@ -57,8 +55,6 @@
 		3A14883B1A4B410F001FA876 /* MDCControlConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MDCControlConstants.h; sourceTree = "<group>"; };
 		3A14883C1A4B42EF001FA876 /* ACCollectionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACCollectionTableViewCell.h; path = Lemniskate/ACCollectionTableViewCell.h; sourceTree = "<group>"; };
 		3A14883D1A4B42EF001FA876 /* ACCollectionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACCollectionTableViewCell.m; path = Lemniskate/ACCollectionTableViewCell.m; sourceTree = "<group>"; };
-		3A52B5C61A686901002FBCBE /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		3A52B5C71A686901002FBCBE /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
 		3A73148A1A4B85B800FBFF13 /* ACCollectionWithHeaderForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ACCollectionWithHeaderForm.h; path = Lemniskate/ACCollectionWithHeaderForm.h; sourceTree = "<group>"; };
 		3A73148B1A4B85B800FBFF13 /* ACCollectionWithHeaderForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ACCollectionWithHeaderForm.m; path = Lemniskate/ACCollectionWithHeaderForm.m; sourceTree = "<group>"; };
 		3A73148F1A4B8ED900FBFF13 /* UIImage_ColorizeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIImage_ColorizeAdditions.m; sourceTree = "<group>"; };
@@ -123,9 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A52B5C81A686901002FBCBE /* Crashlytics.framework in Frameworks */,
 				22970596C4CF5C42EFF1D636 /* libPods.a in Frameworks */,
-				3A52B5C91A686901002FBCBE /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,8 +329,6 @@
 		AC6A1D56B5D45DB6C75E7B29 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A52B5C61A686901002FBCBE /* Crashlytics.framework */,
-				3A52B5C71A686901002FBCBE /* Fabric.framework */,
 				0BF19FFE66887352E5189991 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -478,7 +470,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run f2ff3c3f6cc2aa63f8e6d317bde79534501f647d 3d95ad86e6b838ff72b9d656b4b2e5bdc67e2883095c9d426d8d617aa76b8300";
+			shellScript = "./Pods/Fabric/Fabric.framework/run f2ff3c3f6cc2aa63f8e6d317bde79534501f647d 3d95ad86e6b838ff72b9d656b4b2e5bdc67e2883095c9d426d8d617aa76b8300";
 		};
 		C0F2B5586811878189A589C9 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
